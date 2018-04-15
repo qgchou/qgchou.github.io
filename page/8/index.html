@@ -400,7 +400,7 @@
 <pre><code>In computer science, functional programming is a programming paradigm—a style of building the structure 
 and elements of computer programs—that treats computation as the evaluation of mathematical functions 
 and avoids changing-state and mutable data. 
-</code></pre><p>几个关键词：<br><img src="http://media.qgchou.top.com/17-12-13/36188284.jpg" alt=""></p>
+</code></pre><p>几个关键词：<br><img src="http://media.qgchou.top/17-12-13/36188284.jpg" alt=""></p>
 <ol>
 <li><p>纯函数（Pure Function），或者函数的纯粹性（Purity），没有副作用（Side Effect）  </p>
 <p> 副作用指状态的变化（Mutation）<br> 例如：<br> 修改全局变量<br> 抛出异常<br> IO读写<br> 调用有副作用的函数</p>
@@ -431,7 +431,7 @@ scala&gt; lazy val c = a*b
 g: Int = &lt;lazy&gt;
 scala&gt; c
 res0: Int = 600
-</code></pre><h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><p>scala的类型层级关系图：<br><img src="http://media.qgchou.top.com/17-12-13/28522382.jpg" alt=""><br>scala中赋值一个变量时，可以不指定变量类型，系统根据赋的值自动识别出变量的类型：</p>
+</code></pre><h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><p>scala的类型层级关系图：<br><img src="http://media.qgchou.top/17-12-13/28522382.jpg" alt=""><br>scala中赋值一个变量时，可以不指定变量类型，系统根据赋的值自动识别出变量的类型：</p>
 <pre><code>可以显式指定变量类型：
 scala&gt; val c:Int = 30
 c: Int = 30
@@ -495,7 +495,7 @@ curriedAdd(2)(3)                          //&gt; res5: Int = 5
 //利用偏应用函数的柯里化技术来构造新的函数
 val addOne = curriedAdd(1)_               //&gt; addOne  : Int =&gt; Int = test$$$Lambda$13/434091818@17c68925
 addOne(4)                                 //&gt; res6: Int = 5
-</code></pre><p>##　集合Collections<br>集合包：scala.collection.immutable<br><img src="http://media.qgchou.top.com/17-12-13/97313663.jpg" alt=""></p>
+</code></pre><p>##　集合Collections<br>集合包：scala.collection.immutable<br><img src="http://media.qgchou.top/17-12-13/97313663.jpg" alt=""></p>
 <h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p>空列表Nil</p>
 <pre><code>scala&gt; Nil
 res6: scala.collection.immutable.Nil.type = List()
@@ -972,7 +972,7 @@ res19: List[Int] = List(0, 1, 2, 3, 5, 7)
           
             <h2 id="关于python"><a href="#关于python" class="headerlink" title="关于python"></a>关于python</h2><p>python是一门面向对象的解释型编程语言，不同于编译型语言，代码中的变量必须先定义再使用。<br>对于解释型编程语言：跨平台比较容易，只需要提供我写平台的解释器即可，每个特定平台的解释器负责将源代码解释成特定平台的机器指令即可。</p>
 <h2 id="CPyhton-Pypy-Jython"><a href="#CPyhton-Pypy-Jython" class="headerlink" title="CPyhton/Pypy/Jython"></a>CPyhton/Pypy/Jython</h2><p>Python是一门编程语言，任何一种编程语言都需要用另一种语言来实现它，比如C语言就是用机器语言来实现的。所以，Python根据实现方式不同分为了CPyhton、Pypy、Jython等。<br>CPython是用C语言实现Pyhon，是目前应用最广泛的解释器。<br>Pypy是用Python自身实现的解释器。<br>Jython是将Python code在JVM上面跑和调用java code的解释器。  </p>
-<h2 id="python基本数据类型总结"><a href="#python基本数据类型总结" class="headerlink" title="python基本数据类型总结"></a>python基本数据类型总结</h2><p><img src="http://media.qgchou.top.com/17-12-11/49485048.jpg" alt=""></p>
+<h2 id="python基本数据类型总结"><a href="#python基本数据类型总结" class="headerlink" title="python基本数据类型总结"></a>python基本数据类型总结</h2><p><img src="http://media.qgchou.top/17-12-11/49485048.jpg" alt=""></p>
 <h2 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h2><p>python中序列类型有：字符串str、列表list、元组tuple，其中字符串和元组是不可变的，列表是可变的。</p>
 <pre><code>&gt;&gt;&gt; type(&apos;abc&apos;)
 &lt;class &apos;str&apos;&gt;
@@ -1176,7 +1176,7 @@ print(&apos;This is a module&apos;)
 export PYSPARK_DRIVER_PYTHON_OPTS=&quot;notebook&quot;
 </code></pre><p>这里参考了[7]和[8]。<br>还有一个插曲，ipython要求先安装python2.7以上的版本，可以之前买阿里云时，为了慕课网老师的课程一致，采用了和课程中一样的系统centos6.8，centos6.8自带的python是2.6，于是要安装高版本的python，但是还不能卸载掉原来的python，因为系统工具例如yum只能运行在python2.6之上。这里我参考了[2]，倘不知是否有没有其他副作用。</p>
 <p>总之，安装jupyter-notebook，花了不少时间，我一开始只是想把ipthon运行起来，后来经一些文章宣传jupyter-notebook如何如何厉害，我不禁心动。找了不少资料，也看了一些英文，解决了问题，这感觉很棒。</p>
-<h2 id="python-zen"><a href="#python-zen" class="headerlink" title="python zen"></a>python zen</h2><p><img src="http://media.qgchou.top.com/17-12-25/78878791.jpg" alt=""></p>
+<h2 id="python-zen"><a href="#python-zen" class="headerlink" title="python zen"></a>python zen</h2><p><img src="http://media.qgchou.top/17-12-25/78878791.jpg" alt=""></p>
 <h2 id="序列解包"><a href="#序列解包" class="headerlink" title="序列解包"></a>序列解包</h2><p>可以用一个序列（元组tuple或列表list）对多个变量赋值，这里注意接收的变量的个数必须与序列元素的个数相同，不能多也不能少。</p>
 <pre><code>d = 1,2,3
 print(type(d))
@@ -1952,26 +1952,26 @@ hello12
 <pre><code>Y = f(X)
 </code></pre><h2 id="AI、ML-和-DL-的关系"><a href="#AI、ML-和-DL-的关系" class="headerlink" title="AI、ML 和 DL 的关系"></a>AI、ML 和 DL 的关系</h2><p>机器学习是实现人工智能的一种方法，深度学习是机器学习的一个分支。</p>
 <h2 id="监督学习和非监督学习"><a href="#监督学习和非监督学习" class="headerlink" title="监督学习和非监督学习"></a>监督学习和非监督学习</h2><p>监督学习：<br>Supervised Learning，有标签，近义词：分类（Classification）<br>非监督学习：<br>Unsupervised Learning，没有标签，近义词：聚类（Cluster）</p>
-<h2 id="人工智能公司统计："><a href="#人工智能公司统计：" class="headerlink" title="人工智能公司统计："></a>人工智能公司统计：</h2><p><img src="http://media.qgchou.top.com/17-11-21/6543861.jpg" alt=""></p>
+<h2 id="人工智能公司统计："><a href="#人工智能公司统计：" class="headerlink" title="人工智能公司统计："></a>人工智能公司统计：</h2><p><img src="http://media.qgchou.top/17-11-21/6543861.jpg" alt=""></p>
 <h2 id="什么是机器学习"><a href="#什么是机器学习" class="headerlink" title="什么是机器学习"></a>什么是机器学习</h2><p>利用计算机从历史数据中找出规律，并把这些规律用到对未来不确定场景的决策中。</p>
 <h2 id="机器学习与数据分析的区别"><a href="#机器学习与数据分析的区别" class="headerlink" title="机器学习与数据分析的区别"></a>机器学习与数据分析的区别</h2><p>机器学习处理的是行为数据，传统的数据分析处理的是交易数据。交易数据包括存取款账单、用户订单、话费订单等，而行为数据包括用户的搜索历史、浏览历史、点击历史、评论等。行为数据是海量数据，交易数据是少量数据；对交易数据的一致性要求很高，对行为数据的一致性要求不是那么高；交易数据的一致性用事务来保证，用关系型数据库存储，行为数据用非关系性数据库存储。交易数据可以采用采样分析的办法，行为数据一般用全量分析的方法进行大数据分析，数据量越大，刻画的用户特征越准确。</p>
-<h3 id="解决的业务问题不同"><a href="#解决的业务问题不同" class="headerlink" title="解决的业务问题不同"></a>解决的业务问题不同</h3><p><img src="http://media.qgchou.top.com/17-11-21/79525316.jpg" alt=""></p>
-<h3 id="技术手段不同"><a href="#技术手段不同" class="headerlink" title="技术手段不同"></a>技术手段不同</h3><p><img src="http://media.qgchou.top.com/17-11-21/24424769.jpg" alt=""></p>
-<h2 id="如何选择机器学习算法"><a href="#如何选择机器学习算法" class="headerlink" title="如何选择机器学习算法"></a>如何选择机器学习算法</h2><p><img src="http://media.qgchou.top.com/18-1-24/64668085.jpg" alt=""></p>
-<h2 id="机器学习六步走"><a href="#机器学习六步走" class="headerlink" title="机器学习六步走"></a>机器学习六步走</h2><p><img src="http://media.qgchou.top.com/18-1-24/69209308.jpg" alt=""></p>
+<h3 id="解决的业务问题不同"><a href="#解决的业务问题不同" class="headerlink" title="解决的业务问题不同"></a>解决的业务问题不同</h3><p><img src="http://media.qgchou.top/17-11-21/79525316.jpg" alt=""></p>
+<h3 id="技术手段不同"><a href="#技术手段不同" class="headerlink" title="技术手段不同"></a>技术手段不同</h3><p><img src="http://media.qgchou.top/17-11-21/24424769.jpg" alt=""></p>
+<h2 id="如何选择机器学习算法"><a href="#如何选择机器学习算法" class="headerlink" title="如何选择机器学习算法"></a>如何选择机器学习算法</h2><p><img src="http://media.qgchou.top/18-1-24/64668085.jpg" alt=""></p>
+<h2 id="机器学习六步走"><a href="#机器学习六步走" class="headerlink" title="机器学习六步走"></a>机器学习六步走</h2><p><img src="http://media.qgchou.top/18-1-24/69209308.jpg" alt=""></p>
 <h2 id="机器学习的“关键三步”"><a href="#机器学习的“关键三步”" class="headerlink" title="机器学习的“关键三步”"></a>机器学习的“关键三步”</h2><ol>
 <li>找一系列函数来实现预期的功能：建模问题</li>
 <li>找一组合理的评价标准，来评估函数的好坏：评价问题</li>
 <li>快速找到性能最佳的函数：优化问题（比如梯度下降就是这个目的）</li>
 </ol>
-<h2 id="各个机器学习库的对比"><a href="#各个机器学习库的对比" class="headerlink" title="各个机器学习库的对比"></a>各个机器学习库的对比</h2><p><img src="http://media.qgchou.top.com/18-1-25/15400848.jpg" alt=""></p>
+<h2 id="各个机器学习库的对比"><a href="#各个机器学习库的对比" class="headerlink" title="各个机器学习库的对比"></a>各个机器学习库的对比</h2><p><img src="http://media.qgchou.top/18-1-25/15400848.jpg" alt=""></p>
 <h2 id="AI的三个时代"><a href="#AI的三个时代" class="headerlink" title="AI的三个时代"></a>AI的三个时代</h2><ol>
 <li>运算智能</li>
 <li>感知智能</li>
 <li>认知智能</li>
 </ol>
 <p>目前处于感知智能阶段。</p>
-<h2 id="什么是深度学习"><a href="#什么是深度学习" class="headerlink" title="什么是深度学习"></a>什么是深度学习</h2><p>基于深度的神经网络的学习研究称之为深度学习。<br><img src="http://media.qgchou.top.com/18-1-25/52554907.jpg" alt=""></p>
+<h2 id="什么是深度学习"><a href="#什么是深度学习" class="headerlink" title="什么是深度学习"></a>什么是深度学习</h2><p>基于深度的神经网络的学习研究称之为深度学习。<br><img src="http://media.qgchou.top/18-1-25/52554907.jpg" alt=""></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="http://www.imooc.com/learn/717" target="_blank" rel="noopener">初识机器学习-理论篇</a></li>
 </ol>
@@ -2642,7 +2642,7 @@ flush privileges;
 <p>想绑定域名来着，没想到竟然先要将申请的域名在公安网备案，[吐血]，可是我身份证不在手边。。</p>
 <h3 id="2017-9-29-11-39-08"><a href="#2017-9-29-11-39-08" class="headerlink" title="2017-9-29 11:39:08"></a>2017-9-29 11:39:08</h3><p>今天用的hexo-theme-next主题，体验很好！<br>看到一兄弟与我的主题相同：<a href="http://suoyo.tech/" target="_blank" rel="noopener">http://suoyo.tech/</a><br>“markdown 七牛 图 插件”，搜这个关键字想找个七牛传图的插件，但是没找到！！想在hexo博客中大量用些图片还是挺痛苦的。<br>有用的参考：<br><a href="http://error408.com/2016/08/02/Hexo%E4%B8%83%E7%89%9B%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">http://error408.com/2016/08/02/Hexo%E4%B8%83%E7%89%9B%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8/</a></p>
 <h3 id="2017-9-29-17-09-11"><a href="#2017-9-29-17-09-11" class="headerlink" title="2017-9-29 17:09:11"></a>2017-9-29 17:09:11</h3><p>发现一使用图床的利器：<br>极简图床：<a href="https://jiantuku.com" target="_blank" rel="noopener">https://jiantuku.com</a></p>
-<h3 id="2017-9-30-3-22-28"><a href="#2017-9-30-3-22-28" class="headerlink" title="2017-9-30 3:22:28"></a>2017-9-30 3:22:28</h3><p>虽然这个点了，但还是值得记录一下。<br>1、想用图床，chrome浏览器报安全问题：<br><img src="http://media.qgchou.top.com/17-9-30/29762606.jpg" alt=""><br>根本就没办法访问了。<br>只能用360的极速浏览器，但是chrmoe报出的这个安全问题还是值得关注的。<br>2、笔记本电脑的hexo环境又出问题了。<br>一开始我的hexo部在E盘，上次出问题了，我在D盘重新部了一个，今天打开idea，两个hexo，我错把D盘的给删了，又得来重新部，还是有些陌生，故记录一下：<br>基本上是参考：<a href="http://www.youmeek.com/hexo/" target="_blank" rel="noopener">http://www.youmeek.com/hexo/</a> 和 <a href="http://zhujiegao.com/2015/12/06/automatic-backup/" target="_blank" rel="noopener">http://zhujiegao.com/2015/12/06/automatic-backup/</a><br>（1）、 暂时使用淘宝提供的nodejs源。  </p>
+<h3 id="2017-9-30-3-22-28"><a href="#2017-9-30-3-22-28" class="headerlink" title="2017-9-30 3:22:28"></a>2017-9-30 3:22:28</h3><p>虽然这个点了，但还是值得记录一下。<br>1、想用图床，chrome浏览器报安全问题：<br><img src="http://media.qgchou.top/17-9-30/29762606.jpg" alt=""><br>根本就没办法访问了。<br>只能用360的极速浏览器，但是chrmoe报出的这个安全问题还是值得关注的。<br>2、笔记本电脑的hexo环境又出问题了。<br>一开始我的hexo部在E盘，上次出问题了，我在D盘重新部了一个，今天打开idea，两个hexo，我错把D盘的给删了，又得来重新部，还是有些陌生，故记录一下：<br>基本上是参考：<a href="http://www.youmeek.com/hexo/" target="_blank" rel="noopener">http://www.youmeek.com/hexo/</a> 和 <a href="http://zhujiegao.com/2015/12/06/automatic-backup/" target="_blank" rel="noopener">http://zhujiegao.com/2015/12/06/automatic-backup/</a><br>（1）、 暂时使用淘宝提供的nodejs源。  </p>
 <ul>
 <li>alias cnpm=”npm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a> \<br>   –cache=$HOME/.npm/.cache/cnpm \<br>   –disturl=<a href="https://npm.taobao.org/dist" target="_blank" rel="noopener">https://npm.taobao.org/dist</a> \<br>   –userconfig=$HOME/.cnpmrc”<br>（2）、安装hexo框架</li>
 <li>cnpm install -g hexo-cli<br>（3）、创建hexo项目</li>
@@ -2664,8 +2664,8 @@ flush privileges;
 <li>sm.ms：<a href="https://sm.ms/" target="_blank" rel="noopener">https://sm.ms/</a></li>
 </ul>
 <h3 id="2017-10-12-13-34-56"><a href="#2017-10-12-13-34-56" class="headerlink" title="2017-10-12 13:34:56"></a>2017-10-12 13:34:56</h3><p>发现一个大神的博客：<a href="https://www.0101tx.com/" target="_blank" rel="noopener">亿界博客</a>,惊叹于博主的手艺高超。在开通博客的初衷之一就是想通过博客取代我的浏览器收藏夹，博主的这个页面：<a href="https://www.0101tx.com/about/" target="_blank" rel="noopener">常用网站工具集</a>，正是我想要实现的效果，从博主日志中还写到程序员的简历，哈，通过这个站点来写自己的简历也是极好的。加了博主好友，通过与请教博主加上自己的观察，我知道了可以在markdown中引入js，这样就能在hexo搭建的博客中实现各种酷炫的效果，赞！这给我打开了一扇新的大门，好好学习！<br>想在markdown博客中添加js效果，找到几个资源：<br><a href="http://m.blog.csdn.net/babylove_BaLe/article/details/76824372" target="_blank" rel="noopener">在Hexo发布博客的MarkDown文件中引入JS代码</a></p>
-<h3 id="2017-10-24-10-31-27"><a href="#2017-10-24-10-31-27" class="headerlink" title="2017-10-24 10:31:27"></a>2017-10-24 10:31:27</h3><p>一直使用七牛图床，想把外链域名改成自己的域名，然后看到有个加速域名服务。<br><img src="http://media.qgchou.top.com/17-10-24/42442681.jpg" alt=""><br>费劲做了公安网备案，并添加到了网站，然后看到要做域名加速，还有个ICP备案：<br><img src="http://media.qgchou.top.com/17-10-24/91473384.jpg" alt=""><br>这个网站，不敢吐槽，找不到备案入口，我这个博客是基于github搭建的，接入商名称是啥，我不知道，网上看ICP备案流程，<a href="http://www.cnblogs.com/liuxianan/p/beian.html" target="_blank" rel="noopener">链接</a>，比较复杂，看来只能做罢了。</p>
-<h3 id="2017-10-24-13-16-22"><a href="#2017-10-24-13-16-22" class="headerlink" title="2017-10-24 13:16:22"></a>2017-10-24 13:16:22</h3><p><img src="http://media.qgchou.top.com/17-10-24/55964956.jpg" alt=""><br>我什么都没做！</p>
+<h3 id="2017-10-24-10-31-27"><a href="#2017-10-24-10-31-27" class="headerlink" title="2017-10-24 10:31:27"></a>2017-10-24 10:31:27</h3><p>一直使用七牛图床，想把外链域名改成自己的域名，然后看到有个加速域名服务。<br><img src="http://media.qgchou.top/17-10-24/42442681.jpg" alt=""><br>费劲做了公安网备案，并添加到了网站，然后看到要做域名加速，还有个ICP备案：<br><img src="http://media.qgchou.top/17-10-24/91473384.jpg" alt=""><br>这个网站，不敢吐槽，找不到备案入口，我这个博客是基于github搭建的，接入商名称是啥，我不知道，网上看ICP备案流程，<a href="http://www.cnblogs.com/liuxianan/p/beian.html" target="_blank" rel="noopener">链接</a>，比较复杂，看来只能做罢了。</p>
+<h3 id="2017-10-24-13-16-22"><a href="#2017-10-24-13-16-22" class="headerlink" title="2017-10-24 13:16:22"></a>2017-10-24 13:16:22</h3><p><img src="http://media.qgchou.top/17-10-24/55964956.jpg" alt=""><br>我什么都没做！</p>
 <h3 id="2017-12-22-16-20-52"><a href="#2017-12-22-16-20-52" class="headerlink" title="2017-12-22 16:20:52"></a>2017-12-22 16:20:52</h3><p>之前听人说，写博客有几个阶段，一个阶段是想用hexo等工具搭个自己的博客，到后来，只是想找个地方写博客，反而不热衷于搭自己的博客了，而是更愿意借助于wordpress等平台。我现在有一点感觉了，也看到一点很牛的人是用wordpress写博客，我也不再幼稚地认为hexo比wordpress更高大上了。</p>
 <h3 id="2018-1-25-23-01-05"><a href="#2018-1-25-23-01-05" class="headerlink" title="2018-1-25 23:01:05"></a>2018-1-25 23:01:05</h3><p>我的博客用的是Disqus评论插件，需要验证一下：如果修改的一篇文章，标题或内容，原来这篇文章下的评论还在吗？如果有博文文件为A.md，有一条评论，后来对该博文重名为B.md，那么原来的评论还会在吗？如果后来又新建一条博文，命名也是A.md，之前的评论会附加到这个最发布的博文后面吗？</p>
 <h3 id="2018-3-20-18-48-29"><a href="#2018-3-20-18-48-29" class="headerlink" title="2018-3-20 18:48:29"></a>2018-3-20 18:48:29</h3><p>hexo生成的html文件以及博客原md文件分别都要保存在github上，我之前是分别建了两个仓库， <a href="https://molunerfinn.com/hexo-travisci-https/#%E6%8C%81%E4%B9%85%E5%8C%96%E6%9E%84%E5%BB%BA" target="_blank" rel="noopener">hexo持久化构建以及给自有域名github-page上HTTPS</a> ，从这篇博客看到的是把这两样放在一个仓库的两个分支里，值得借鉴。</p>

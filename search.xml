@@ -123,17 +123,17 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[学习B树和B+树]]></title>
-    <url>%2F2018%2F03%2F13%2Ftodo-B%E6%A0%91%26B%2B%E6%A0%91%2F</url>
-    <content type="text"></content>
+    <title><![CDATA[学习索引]]></title>
+    <url>%2F2018%2F03%2F13%2Ftodo-%E7%B4%A2%E5%BC%95%2F</url>
+    <content type="text"><![CDATA[为什么mysql索引采用B+树]]></content>
       <tags>
         <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[学习索引]]></title>
-    <url>%2F2018%2F03%2F13%2Ftodo-%E7%B4%A2%E5%BC%95%2F</url>
-    <content type="text"><![CDATA[为什么mysql索引采用B+树]]></content>
+    <title><![CDATA[学习B树和B+树]]></title>
+    <url>%2F2018%2F03%2F13%2Ftodo-B%E6%A0%91%26B%2B%E6%A0%91%2F</url>
+    <content type="text"></content>
       <tags>
         <tag>数据结构</tag>
       </tags>

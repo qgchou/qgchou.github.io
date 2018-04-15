@@ -391,13 +391,13 @@
           
             <p>想操练一下linux命令，我之前用virtualbox建过ubuntu虚拟机，但是我机器配置不高，当前开了许多应用，而开启一个虚拟机是很耗资源的，我又不想把其他应用关掉，于是我来看看云服务器。</p>
 <p>国内云服务市场上阿里和腾讯是大户，我之前也有过买云服务器的打算，到相应网站一查，动辄是一个月几百，我一穷屌丝，始终没下决心去买，当时也没想好好学linux。后来工作了，手头稍微宽裕些，域名也买了，vpn也买了，相比于宝贵的学习机会，相比于对自己投资产生的价值，这点钱还是舍得花的。</p>
-<p>今天分别到阿里云和腾讯看了下，最便宜的45一个月，其中阿里是由于第一次购云服务所以在原价60基础上有75折优惠。<br>阿里选了个最便宜的“轻量应用服务器”：<br><img src="http://media.qgchou.top.com/17-10-3/96621632.jpg" alt=""><br>腾讯云，我选了个最便宜的云服务器：<br><img src="http://media.qgchou.top.com/17-10-3/95031953.jpg" alt=""><br>慢着，虽然都是45元一个月（其中阿里云有个75折），但是腾讯云有个按量计费，我想，我用得也不多，也就偶尔练练linux命令，所以决定用腾讯云，<br><img src="http://media.qgchou.top.com/17-10-3/48596300.jpg" alt=""><br><img src="http://media.qgchou.top.com/17-10-3/14864662.jpg" alt=""><br>充值，购买，用了一会，打算去吃饭了，于是打算关闭云服务器关机，这样就不会收费了，这里有个小插曲，我登录腾讯云服务器后打算关机，我手误写成了init 1，本来是init 0，系统启不起来了，进不去了。后来从网页的控制台进去了，然后重启云服务器，就好了。<br>我想。心里还是有些怀疑，不太确定“按量计费”的意思，于是查了下：</p>
+<p>今天分别到阿里云和腾讯看了下，最便宜的45一个月，其中阿里是由于第一次购云服务所以在原价60基础上有75折优惠。<br>阿里选了个最便宜的“轻量应用服务器”：<br><img src="http://media.qgchou.top/17-10-3/96621632.jpg" alt=""><br>腾讯云，我选了个最便宜的云服务器：<br><img src="http://media.qgchou.top/17-10-3/95031953.jpg" alt=""><br>慢着，虽然都是45元一个月（其中阿里云有个75折），但是腾讯云有个按量计费，我想，我用得也不多，也就偶尔练练linux命令，所以决定用腾讯云，<br><img src="http://media.qgchou.top/17-10-3/48596300.jpg" alt=""><br><img src="http://media.qgchou.top/17-10-3/14864662.jpg" alt=""><br>充值，购买，用了一会，打算去吃饭了，于是打算关闭云服务器关机，这样就不会收费了，这里有个小插曲，我登录腾讯云服务器后打算关机，我手误写成了init 1，本来是init 0，系统启不起来了，进不去了。后来从网页的控制台进去了，然后重启云服务器，就好了。<br>我想。心里还是有些怀疑，不太确定“按量计费”的意思，于是查了下：</p>
 <p><a href="http://bbs.qcloud.com/thread-15497-1-1.html" target="_blank" rel="noopener">http://bbs.qcloud.com/thread-15497-1-1.html</a></p>
-<p>竟然关机也要收费，我赶紧算了下，我买的这个服务器一个月大概多少钱：<br><img src="http://media.qgchou.top.com/17-10-3/16880902.jpg" alt=""><br>720（小时）*0.31*0.34=76元<br>我中午时算作：96*0.31+(360-96)*0.31*0.5+(720-360)*0.31*0.34&gt;100了，吓我一跳。<br>我赶紧销毁了这个云服务器，到阿里云上选了个最便宜的。现在看来，虽然中午是我误算了，但比较下来，还是阿里云更便宜些。<br>买了阿里云服务器后，我照提示设置密钥对，并把密钥文件.pem保存在本地，然后设置了root的密码：<br><img src="http://media.qgchou.top.com/17-10-3/8504965.jpg" alt=""><br>然后，我打开secureCRT，怎么都登不进去，要我从本地上传一个公钥文件，然而，我没有这个格式的文件唉。<br>由于启用密钥之后，服务器会默认将root账号密码登录的方式禁用掉，如果需要使用账号密码方式登录，需要修改配置文件：<br>1、远程登录服务器<br>2、修改/etc/ssh/sshd_config文件中的PasswordAuthentication no改为PasswordAuthentication yes并保存。<br>3、输入如下命令sudo service sshd restart重启SSH服务,就可以重新使用账号密码连接服务器了。</p>
-<p>另外，我用手机登录阿里云客户端，发现这个app里有很多精华内容，值得深入研究下这个app，冰山一角：<br><img src="http://media.qgchou.top.com/17-10-3/61909371.jpg" alt=""><br>通过上面的ssh工具，就可以在手机上登录云服务器，可以在里面运行linux命令，就像PC端的secureCRT一样，非常好用。另外阿里云客户端里有大量优质文章，有待学习。</p>
-<h2 id="比较“轻量应用服务器”和“云服务器ECS”"><a href="#比较“轻量应用服务器”和“云服务器ECS”" class="headerlink" title="比较“轻量应用服务器”和“云服务器ECS”"></a>比较“轻量应用服务器”和“云服务器ECS”</h2><p>查资料，似乎最大的区别在于：<br>轻量应用服务器的磁盘使用的是所谓“SSD云盘”，而ECS的磁盘使用的是所谓的“高效云盘”。<br>云盘参数对比：<br><img src="http://media.qgchou.top.com/17-11-3/43694140.jpg" alt=""><br>另外云服务最大的优势在于它的可扩展性，在使用过程中，随着业务的扩展，对云服务器进行扩容磁盘、增加带宽。如果不再需要云服务器，也可以方便的释放资源，节省费用。<br>那么，购买的“轻量应用服务器”具体弹性吗？<br>官网有个比较，阿里云轻量应用服务器与普通云服务器和VPS的区别：<br><img src="http://media.qgchou.top.com/17-11-3/43694140.jpg" alt=""></p>
-<h2 id="云服务器-ECS-与传统-IDC-对比优势"><a href="#云服务器-ECS-与传统-IDC-对比优势" class="headerlink" title="云服务器 ECS 与传统 IDC 对比优势"></a>云服务器 ECS 与传统 IDC 对比优势</h2><p><img src="http://media.qgchou.top.com/17-11-3/59513053.jpg" alt=""></p>
-<h2 id="阿里云的使用"><a href="#阿里云的使用" class="headerlink" title="阿里云的使用"></a>阿里云的使用</h2><h3 id="开启端口"><a href="#开启端口" class="headerlink" title="开启端口"></a>开启端口</h3><p>安装了一个tomcat，要开放8080端口，我在命令行试了半天试不通，看配置似乎防火墙是关闭状态的：<br><img src="http://media.qgchou.top.com/17-10-23/8676227.jpg" alt=""><br>知乎上一个答主建议在平台上来看，果然，添加规则，把8080端口加上就OK了。管理控制台-&gt;安全-&gt;防火墙：<br><img src="http://media.qgchou.top.com/17-10-23/11639719.jpg" alt=""></p>
+<p>竟然关机也要收费，我赶紧算了下，我买的这个服务器一个月大概多少钱：<br><img src="http://media.qgchou.top/17-10-3/16880902.jpg" alt=""><br>720（小时）*0.31*0.34=76元<br>我中午时算作：96*0.31+(360-96)*0.31*0.5+(720-360)*0.31*0.34&gt;100了，吓我一跳。<br>我赶紧销毁了这个云服务器，到阿里云上选了个最便宜的。现在看来，虽然中午是我误算了，但比较下来，还是阿里云更便宜些。<br>买了阿里云服务器后，我照提示设置密钥对，并把密钥文件.pem保存在本地，然后设置了root的密码：<br><img src="http://media.qgchou.top/17-10-3/8504965.jpg" alt=""><br>然后，我打开secureCRT，怎么都登不进去，要我从本地上传一个公钥文件，然而，我没有这个格式的文件唉。<br>由于启用密钥之后，服务器会默认将root账号密码登录的方式禁用掉，如果需要使用账号密码方式登录，需要修改配置文件：<br>1、远程登录服务器<br>2、修改/etc/ssh/sshd_config文件中的PasswordAuthentication no改为PasswordAuthentication yes并保存。<br>3、输入如下命令sudo service sshd restart重启SSH服务,就可以重新使用账号密码连接服务器了。</p>
+<p>另外，我用手机登录阿里云客户端，发现这个app里有很多精华内容，值得深入研究下这个app，冰山一角：<br><img src="http://media.qgchou.top/17-10-3/61909371.jpg" alt=""><br>通过上面的ssh工具，就可以在手机上登录云服务器，可以在里面运行linux命令，就像PC端的secureCRT一样，非常好用。另外阿里云客户端里有大量优质文章，有待学习。</p>
+<h2 id="比较“轻量应用服务器”和“云服务器ECS”"><a href="#比较“轻量应用服务器”和“云服务器ECS”" class="headerlink" title="比较“轻量应用服务器”和“云服务器ECS”"></a>比较“轻量应用服务器”和“云服务器ECS”</h2><p>查资料，似乎最大的区别在于：<br>轻量应用服务器的磁盘使用的是所谓“SSD云盘”，而ECS的磁盘使用的是所谓的“高效云盘”。<br>云盘参数对比：<br><img src="http://media.qgchou.top/17-11-3/43694140.jpg" alt=""><br>另外云服务最大的优势在于它的可扩展性，在使用过程中，随着业务的扩展，对云服务器进行扩容磁盘、增加带宽。如果不再需要云服务器，也可以方便的释放资源，节省费用。<br>那么，购买的“轻量应用服务器”具体弹性吗？<br>官网有个比较，阿里云轻量应用服务器与普通云服务器和VPS的区别：<br><img src="http://media.qgchou.top/17-11-3/43694140.jpg" alt=""></p>
+<h2 id="云服务器-ECS-与传统-IDC-对比优势"><a href="#云服务器-ECS-与传统-IDC-对比优势" class="headerlink" title="云服务器 ECS 与传统 IDC 对比优势"></a>云服务器 ECS 与传统 IDC 对比优势</h2><p><img src="http://media.qgchou.top/17-11-3/59513053.jpg" alt=""></p>
+<h2 id="阿里云的使用"><a href="#阿里云的使用" class="headerlink" title="阿里云的使用"></a>阿里云的使用</h2><h3 id="开启端口"><a href="#开启端口" class="headerlink" title="开启端口"></a>开启端口</h3><p>安装了一个tomcat，要开放8080端口，我在命令行试了半天试不通，看配置似乎防火墙是关闭状态的：<br><img src="http://media.qgchou.top/17-10-23/8676227.jpg" alt=""><br>知乎上一个答主建议在平台上来看，果然，添加规则，把8080端口加上就OK了。管理控制台-&gt;安全-&gt;防火墙：<br><img src="http://media.qgchou.top/17-10-23/11639719.jpg" alt=""></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://bbs.aliyun.com/read/154041.html?spm=0.0.0.0.XRCmH2" target="_blank" rel="noopener">原来阿里云是最最便宜的！不比不知道！</a></li>
 <li><a href="https://help.aliyun.com/document_detail/59083.html?spm=5176.10173289.0.0.418801b4OsFfVR#windows" target="_blank" rel="noopener">阿里云-远程连接</a></li>
@@ -579,7 +579,7 @@
 <h3 id="2017-10-13-9-27-59"><a href="#2017-10-13-9-27-59" class="headerlink" title="2017-10-13 9:27:59"></a>2017-10-13 9:27:59</h3><p>软件最大的优点在于复用<br>今天看了个特别有意思的视频： <a href="http://www.360doc.com/content/05/1024/11/2311_23002.shtml" target="_blank" rel="noopener">从不同的尺度看世界：10亿光年到0.1飞米</a></p>
 <h3 id="2017-10-13-16-09-59"><a href="#2017-10-13-16-09-59" class="headerlink" title="2017-10-13 16:09:59"></a>2017-10-13 16:09:59</h3><p><font color="red">“工作是为了解决问题，有些时候需要程序解决而已”，这是作为一个程序员的价值所在。永远记得程序员需要解决问题，创造价值，这是根本目的，研究技术可以是爱好，但绝不是目的。</font></p>
 <h3 id="2017-10-21-22-38-53"><a href="#2017-10-21-22-38-53" class="headerlink" title="2017-10-21 22:38:53"></a>2017-10-21 22:38:53</h3><p>之前看一些大牛的博客，顺便去关注了他们的微博，也没设备注，也没设分组，后来清理关注，清理了一些不记得什么原因去关注的人。于是我决定要设备注，设一个分组“程序员”，我是想让自己进一步接近真正的程序员，知道他们的平时生活，有朝一日也许我也能成为真正的程序员。仰慕大神，以至于在微博关注大神时都心有不安，因为一般有人关注时会有消息提示，我责备自己不该去打扰大神。</p>
-<h3 id="2017-10-22-20-13-41"><a href="#2017-10-22-20-13-41" class="headerlink" title="2017-10-22 20:13:41"></a>2017-10-22 20:13:41</h3><p>知乎中关注了一波清北的话题，虽然那群人离我很远，但看看他们的聊天还是很有意思的，能让自己多体会体会与最顶端的学生的差距。在以前，top学生给人一种很神秘的感觉，这种优秀似乎是上天赋予的，他们平时在想些什么，做些什么，父母是怎么教育的，高中大学是怎么度过的，我是很想知道的，但是圈子不同，差距太大，他们不愿意搭理我。现在的社交媒体给了我这样的机会，真是幸甚。<br>成功的道路并不拥挤：<br><img src="http://media.qgchou.top.com/17-10-22/99675858.jpg" alt=""><br>最近迷上了github，大名鼎鼎的linux内核，11年9月初就把linux内核发布到github了，至今6年有余了，可是fork数只有区区19k。</p>
+<h3 id="2017-10-22-20-13-41"><a href="#2017-10-22-20-13-41" class="headerlink" title="2017-10-22 20:13:41"></a>2017-10-22 20:13:41</h3><p>知乎中关注了一波清北的话题，虽然那群人离我很远，但看看他们的聊天还是很有意思的，能让自己多体会体会与最顶端的学生的差距。在以前，top学生给人一种很神秘的感觉，这种优秀似乎是上天赋予的，他们平时在想些什么，做些什么，父母是怎么教育的，高中大学是怎么度过的，我是很想知道的，但是圈子不同，差距太大，他们不愿意搭理我。现在的社交媒体给了我这样的机会，真是幸甚。<br>成功的道路并不拥挤：<br><img src="http://media.qgchou.top/17-10-22/99675858.jpg" alt=""><br>最近迷上了github，大名鼎鼎的linux内核，11年9月初就把linux内核发布到github了，至今6年有余了，可是fork数只有区区19k。</p>
 <h3 id="2017-10-24-8-57-01"><a href="#2017-10-24-8-57-01" class="headerlink" title="2017-10-24 8:57:01"></a>2017-10-24 8:57:01</h3><p>凡事用进废退，记得刚上大学时打字很不习惯，一个是输入法选择强迫症，另外自己也不怎么写代码，也不怎么聊天，所以很久很久，打字很生疏，尤其是开始用五笔时，打字很慢，都没有写字快，然后克服了这个问题，归根是要多练习。同理我现在对linux的学习，包括对技术的学习，也是同样的道理，我有信心。</p>
 <h3 id="2017-10-25-8-44-20"><a href="#2017-10-25-8-44-20" class="headerlink" title="2017-10-25 8:44:20"></a>2017-10-25 8:44:20</h3><p>我觉得自己对网络相关的技术有特殊的兴趣，看技术博客时，每到网络相关的，什么vpn，ssh之类的，我会兴趣大增，先收藏关注下再说。倘若读研时读了网络相关的方向，我相信我是会有成果的。</p>
 <h3 id="2017-10-27-9-34-47"><a href="#2017-10-27-9-34-47" class="headerlink" title="2017-10-27 9:34:47"></a>2017-10-27 9:34:47</h3><p>空有远大抱负不行，还要有强悍的执行力。</p>
@@ -747,8 +747,8 @@ OAuth 2.0的草案在2011年5月初在IETF发布。
 </code></pre><p>然后再启动rabbitmq就正常了。</p>
 <p>rabbitmq的页面管理系统：访问15672端口</p>
 <p>3.Kafka<br>Kafka是一种高吞吐量的分布式发布订阅消息系统，是一个分布式的、分区的、可靠的分布式日志存储服务。Kafka不是一个严格的消息中间件，主要是用来作为日志存储的。对于海量的消息存储能保持长时间的稳定性能，高吞吐量。</p>
-<h3 id="三种消息中间件的比较："><a href="#三种消息中间件的比较：" class="headerlink" title="三种消息中间件的比较："></a>三种消息中间件的比较：</h3><p><img src="http://media.qgchou.top.com/17-9-30/77784772.jpg" alt=""></p>
-<h3 id="JMS接口之间的关系"><a href="#JMS接口之间的关系" class="headerlink" title="JMS接口之间的关系"></a>JMS接口之间的关系</h3><p><img src="http://media.qgchou.top.com/17-10-2/29807161.jpg" alt=""></p>
+<h3 id="三种消息中间件的比较："><a href="#三种消息中间件的比较：" class="headerlink" title="三种消息中间件的比较："></a>三种消息中间件的比较：</h3><p><img src="http://media.qgchou.top/17-9-30/77784772.jpg" alt=""></p>
+<h3 id="JMS接口之间的关系"><a href="#JMS接口之间的关系" class="headerlink" title="JMS接口之间的关系"></a>JMS接口之间的关系</h3><p><img src="http://media.qgchou.top/17-10-2/29807161.jpg" alt=""></p>
 <h2 id="JMS和MQ的关系"><a href="#JMS和MQ的关系" class="headerlink" title="JMS和MQ的关系"></a>JMS和MQ的关系</h2><p>JMS是一个用于提供消息服务的技术规范，它制定了在整个消息服务提供过程中的所有数据结构和交互流程。而MQ则是消息队列服务，是面向消息中间件（MOM）的最终实现，是真正的服务提供者；MQ的实现可以基于JMS，也可以基于其他规范或标准。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="http://www.imooc.com/learn/856" title="源码：https://github.com/qgchou/jms" target="_blank" rel="noopener">慕课网-Java消息中间件</a></li>
@@ -1037,7 +1037,7 @@ OAuth 2.0的草案在2011年5月初在IETF发布。
       
         
           
-            <p>拖拽一个txt文件到印象笔记编辑页面，可以将页面内容提取出来，置于印象笔记编辑区。<br>如下图：<br><img src="http://media.qgchou.top.com/3.png" alt="evernote" title="new file"></p>
+            <p>拖拽一个txt文件到印象笔记编辑页面，可以将页面内容提取出来，置于印象笔记编辑区。<br>如下图：<br><img src="http://media.qgchou.top/3.png" alt="evernote" title="new file"></p>
 
           
         
@@ -1183,17 +1183,17 @@ OAuth 2.0的草案在2011年5月初在IETF发布。
 <ul>
 <li>重命名文件：alt+shift+r</li>
 <li>最大化窗口：ctrl+shift+f12</li>
-<li>错误处理建议：ctrl+f12<br><img src="http://media.qgchou.top.com/17-10-2/10684981.jpg" alt="">  </li>
+<li>错误处理建议：ctrl+f12<br><img src="http://media.qgchou.top/17-10-2/10684981.jpg" alt="">  </li>
 <li>删除当前行：ctrl+d</li>
 <li>复制当前行并插入在当前行的下面：ctrl+y</li>
 </ul>
-<h2 id="Postfix-completion-后缀补全"><a href="#Postfix-completion-后缀补全" class="headerlink" title="Postfix completion 后缀补全"></a>Postfix completion 后缀补全</h2><p>设置：<br><img src="http://media.qgchou.top.com/17-10-2/3883544.jpg" alt=""><br>使用：<br><img src="http://media.qgchou.top.com/17-10-2/36095503.jpg" alt=""><br>按下Enter键或Tab键就得到了：<br><img src="http://media.qgchou.top.com/17-10-2/38366350.jpg" alt="">  </p>
+<h2 id="Postfix-completion-后缀补全"><a href="#Postfix-completion-后缀补全" class="headerlink" title="Postfix completion 后缀补全"></a>Postfix completion 后缀补全</h2><p>设置：<br><img src="http://media.qgchou.top/17-10-2/3883544.jpg" alt=""><br>使用：<br><img src="http://media.qgchou.top/17-10-2/36095503.jpg" alt=""><br>按下Enter键或Tab键就得到了：<br><img src="http://media.qgchou.top/17-10-2/38366350.jpg" alt="">  </p>
 <h2 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h2><ul>
 <li>sout ：System.out.println();</li>
 <li>psvm ：public static void main(String[] args) { }</li>
 <li>fori :for循环</li>
 </ul>
-<h2 id="idea-和-eclipse的区别"><a href="#idea-和-eclipse的区别" class="headerlink" title="idea 和 eclipse的区别"></a>idea 和 eclipse的区别</h2><p>IntelliJ系中的 Project  相当于Eclipse系中的  Workspace ；<br>IntelliJ系中的 Module  相当于Eclipse系中的  Project ；<br>IntelliJ中一个 Project  可以包括多个  Module ；<br>Eclipse中一个 Workspace  可以包括多个  Project；<br>idea和eclipse的一些概念上的映射关系：<br><img src="http://media.qgchou.top.com/18-1-23/71666195.jpg" alt=""></p>
+<h2 id="idea-和-eclipse的区别"><a href="#idea-和-eclipse的区别" class="headerlink" title="idea 和 eclipse的区别"></a>idea 和 eclipse的区别</h2><p>IntelliJ系中的 Project  相当于Eclipse系中的  Workspace ；<br>IntelliJ系中的 Module  相当于Eclipse系中的  Project ；<br>IntelliJ中一个 Project  可以包括多个  Module ；<br>Eclipse中一个 Workspace  可以包括多个  Project；<br>idea和eclipse的一些概念上的映射关系：<br><img src="http://media.qgchou.top/18-1-23/71666195.jpg" alt=""></p>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在左侧的project目录中看不到项目的文件结构图，只能看到几个idea自己生成的文件：<br><a href="http://bbs.csdn.net/topics/390852723" target="_blank" rel="noopener">http://bbs.csdn.net/topics/390852723</a><br>按下列步骤操作：<br>1.关闭IDEA<br>2.然后删除项目文件夹下的.idea文件夹<br>3.重新用IDEA工具打开项目# </p>
 <h3 id="gets-stuck-on-“Copying-resources”"><a href="#gets-stuck-on-“Copying-resources”" class="headerlink" title="gets stuck on “Copying resources”"></a>gets stuck on “Copying resources”</h3><p>启动一个javaweb项目，半天启不起来，一直卡在”Copying resources”，我看任务管理器，磁盘100%，应该是在重新编译程序，关掉idea，重新打开，我点“Rebuild Project”，症状和前面相同，是不是电脑出问题了，我用安全卫士清理了一下电脑，然后重启电脑，然后像前面一样，启动tomcat，问题和之前一样，我打开工程中的target文件夹，发现编译得到的class文件以嵌套递归的形式存在于文件系统中，看了下target文件夹大小，170MB。<br>解决办法：关闭idea，到工程目录下手动删掉target文件夹，然后重新打开idea，然后启动tomcat，成功。查看target文件夹大小，70MB。所以之前出现的问题，在于编译时生成文件到文件系统出错了，原因可能是idea的bug？</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
@@ -1341,14 +1341,14 @@ OAuth 2.0的草案在2011年5月初在IETF发布。
         
           
             <h2 id="2017-9-25-14-08-36"><a href="#2017-9-25-14-08-36" class="headerlink" title="2017-9-25 14:08:36"></a>2017-9-25 14:08:36</h2><p>昨天我的小程序审核通过了，纪念一下。搜索“qgchouDemo”。</p>
-<h2 id="继续学习小程序"><a href="#继续学习小程序" class="headerlink" title="继续学习小程序"></a>继续学习小程序</h2><p>2018年1月5号，在腾讯云买了个微信小程序的后台解决方案2个月的，资源总览见参考9。之前学小程序时，没在腾讯云买解决方案，在网上搜个了可用的域名填了上去，虽然这里提示域名未备案：<br><img src="http://media.qgchou.top.com/18-1-5/29288964.jpg" alt=""><br>现在既然花了钱，就改成了腾讯云为我生成的域名。  </p>
+<h2 id="继续学习小程序"><a href="#继续学习小程序" class="headerlink" title="继续学习小程序"></a>继续学习小程序</h2><p>2018年1月5号，在腾讯云买了个微信小程序的后台解决方案2个月的，资源总览见参考9。之前学小程序时，没在腾讯云买解决方案，在网上搜个了可用的域名填了上去，虽然这里提示域名未备案：<br><img src="http://media.qgchou.top/18-1-5/29288964.jpg" alt=""><br>现在既然花了钱，就改成了腾讯云为我生成的域名。  </p>
 <p>买了解决方案后，在小程序的腾讯云解决方案的资源视图下，“二级域名与证书”模块中提示要及时更换一级域名，“目前已不支持直接使用 qcloud.la 域名（除 socket 域名外）发布小程序，请及时更换一级域名，以免影响小程序正式发布”，我把这个解决方案绑定了我的域名qgchou.cn，但是qgchou.cn只进行了实名认证，没有进行备案，奇怪，qgchou.top是在阿里云购买的，居然在域名绑定界面的域名列表中看到qgchou.top。域名没备案，想要使用服务器提供的网络交互功能，必须要备案才行，开始时我没弄懂，文档中说要配置服务器上的一个配置文件，我改了改，示例没跑通，于是决定先把配置文件还原，糟了，不记得原来是怎么写的了。于是我在腾讯云主机列表中，找到我的会话服务器和业务服务器，选择了重装系统，我以前重装系统后，小程序解决方案的一些配置文件就会还原，结果我错了，重装系统，就把原来已配好的后台程序全清除了，然后就又僵住了。一个教训是，尝试着改文件前，先把原文件备份一个，最坏的情况，自己没尝试成功，好歹不会把事情弄得更糟。</p>
 <p>要么人受罪，要么钱受罪。得，耗不起，1月6号下午我新买了个解决方案1个月的，恶心的是一个腾讯云账号一次只能有一个正在使用的小程序解决方案，于是我再去申请了一个腾讯云账号，然后确定问题的原因的确是没备案，1月8号下午去照相，开始走备案流，等审核。</p>
-<h2 id="域名备案通过"><a href="#域名备案通过" class="headerlink" title="域名备案通过"></a>域名备案通过</h2><p>1.25号晚上10点半，终于收到短信和邮件，域名审核通过，域名审核的过程其实一点也不复杂，按腾讯云或阿里云上的提醒一步步来就行了。<br>今天1月27号，还有10天我的这个解决方案就到期了，抓紧时间学学。<br><img src="http://media.qgchou.top.com/18-1-27/48874680.jpg" alt=""></p>
-<p>参考10和参考13，微信官方给了小程序的样例，分为客户端代码和服务器代码，买的解决方案已经部署有服务器端的程序了，只用把客户端程序下载到本地，导入“微信web开发者工具”。<br><img src="http://media.qgchou.top.com/18-1-27/79786664.jpg" alt=""></p>
+<h2 id="域名备案通过"><a href="#域名备案通过" class="headerlink" title="域名备案通过"></a>域名备案通过</h2><p>1.25号晚上10点半，终于收到短信和邮件，域名审核通过，域名审核的过程其实一点也不复杂，按腾讯云或阿里云上的提醒一步步来就行了。<br>今天1月27号，还有10天我的这个解决方案就到期了，抓紧时间学学。<br><img src="http://media.qgchou.top/18-1-27/48874680.jpg" alt=""></p>
+<p>参考10和参考13，微信官方给了小程序的样例，分为客户端代码和服务器代码，买的解决方案已经部署有服务器端的程序了，只用把客户端程序下载到本地，导入“微信web开发者工具”。<br><img src="http://media.qgchou.top/18-1-27/79786664.jpg" alt=""></p>
 <p>按参考11，分别设置业务服务器上的配置文件sdk.config，以及客户端程序中的配置文件config.js，就可以了，sdk.config中只用改serverHost和tunnelServerUrl，其他项不用改。咦，我按参考11做的，点聊天室怎么进不去啊，点登录也报错。后来，我再去研究服务端配置文件，在/etc/qcloud目录下有个文件init_config.sh，我看看这脚本写的啥，最后是两句，重启tomcat和apache：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">systemctl restart tomcat</div><div class="line">systemctl restart httpd</div></pre></td></tr></table></figure>
-<p>误打误撞，客户端程序能跑通了。其实上面遇到问题，最应该做的是去看日志！<br><img src="http://media.qgchou.top.com/18-1-27/47414330.jpg" alt=""></p>
+<p>误打误撞，客户端程序能跑通了。其实上面遇到问题，最应该做的是去看日志！<br><img src="http://media.qgchou.top/18-1-27/47414330.jpg" alt=""></p>
 <p>开心！</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=20171117" target="_blank" rel="noopener">小程序介绍</a></li>
@@ -1509,15 +1509,15 @@ OAuth 2.0的草案在2011年5月初在IETF发布。
             <h2 id="可以使用-lt-font-color-red-gt-标签设置字体的颜色等"><a href="#可以使用-lt-font-color-red-gt-标签设置字体的颜色等" class="headerlink" title="可以使用&lt; font color=red /&gt;标签设置字体的颜色等"></a>可以使用&lt; font color=red /&gt;标签设置字体的颜色等</h2><font color="red">红色</font><br><font color="blue">蓝色</font>
 
 <h2 id="利用反斜杠来插入一些在语法中有其它意义的符号"><a href="#利用反斜杠来插入一些在语法中有其它意义的符号" class="headerlink" title="利用反斜杠来插入一些在语法中有其它意义的符号"></a>利用反斜杠来插入一些在语法中有其它意义的符号</h2><p>Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：<br>\   反斜线<br>`   反引号<br>*   星号<br>_   底线<br>{}  花括号<br>[]  方括号<br>()  括弧<br>#   井字号<br>+   加号<br>-   减号<br>.   英文句点<br>!   惊叹号</p>
-<h2 id="字体样式"><a href="#字体样式" class="headerlink" title="字体样式"></a>字体样式</h2><p><img src="http://media.qgchou.top.com/17-9-30/37396501.jpg" alt=""></p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>如果你需要在文稿中引用一段别处的句子，那么就要用到「引用」格式。在引用文字前加上 &gt; 并与文字保留一个字符的空格，即可。<br><img src="http://media.qgchou.top.com/17-10-12/56120653.jpg" alt=""></p>
+<h2 id="字体样式"><a href="#字体样式" class="headerlink" title="字体样式"></a>字体样式</h2><p><img src="http://media.qgchou.top/17-9-30/37396501.jpg" alt=""></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>如果你需要在文稿中引用一段别处的句子，那么就要用到「引用」格式。在引用文字前加上 &gt; 并与文字保留一个字符的空格，即可。<br><img src="http://media.qgchou.top/17-10-12/56120653.jpg" alt=""></p>
 <h2 id="链接和图片"><a href="#链接和图片" class="headerlink" title="链接和图片"></a>链接和图片</h2><p>链接：在 Markdown 中，插入链接只需要使用 [显示文本](链接地址) 即可。<br>图片：在 Markdown 中，插入图片只需要使用 ![显示文本](图片链接地址) 即可。</p>
-<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p>分割线的语法只需要另起一行，连续输入三个星号 *** 即可分割两段文字内容。<br><img src="http://media.qgchou.top.com/17-10-12/90274758.jpg" alt=""></p>
+<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p>分割线的语法只需要另起一行，连续输入三个星号 *** 即可分割两段文字内容。<br><img src="http://media.qgchou.top/17-10-12/90274758.jpg" alt=""></p>
 <h2 id="code模式"><a href="#code模式" class="headerlink" title="code模式"></a>code模式</h2><p>按下四个空格，自动转入Code模式  </p>
 <pre><code>this is code
 hello!
 </code></pre><h2 id="分段和换行"><a href="#分段和换行" class="headerlink" title="分段和换行"></a>分段和换行</h2><p>两个回车是分段，两个空格加上一个回车是回车</p>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>列表分为有序列表和无序列表两种。无序列表使用星号、加号或是减号作为列表标记，有序列表则使用数字接着一个英文句点，在列表标记上使用的数字并不会影响输出的 HTML 结果，也就是说三条有序记录前面都用“1.”开始，显示出来后仍是“1.”、“2.”、“3.”。<br><img src="http://media.qgchou.top.com/17-10-25/56114321.jpg" alt=""></p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>列表分为有序列表和无序列表两种。无序列表使用星号、加号或是减号作为列表标记，有序列表则使用数字接着一个英文句点，在列表标记上使用的数字并不会影响输出的 HTML 结果，也就是说三条有序记录前面都用“1.”开始，显示出来后仍是“1.”、“2.”、“3.”。<br><img src="http://media.qgchou.top/17-10-25/56114321.jpg" alt=""></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://www.zhihu.com/question/19637157" target="_blank" rel="noopener">用 Markdown 写作用什么文本编辑器？</a></li>
 <li><a href="http://note.youdao.com/iyoudao/?p=2411&amp;vendor=unsilent14" target="_blank" rel="noopener">有道云笔记Markdown指南</a></li>
@@ -1944,7 +1944,7 @@ touch README
 </code></pre><p>表示将本地的master分支推送到远程origin主机<br>注意，分支推送顺序的写法是&lt;来源地&gt;:&lt;目的地&gt;，所以git pull是&lt;远程分支&gt;:&lt;本地分支&gt;，而git push是&lt;本地分支&gt;:&lt;远程分支&gt;。</p>
 <h3 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h3><p>git pull命令的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并<br>$ git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;<br>比如，<strong> 取回origin主机的next分支，与本地的master分支合并，需要写成下面这样：</strong><br><strong>git pull origin next:master </strong><br>如果远程分支是与当前分支合并，则冒号后面的部分可以省略：</p>
 <pre><code>git pull origin next
-</code></pre><h3 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h3><p>查看提交历史：<br><img src="http://media.qgchou.top.com/17-10-25/90731445.jpg" alt=""><br>只查看与某文件相关的日志：</p>
+</code></pre><h3 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h3><p>查看提交历史：<br><img src="http://media.qgchou.top/17-10-25/90731445.jpg" alt=""><br>只查看与某文件相关的日志：</p>
 <pre><code>git log README.md  
 </code></pre><p>加上参数-p，文件的前后差别就会显示在提交信息之后：</p>
 <pre><code>git log -p
