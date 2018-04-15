@@ -296,6 +296,744 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/02/04/git_公钥/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/04/git_公钥/" itemprop="url">git公钥配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-04T16:51:35+08:00">
+                2018-02-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/04/git_公钥/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/02/04/git_公钥/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/02/04/git_公钥/" class="leancloud_visitors" data-flag-title="git公钥配置">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>无论是 github，还是码云，我们要clone一个工程时，会有两个地址供选择，HTTPS和SSH，有什么区别呢？</p>
+<p>公钥有两种，部署公钥和个人公钥：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-4/36526033.jpg"><br>配置了部署公钥，只支持只读操作；如果想要对仓库进行写操作，请添加个人公钥。</p>
+<p>似乎个人公钥是针对整个机器而言的，我在码云上添加了我的某个阿里云服务器的个人公钥，然后就可以在我的那个阿里云服务器上任意clone(也可以其他操作？)我的码云上的仓库了，当然这要求是使用SSH地址，如果使用HTTPS地址来clone的话，则要求输入码云的用户名密码，挺麻烦的，我猜想啊，如果我在码云的某个仓库A配置了我的阿里云服务器的部署公钥，估计用HTTPS也可以免密了，什么原理呢，有待学习。<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-4/12039364.jpg"></p>
+<p>我在git bash中要把本地仓库关联一个远程仓库，开始时使用远程仓库的SSH地址，然后报错了，提示权限问题：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-4/38216257.jpg"><br>关联远程仓库的HTTPS地址就没报错。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/02/01/sleep&wait/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/01/sleep&wait/" itemprop="url">多线程中的sleep方法和wait方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T18:48:20+08:00">
+                2018-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/01/sleep&wait/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/02/01/sleep&wait/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/02/01/sleep&wait/" class="leancloud_visitors" data-flag-title="多线程中的sleep方法和wait方法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>sleep和wait都会释放CPU的执行权，区别是sleep不释放锁，wait释放锁。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li>《Java并发编程从入门到精通》，张振华，清华大学出版社，2015年7月第一版</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/02/01/AbstractQueuedSynchronizer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/01/AbstractQueuedSynchronizer/" itemprop="url">学习AQS-AbstractQueuedSynchronizer</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T18:48:20+08:00">
+                2018-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/01/AbstractQueuedSynchronizer/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/02/01/AbstractQueuedSynchronizer/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/02/01/AbstractQueuedSynchronizer/" class="leancloud_visitors" data-flag-title="学习AQS-AbstractQueuedSynchronizer">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>AQS是java.util.concurrent的核心组件之一，它提供了一个基于FIFO队列，可以用于构建锁或者其他相关同步装置的基础框架。<br>AQS的功能可以分为两类：独占功能和共享功能。<br>AQS有很多子类，不同子类，不同的同步机制和阻塞机制，释放锁和加锁的逻辑可能不一样，AQS只是提供了一种基于FIFO队列、可以用于构建锁或者其他相关同步装置的基础框架。</p>
+<p>看源码，ReentrantLock、CountDownLatch、Semaphore、FutureTask、ThreadPoolExecutor，都有个名叫Sync的静态内部类，继承自AQS。</p>
+<p>test</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li>《Java并发编程从入门到精通》，张振华，清华大学出版社，2015年7月第一版</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/02/01/uml-study/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/01/uml-study/" itemprop="url">学习UML类图</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T18:18:02+08:00">
+                2018-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/01/uml-study/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/02/01/uml-study/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/02/01/uml-study/" class="leancloud_visitors" data-flag-title="学习UML类图">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>UML类图，类之间的几种主要关系：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-1/48978202.jpg"></p>
+<p>几种关系的强弱比较：<br>组合&gt;聚合&gt;关联&gt;依赖</p>
+<h2 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h2><p>大雁与大雁的翅膀的关系是组合关系，contains-a：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-1/82098117.jpg"></p>
+<h2 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h2><p>雁群与大雁的关系是聚合关系，has-a：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-1/81163810.jpg"></p>
+<h2 id="关联"><a href="#关联" class="headerlink" title="关联"></a>关联</h2><p>强关联关系。被关联类B以类属性的形式出现在关联类A中，也可能是关联类A引用了一个类B的全局变量。<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-1/30183125.jpg"></p>
+<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><p>类A的方法中用到类B，类B作为参数被A的某个方法中使用，这种关系是偶然的，临时的，非常弱的。<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-1/17627166.jpg"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/02/01/concurrent-study/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/01/concurrent-study/" itemprop="url">java开发中的并发</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T11:57:50+08:00">
+                2018-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/01/concurrent-study/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/02/01/concurrent-study/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/02/01/concurrent-study/" class="leancloud_visitors" data-flag-title="java开发中的并发">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>彩票app有个排行榜，显示中奖率，后台程序一个线程取购彩记录，计算中奖率时，可能此刻另一个线程在更新中奖率。所以对中奖率的操作需要是线程安全的。  </p>
+<p>白名单/黑名单。黑名单可以使用 java.util.concurrent.CopyOnWriteArraySet。CopyOnWrite 并发容器即写时复制的容器，适用于读多写少的场景。在往容器中添加元素的时候，不是直接往容器中添加，而是将当前容器进行 Copy，复制出一个新的容器，然后往新的容器里添加元素，添加完之后，再将原容器的引用指向新的容器。这样做的好处是我们可以对 CopyOnWrite 容器进行并发地读，而不需要加锁，因为当前容器不会添加任何元素。所以 CopyOnWrite 容器也是一种读写分离的思想，读和写不同的容器。CopyOnWrite 有数据一致性问题。CopyOnWrite 容器只能保证数据的最终一致性，不能保证数据的实时一致性。所以如果你希望写入的数据马上能读到，请不要使用 CopyOnWrite 容器。</p>
+<h2 id="几个好的资源"><a href="#几个好的资源" class="headerlink" title="几个好的资源"></a>几个好的资源</h2><p>阿里在nignx的基础上进行改进并开源的服务器 <a href="https://tengine.taobao.org/" target="_blank" rel="noopener">tengine</a><br>阿里有开源的中间件 <a href="http://www.mycat.io/" target="_blank" rel="noopener">mycat</a>，数据库分库分表需求时可以考虑下。</p>
+<h2 id="java内存模型"><a href="#java内存模型" class="headerlink" title="java内存模型"></a>java内存模型</h2><p>Java Memory Model (JAVA 内存模型）描述线程之间如何通过内存(memory)来进行交互。 具体说来， JVM中存在一个主存区（Main Memory或Java Heap Memory），对于所有线程进行共享，而每个线程又有自己的工作内存（Working Memory），工作内存中保存的是主存中某些变量的拷贝，线程对所有变量的操作并非发生在主存区，而是发生在工作内存中，而线程之间是不能直接相互访问，变量在程序中的传递，是依赖主存来完成的。<br>对JMM的介绍，参考3和参考4的文章写得很好，一下子把JMM和JVM的关系讲清楚了。参考3中对内存交互操作：Lock(锁定)/Read(读取)/Load(加载)/Use(使用)/Assign(赋值)/Store(存储)/Write(写入)/Unlock(解锁)，做了精辟地总结，让人印象深刻。简单地讲，JVM的垃圾回收器处理的是堆区的内存，这里的堆区包括共享堆和方法区，这个堆区就对应了JMM中的主存区，为所有线程共享。JVM中的栈区就对应了JMM中每个线程自己的工作内存。</p>
+<h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h2><p>保证了线程可以正确地读取其他线程写入的值。volatile只提供了内存可见性，而没有提供原子性。synchronized作为一种同步手段，解决java多线程的执行有序性和内存可见性。</p>
+<h2 id="原子操作：atomic"><a href="#原子操作：atomic" class="headerlink" title="原子操作：atomic"></a>原子操作：atomic</h2><p>java.util.concurrent.atomic包里，有一批原子处理类，主要用于在高并发环境下的高效程序处理，这些处理类包括：<br>AtomicInteger、AtomicLong等。<br>原子操作atomic的实现原理，是利用CPU的比较并交换（即CAS）和非阻塞算法。如果查看AtomicInteger的源码，会发现有些是通过调用JNI的代码实现的。JNI（Java Native Interface）为Java本地调用，允许java调用其他语言。而CAS（compareAndSwapInt）就是借助C来调用CPU底层指令实现的。</p>
+<h2 id="Fork-Join框架"><a href="#Fork-Join框架" class="headerlink" title="Fork/Join框架"></a>Fork/Join框架</h2><p>Fork/Join框架是Java7提供的一个用于并行执行任务的框架，是一个把大任务分割成若干个小任务，最终汇总每个小任务结果后得到大任务结果的框架。Fork就是把一个大任务切分成若干个子任务并行地执行，Join就是合并这些子任务的执行结果，最后得到这个大任务的结果。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="http://www.infoq.com/cn/articles/java-memory-model-1" target="_blank" rel="noopener">深入理解Java内存模型（一）——基础</a></li>
+<li>《Java并发编程从入门到精通》，张振华，清华大学出版社，2015年7月第一版</li>
+<li><a href="http://blog.csdn.net/sc313121000/article/details/40266531" target="_blank" rel="noopener">jvm主内存与工作内存，内存模型反映的java多线程问题</a></li>
+<li><a href="http://blog.csdn.net/lzn51/article/details/71799189" target="_blank" rel="noopener">浅析jvm与jmm模型结构与关系</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/02/01/jvm-study/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1072,746 +1810,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/27/google&X/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qgchou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/default_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qgchou">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/27/google&X/" itemprop="url">google与X比较</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-27T15:09:15+08:00">
-                2018-01-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/27/google&X/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/27/google&X/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/01/27/google&X/" class="leancloud_visitors" data-flag-title="google与X比较">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="以图搜图"><a href="#以图搜图" class="headerlink" title="以图搜图"></a>以图搜图</h2><p>网上看到一有趣的图片，恶搞本山老师：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-1-27/62046704.jpg" alt=""></p>
-<p>然后我想上网搜搜相关的内容。分别用百度和google的以图搜图：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-1-27/88323945.jpg" alt=""><br><img src="http://owyvgfyba.bkt.clouddn.com/18-1-27/79159039.jpg" alt=""><br>这轮较量，百度胜。</p>
-<h2 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a>翻译</h2><p>有一段话：</p>
-<pre><code>These installations will also require maintenance shops and/or installers to have the ability/access to utilize approved configuration databases and tools for re-establishing the airworthiness of each new databus configuration. 
-</code></pre><p>14年10月，我要帮人翻译一段文字，里面有上面这么一句话。<br>我用word2013自带的翻译，结果是：</p>
-<pre><code>这些设施也将需要维修店和（或）有能力/访问以利用已批准的配置数据库和工具，重新确立的每个新的数据总线配置适航的安装程序。
-</code></pre><p>用google翻译的结果是：</p>
-<pre><code>这些设施也需要维修店和/或安装人员有能力/获得批准使用的配置数据库和工具，以便重新建立每一个新的数据总线配置的适航性。
-</code></pre><p>后面半段，“以便重新建立每一个新的数据总线配置的适航性”比起微软的“重新确立的每个新的数据总线配置适航的安装程序”好太多了。</p>
-<p>这轮较量，google胜。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/27/ps-study/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qgchou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/default_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qgchou">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/27/ps-study/" itemprop="url">学习ps</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-27T14:56:28+08:00">
-                2018-01-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/27/ps-study/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/27/ps-study/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/01/27/ps-study/" class="leancloud_visitors" data-flag-title="学习ps">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>技术无所谓高低，能解决问题就是好技术。ps是个好工具，看到一篇有趣的文章如参考1，看上去挺简单的，便快速尝试了一下。ps是一款强大的图片处理工具，也因为功能太强大了，学起来不是太容易，被诟病太复杂，这才有了美图秀秀等傻瓜式图片处理软件。</p>
-<h2 id="图层"><a href="#图层" class="headerlink" title="图层"></a>图层</h2><p>图层在ps中扮演着重要角色，对图像进行绘制或编辑时，所有的操作都是基于图层的。在ps中，打开的图像都有一个或多个图层。图层可以看作是一张独立的透明胶片，其中每一张胶片上都会绘制图像的一部分内容，将所有胶片按顺序叠加起来，便可以看到完整的图像。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="http://www.jb51.net/photoshop/379205.html" target="_blank" rel="noopener">PS将蒙娜丽莎头像换成赵本山老师的脸</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/25/steganography-study/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qgchou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/default_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qgchou">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/25/steganography-study/" itemprop="url">学习隐写术</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-25T18:33:58+08:00">
-                2018-01-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/25/steganography-study/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/25/steganography-study/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/01/25/steganography-study/" class="leancloud_visitors" data-flag-title="学习隐写术">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="https://www.jianshu.com/p/67233f607f75" target="_blank" rel="noopener">隐写术总结</a></li>
-<li><a href="https://smartjinyu.com/ctf/2016/11/29/introduction_to_stereo.html" target="_blank" rel="noopener">关于隐写术(Steganography)的简单总结</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/25/statistics-study/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qgchou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/default_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qgchou">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/25/statistics-study/" itemprop="url">统计学入门</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-25T16:17:32+08:00">
-                2018-01-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/25/statistics-study/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/25/statistics-study/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/01/25/statistics-study/" class="leancloud_visitors" data-flag-title="统计学入门">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="方差与标准差"><a href="#方差与标准差" class="headerlink" title="方差与标准差"></a>方差与标准差</h2><p><img src="http://owyvgfyba.bkt.clouddn.com/18-1-25/90375259.jpg" alt=""></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="http://book.51cto.com/art/201004/193276.htm" target="_blank" rel="noopener">方差（Variance）和标准差（Standard Deviation）</a></li>
-<li><a href="http://blog.csdn.net/xidiancoder/article/details/71341345" target="_blank" rel="noopener">平均值(Mean)、方差(Variance)、标准差(Standard Deviation)</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/24/hexo-update/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qgchou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/default_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qgchou">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/24/hexo-update/" itemprop="url">hexo升级</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-24T14:53:57+08:00">
-                2018-01-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/24/hexo-update/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/24/hexo-update/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/01/24/hexo-update/" class="leancloud_visitors" data-flag-title="hexo升级">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>hexo博客托管在github上，github自带的代码检测发现文件 package-lock.json 中的依赖包marked@0.3.6有安全漏洞，然后在我的项目头部给了个醒目的报警，并且建议我将marked插件升级到0.3.9。<br>原来的package-lock.json是这样的：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">"hexo-renderer-marked": &#123;</div><div class="line">  "version": "0.3.0",</div><div class="line">  "resolved": "https://registry.npmjs.org/hexo-renderer-marked/-/hexo-renderer-marked-0.3.0.tgz",</div><div class="line">  "integrity": "sha1-X6J6NhB10Ui47P8plSo+FeI67YE=",</div><div class="line">  "requires": &#123;</div><div class="line">    "hexo-util": "0.6.1",</div><div class="line">    "marked": "0.3.6",</div><div class="line">    "object-assign": "4.1.1",</div><div class="line">    "strip-indent": "1.0.1"</div><div class="line">  &#125;</div><div class="line">&#125;,</div><div class="line">"marked": &#123;</div><div class="line">  "version": "0.3.6",</div><div class="line">  "resolved": "https://registry.npmjs.org/marked/-/marked-0.3.6.tgz",</div><div class="line">  "integrity": "sha1-XXXXXXXXXXXXXXXX"</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>折腾一番后，我把该文件修改如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">"hexo-renderer-marked": &#123;</div><div class="line">  "version": "0.3.0",</div><div class="line">  "resolved": "https://registry.npmjs.org/hexo-renderer-marked/-/hexo-renderer-marked-0.3.0.tgz",</div><div class="line">  "integrity": "sha1-X6J6NhB10Ui47P8plSo+FeI67YE=",</div><div class="line">  "requires": &#123;</div><div class="line">    "hexo-util": "0.6.1",</div><div class="line">    "marked": "0.3.9",</div><div class="line">    "object-assign": "4.1.1",</div><div class="line">    "strip-indent": "1.0.1"</div><div class="line">  &#125;</div><div class="line">&#125;,</div><div class="line">"marked": &#123;</div><div class="line">  "version": "0.3.9",</div><div class="line">  "resolved": "https://registry.npmjs.org/marked/-/marked-0.3.9.tgz",</div><div class="line">  "integrity": "sha512-nW5u0dxpXxHfkHzzrveY45gCbi+R4PaO4WRZYqZNl+vB0hVGeqlFn0aOg1c8AKL63TrNFn9Bm2UP4AdiZ9TPLw=="</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上面要填哈希验证码，从哪里获取0.3.9版本的marked插件的hash验证码呢，我随便找了个目录，然后：</p>
-<pre><code>npm install marked@0.3.9 --save
-</code></pre><p>在该目录下就生成了个文件，里面就有我要的哈希。<br>在hexo网站的根目录下，执行 npm install，然后再次部署网站后，终于没有报错。</p>
-<p>后来发现，一个更简便的方法是直接在hexo网站根目录下执行：  </p>
-<pre><code>npm install marked@0.3.9 --save
-</code></pre><p>然后我看 node_modules 文件夹下，marked插件也更新了，package-lock.json文件中marked插件的版本号也修改了，不同于上面，在hexo文件夹下的文件 package.json 中dependencies节点下添加了marked依赖。这种操作我没有最终hexo部署看是否生效，但是我觉得应该是没问题的。</p>
-<p>这次更新插件暴露出一个问题，我需要对hexo框架以及npm加强理解。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1866,7 +1864,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">94</span>
+                  <span class="site-state-item-count">100</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1888,7 +1886,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

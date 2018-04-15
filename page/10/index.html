@@ -296,6 +296,796 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2017/10/03/cloud-service/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/03/cloud-service/" itemprop="url">云服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-03T17:58:20+08:00">
+                2017-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/03/cloud-service/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/03/cloud-service/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/03/cloud-service/" class="leancloud_visitors" data-flag-title="云服务器">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>想操练一下linux命令，我之前用virtualbox建过ubuntu虚拟机，但是我机器配置不高，当前开了许多应用，而开启一个虚拟机是很耗资源的，我又不想把其他应用关掉，于是我来看看云服务器。</p>
+<p>国内云服务市场上阿里和腾讯是大户，我之前也有过买云服务器的打算，到相应网站一查，动辄是一个月几百，我一穷屌丝，始终没下决心去买，当时也没想好好学linux。后来工作了，手头稍微宽裕些，域名也买了，vpn也买了，相比于宝贵的学习机会，相比于对自己投资产生的价值，这点钱还是舍得花的。</p>
+<p>今天分别到阿里云和腾讯看了下，最便宜的45一个月，其中阿里是由于第一次购云服务所以在原价60基础上有75折优惠。<br>阿里选了个最便宜的“轻量应用服务器”：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-3/96621632.jpg" alt=""><br>腾讯云，我选了个最便宜的云服务器：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-3/95031953.jpg" alt=""><br>慢着，虽然都是45元一个月（其中阿里云有个75折），但是腾讯云有个按量计费，我想，我用得也不多，也就偶尔练练linux命令，所以决定用腾讯云，<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-3/48596300.jpg" alt=""><br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-3/14864662.jpg" alt=""><br>充值，购买，用了一会，打算去吃饭了，于是打算关闭云服务器关机，这样就不会收费了，这里有个小插曲，我登录腾讯云服务器后打算关机，我手误写成了init 1，本来是init 0，系统启不起来了，进不去了。后来从网页的控制台进去了，然后重启云服务器，就好了。<br>我想。心里还是有些怀疑，不太确定“按量计费”的意思，于是查了下：</p>
+<p><a href="http://bbs.qcloud.com/thread-15497-1-1.html" target="_blank" rel="noopener">http://bbs.qcloud.com/thread-15497-1-1.html</a></p>
+<p>竟然关机也要收费，我赶紧算了下，我买的这个服务器一个月大概多少钱：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-3/16880902.jpg" alt=""><br>720（小时）*0.31*0.34=76元<br>我中午时算作：96*0.31+(360-96)*0.31*0.5+(720-360)*0.31*0.34&gt;100了，吓我一跳。<br>我赶紧销毁了这个云服务器，到阿里云上选了个最便宜的。现在看来，虽然中午是我误算了，但比较下来，还是阿里云更便宜些。<br>买了阿里云服务器后，我照提示设置密钥对，并把密钥文件.pem保存在本地，然后设置了root的密码：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-3/8504965.jpg" alt=""><br>然后，我打开secureCRT，怎么都登不进去，要我从本地上传一个公钥文件，然而，我没有这个格式的文件唉。<br>由于启用密钥之后，服务器会默认将root账号密码登录的方式禁用掉，如果需要使用账号密码方式登录，需要修改配置文件：<br>1、远程登录服务器<br>2、修改/etc/ssh/sshd_config文件中的PasswordAuthentication no改为PasswordAuthentication yes并保存。<br>3、输入如下命令sudo service sshd restart重启SSH服务,就可以重新使用账号密码连接服务器了。</p>
+<p>另外，我用手机登录阿里云客户端，发现这个app里有很多精华内容，值得深入研究下这个app，冰山一角：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-3/61909371.jpg" alt=""><br>通过上面的ssh工具，就可以在手机上登录云服务器，可以在里面运行linux命令，就像PC端的secureCRT一样，非常好用。另外阿里云客户端里有大量优质文章，有待学习。</p>
+<h2 id="比较“轻量应用服务器”和“云服务器ECS”"><a href="#比较“轻量应用服务器”和“云服务器ECS”" class="headerlink" title="比较“轻量应用服务器”和“云服务器ECS”"></a>比较“轻量应用服务器”和“云服务器ECS”</h2><p>查资料，似乎最大的区别在于：<br>轻量应用服务器的磁盘使用的是所谓“SSD云盘”，而ECS的磁盘使用的是所谓的“高效云盘”。<br>云盘参数对比：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-11-3/43694140.jpg" alt=""><br>另外云服务最大的优势在于它的可扩展性，在使用过程中，随着业务的扩展，对云服务器进行扩容磁盘、增加带宽。如果不再需要云服务器，也可以方便的释放资源，节省费用。<br>那么，购买的“轻量应用服务器”具体弹性吗？<br>官网有个比较，阿里云轻量应用服务器与普通云服务器和VPS的区别：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-11-3/43694140.jpg" alt=""></p>
+<h2 id="云服务器-ECS-与传统-IDC-对比优势"><a href="#云服务器-ECS-与传统-IDC-对比优势" class="headerlink" title="云服务器 ECS 与传统 IDC 对比优势"></a>云服务器 ECS 与传统 IDC 对比优势</h2><p><img src="http://owyvgfyba.bkt.clouddn.com/17-11-3/59513053.jpg" alt=""></p>
+<h2 id="阿里云的使用"><a href="#阿里云的使用" class="headerlink" title="阿里云的使用"></a>阿里云的使用</h2><h3 id="开启端口"><a href="#开启端口" class="headerlink" title="开启端口"></a>开启端口</h3><p>安装了一个tomcat，要开放8080端口，我在命令行试了半天试不通，看配置似乎防火墙是关闭状态的：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-23/8676227.jpg" alt=""><br>知乎上一个答主建议在平台上来看，果然，添加规则，把8080端口加上就OK了。管理控制台-&gt;安全-&gt;防火墙：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-23/11639719.jpg" alt=""></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://bbs.aliyun.com/read/154041.html?spm=0.0.0.0.XRCmH2" target="_blank" rel="noopener">原来阿里云是最最便宜的！不比不知道！</a></li>
+<li><a href="https://help.aliyun.com/document_detail/59083.html?spm=5176.10173289.0.0.418801b4OsFfVR#windows" target="_blank" rel="noopener">阿里云-远程连接</a></li>
+<li><a href="https://help.aliyun.com/document_detail/25382.html?spm=5176.ecsprepayv2.storage.1.153946f1knlOut" target="_blank" rel="noopener">云盘参数和性能测试方法</a></li>
+<li><a href="https://yq.aliyun.com/video/play/581?spm=5176.doc51704.2.11.9pJiGN" target="_blank" rel="noopener">云计算的弹性体现在哪些方面？</a></li>
+<li><a href="https://help.aliyun.com/document_detail/51704.html?spm=5176.doc25367.6.540.lHsN4F" target="_blank" rel="noopener">云服务器 ECS 的优势</a></li>
+<li><a href="https://yq.aliyun.com/articles/219887" target="_blank" rel="noopener">什么是轻量应用服务器？与阿里云ecs和虚拟主机有什么区别？</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2017/10/01/self-talking/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/01/self-talking/" itemprop="url">碎碎念</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-01T10:13:41+08:00">
+                2017-10-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/diary/" itemprop="url" rel="index">
+                    <span itemprop="name">diary</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/01/self-talking/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/01/self-talking/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/01/self-talking/" class="leancloud_visitors" data-flag-title="碎碎念">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="2017-10-1-10-13-53"><a href="#2017-10-1-10-13-53" class="headerlink" title="2017-10-1 10:13:53"></a>2017-10-1 10:13:53</h3><p>我认为一个人成功，几个因素很重要：<strong>出身</strong>是起点（例如首富家的撕葱），好的<strong>平台</strong>能事半功倍，<strong>格局</strong>决定能到达的高度，另外是后天<strong>努力</strong>和<strong>方法</strong>得当。</p>
+<h3 id="2017-10-1-23-06-21"><a href="#2017-10-1-23-06-21" class="headerlink" title="2017-10-1 23:06:21"></a>2017-10-1 23:06:21</h3><p>识时务者为俊杰，一个人的成功，还要考虑到国家的政策和历史的进程，看得懂未来的人才能把握未来，顺应历史潮流和时代发展方向才有未来。当然，有些人可能并不懂这些，但也成功了，我认为可以归功于他们的运气，但归根还是他们的偶然的选择选对了，根本上还是顺应了历史潮流和时代发展方向。</p>
+<h3 id="2017-10-3-17-36-44"><a href="#2017-10-3-17-36-44" class="headerlink" title="2017-10-3 17:36:44"></a>2017-10-3 17:36:44</h3><p>很多人沉醉于过去的片刻辉煌，一个好的高中，一个好的大学，一个某奖杯，一个男/女朋友，过去的荣耀只属于过去，过去了的就让它过去吧。开心的事是这样，悲伤的过往也是如此。生命不息，拼搏不止。</p>
+<h3 id="2017-10-11-21-41-28"><a href="#2017-10-11-21-41-28" class="headerlink" title="2017-10-11 21:41:28"></a>2017-10-11 21:41:28</h3><p>“天下熙熙，皆为利来；天下攘攘，皆为利往。”那些人，熬夜写稿子，通宵改bug，没有节假日，没有休息，压抑痛苦，为什么？为了多赚钱，终极目标是获得自由，有人总结过：<a href="http://baijiahao.baidu.com/s?id=1572596760634159&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">链接</a>，从低到高，依次是菜场自由、餐厅自由、旅游自由、汽车自由、学校自由、工作自由、医疗自由、房产自由、国籍自由。自由的好处，在于你可以有选择权。然而人存于世，真正需要多少资源来满足自己的合理需求的，不多的，“良田千倾不过一日三餐，广厦万间只睡卧榻三尺”，如果一个人修身到足够的高度，他就能清楚知道自己想要什么样的生活，那么对于他来说，选择权有那么重要吗，他不需要更多的机会了，只要自己需要的唯一就可以了。清心寡欲，人生自然会少很多痛苦。面对人生的痛苦，要么多赚钱，让自己有更多的选择自由，要么让自己少些选择的欲望，这一切，书本会给你。</p>
+<blockquote>
+<p>富家不用买良田，书中自有千钟粟。<br>安居不用架高楼，书中自有黄金屋。<br>娶妻莫恨无良媒，书中自有颜如玉。<br>出门莫恨无人随，书中车马多如簇。<br>男儿欲遂平生志，五经勤向窗前读。</p>
+</blockquote>
+<h3 id="2017-10-13-9-27-59"><a href="#2017-10-13-9-27-59" class="headerlink" title="2017-10-13 9:27:59"></a>2017-10-13 9:27:59</h3><p>软件最大的优点在于复用<br>今天看了个特别有意思的视频： <a href="http://www.360doc.com/content/05/1024/11/2311_23002.shtml" target="_blank" rel="noopener">从不同的尺度看世界：10亿光年到0.1飞米</a></p>
+<h3 id="2017-10-13-16-09-59"><a href="#2017-10-13-16-09-59" class="headerlink" title="2017-10-13 16:09:59"></a>2017-10-13 16:09:59</h3><p><font color="red">“工作是为了解决问题，有些时候需要程序解决而已”，这是作为一个程序员的价值所在。永远记得程序员需要解决问题，创造价值，这是根本目的，研究技术可以是爱好，但绝不是目的。</font></p>
+<h3 id="2017-10-21-22-38-53"><a href="#2017-10-21-22-38-53" class="headerlink" title="2017-10-21 22:38:53"></a>2017-10-21 22:38:53</h3><p>之前看一些大牛的博客，顺便去关注了他们的微博，也没设备注，也没设分组，后来清理关注，清理了一些不记得什么原因去关注的人。于是我决定要设备注，设一个分组“程序员”，我是想让自己进一步接近真正的程序员，知道他们的平时生活，有朝一日也许我也能成为真正的程序员。仰慕大神，以至于在微博关注大神时都心有不安，因为一般有人关注时会有消息提示，我责备自己不该去打扰大神。</p>
+<h3 id="2017-10-22-20-13-41"><a href="#2017-10-22-20-13-41" class="headerlink" title="2017-10-22 20:13:41"></a>2017-10-22 20:13:41</h3><p>知乎中关注了一波清北的话题，虽然那群人离我很远，但看看他们的聊天还是很有意思的，能让自己多体会体会与最顶端的学生的差距。在以前，top学生给人一种很神秘的感觉，这种优秀似乎是上天赋予的，他们平时在想些什么，做些什么，父母是怎么教育的，高中大学是怎么度过的，我是很想知道的，但是圈子不同，差距太大，他们不愿意搭理我。现在的社交媒体给了我这样的机会，真是幸甚。<br>成功的道路并不拥挤：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-22/99675858.jpg" alt=""><br>最近迷上了github，大名鼎鼎的linux内核，11年9月初就把linux内核发布到github了，至今6年有余了，可是fork数只有区区19k。</p>
+<h3 id="2017-10-24-8-57-01"><a href="#2017-10-24-8-57-01" class="headerlink" title="2017-10-24 8:57:01"></a>2017-10-24 8:57:01</h3><p>凡事用进废退，记得刚上大学时打字很不习惯，一个是输入法选择强迫症，另外自己也不怎么写代码，也不怎么聊天，所以很久很久，打字很生疏，尤其是开始用五笔时，打字很慢，都没有写字快，然后克服了这个问题，归根是要多练习。同理我现在对linux的学习，包括对技术的学习，也是同样的道理，我有信心。</p>
+<h3 id="2017-10-25-8-44-20"><a href="#2017-10-25-8-44-20" class="headerlink" title="2017-10-25 8:44:20"></a>2017-10-25 8:44:20</h3><p>我觉得自己对网络相关的技术有特殊的兴趣，看技术博客时，每到网络相关的，什么vpn，ssh之类的，我会兴趣大增，先收藏关注下再说。倘若读研时读了网络相关的方向，我相信我是会有成果的。</p>
+<h3 id="2017-10-27-9-34-47"><a href="#2017-10-27-9-34-47" class="headerlink" title="2017-10-27 9:34:47"></a>2017-10-27 9:34:47</h3><p>空有远大抱负不行，还要有强悍的执行力。</p>
+<h3 id="2017-10-27-11-42-54"><a href="#2017-10-27-11-42-54" class="headerlink" title="2017-10-27 11:42:54"></a>2017-10-27 11:42:54</h3><p>共享单车，使用足够便捷，所以改变了我们的生活。同理，学习linux以及英语，之前没能坚持下来，也是因为学得磕磕绊绊，一个问题就成了拦路虎，打击了学习的热情。学习的热情很重要，相当于是汽车的燃料，燃料足的时候，抓紧时间向前跑，遇到问题热情下降时，就跑慢点，当走得足够远时，信心会越来越强。</p>
+<h3 id="2017-11-30-21-22-31"><a href="#2017-11-30-21-22-31" class="headerlink" title="2017-11-30 21:22:31"></a>2017-11-30 21:22:31</h3><p>用了一些很牛的软件，例如eclipse、idea、sublime等，网上很多教程，教人如何配置，从而可以方便高效地使用工具。还有一类文章中，作者把自己的工具配置文件共享了出来，这就是在使用工具上到了一个新的层次，本机配好了，用得爽，倘若换了台机器呢？倘若重装系统了呢？倘若换了个操作系统呢？倘若想分享给别人呢？你看，人的需求会不断升级，其实，很多软件、很多网站的架构也要根据使用场景的细致划分而逐渐升级，目标是，能随时随地高效简便地使用计算机。</p>
+<h3 id="2018-1-19-14-51-06"><a href="#2018-1-19-14-51-06" class="headerlink" title="2018-1-19 14:51:06"></a>2018-1-19 14:51:06</h3><p>没有经历过生死的人不足以放下手中的沙砾。</p>
+<h3 id="2018-1-20-21-14-45"><a href="#2018-1-20-21-14-45" class="headerlink" title="2018-1-20 21:14:45"></a>2018-1-20 21:14:45</h3><p>知乎上有位大咖，人称轮子哥，专业造轮子。我近来才意识到，作为一个程序员，造轮子是件很重要的事，所谓做项目，其实和建筑工人盖楼是一样的道理，盖楼需要很多零部件，平时要有意去搜集。github上的很多开源项目就是别人盖好的楼，进去观摩一番后，除了学习别人的精巧设计思想，以后自己盖楼时可以参考借鉴，一些好用的零部件可以直接顺走，放在自己的后备箱中，以备不时之需。别人的零部件，在加入自己后备箱前，要多了解了解，需要的话加以适当的改进，对这个零部件越是熟悉，个人定制化改造得越好，以后自己要盖楼时用起来越是省时顺溜。</p>
+<h3 id="2018-1-24-15-49-04"><a href="#2018-1-24-15-49-04" class="headerlink" title="2018-1-24 15:49:04"></a>2018-1-24 15:49:04</h3><p>突然感觉张震岳和冯唐长得像。</p>
+<h3 id="2018-2-2-16-05-15"><a href="#2018-2-2-16-05-15" class="headerlink" title="2018-2-2 16:05:15"></a>2018-2-2 16:05:15</h3><p>有容德乃大，无求品自高。</p>
+<h3 id="2018-2-6-20-53-53"><a href="#2018-2-6-20-53-53" class="headerlink" title="2018-2-6 20:53:53"></a>2018-2-6 20:53:53</h3><p>“到达终点没有捷径，但总有人比我们到的早”——张开涛。<br>当我还在学习oauth2，一脸苦涩时，早在4年前，大咖 张开涛 <a href="http://jinnianshilongnian.iteye.com/blog/2038646" target="_blank" rel="noopener">第十七章 OAuth2集成——《跟我学Shiro》</a> 和 阮一峰 <a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank" rel="noopener">理解OAuth 2.0</a> 就已经发过博文对oauth2进行深入介绍。我再看oauth2的发布历史：</p>
+<pre><code>Google在2011年3月宣布Google API对OAuth 2.0的支持。
+OAuth 2.0的草案在2011年5月初在IETF发布。
+2012年10月，OAuth 2.0协议正式发布为RFC 6749。
+</code></pre><p>我是想说明啥呢，“莫道君行早，更有早行人”，有些人，有些公司的眼光远比一般人，比普通公司前瞻性要强。所以多关注那些聪明的人，聪明的公司，他们做的事，也许当前并不是热门，但可能是下一个热点。</p>
+<h3 id="2018-4-14-12-54-0"><a href="#2018-4-14-12-54-0" class="headerlink" title="2018-4-14 12:54:0"></a>2018-4-14 12:54:0</h3><p>微信有个截图的功能非常方便，之前是QQ有个截图功能很多人用。截图是个非常常用的工具，但系统自带的这个工具其实并不方便。那时候个人电脑还不是非常普及，有人到电脑室，第一步就是先登录自己的QQ，因为QQ除了提供截图的功能很方便，还有网盘等。这样的便利使得在那个特定的中国互联网时代，QQ得到了极大的普及。360安全卫士也是如此，其实像这些基础工程，要是微软做操作系统时就一揽子做好了，就没有QQ和360什么事了。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2017/09/30/jms/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/30/jms/" itemprop="url">java消息中间件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-30T14:21:22+08:00">
+                2017-09-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/09/30/jms/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/09/30/jms/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/09/30/jms/" class="leancloud_visitors" data-flag-title="java消息中间件">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="什么是中间件"><a href="#什么是中间件" class="headerlink" title="什么是中间件"></a>什么是中间件</h2><p>非底层操作系统软件，非业务应用软件，不是直接给最终用户使用的，不能直接给客户带来传值的软件统称为中间件。</p>
+<h2 id="什么是消息中间件"><a href="#什么是消息中间件" class="headerlink" title="什么是消息中间件"></a>什么是消息中间件</h2><p>关注于数据的发送和接受，利用高效可靠的异步消息传递机制集成分布式系统。 </p>
+<h2 id="什么是JMS"><a href="#什么是JMS" class="headerlink" title="什么是JMS"></a>什么是JMS</h2><p>Java消息服务（Java Message Service）即JMS，是一个Java平台中关于面向消息中间件的API，用于在两个应用程序之间，或分布式系统中发送消息，进行异步通信。</p>
+<h2 id="常用的消息中间件"><a href="#常用的消息中间件" class="headerlink" title="常用的消息中间件"></a>常用的消息中间件</h2><p>1.ActiveMQ<br>ActiveMQ是一个完全支持JMS1.1和J2EE1.4规范的JMS Provider实现。</p>
+<p>2.RabbitMQ<br>RabbitMQ是一个开源的AMQP实现，服务器端用Erlang语言编写。<br>安装rabbitmq前须要先安装erlang，我的安装目录是/usr/local/erlang20<br>安装rabbitmq完成后，启动rabbitmq，报了个错：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/<span class="built_in">local</span>/rabbitmq/bin/rabbitmq-server: line 50: erl: <span class="built_in">command</span> not found</div></pre></td></tr></table></figure>
+<p>解决办法是，将erlang的erl软连接到/usr/bin目录下：</p>
+<pre><code>ln -s /usr/local/erlang20/bin/erl /usr/bin/erl
+</code></pre><p>然后再启动rabbitmq就正常了。</p>
+<p>rabbitmq的页面管理系统：访问15672端口</p>
+<p>3.Kafka<br>Kafka是一种高吞吐量的分布式发布订阅消息系统，是一个分布式的、分区的、可靠的分布式日志存储服务。Kafka不是一个严格的消息中间件，主要是用来作为日志存储的。对于海量的消息存储能保持长时间的稳定性能，高吞吐量。</p>
+<h3 id="三种消息中间件的比较："><a href="#三种消息中间件的比较：" class="headerlink" title="三种消息中间件的比较："></a>三种消息中间件的比较：</h3><p><img src="http://owyvgfyba.bkt.clouddn.com/17-9-30/77784772.jpg" alt=""></p>
+<h3 id="JMS接口之间的关系"><a href="#JMS接口之间的关系" class="headerlink" title="JMS接口之间的关系"></a>JMS接口之间的关系</h3><p><img src="http://owyvgfyba.bkt.clouddn.com/17-10-2/29807161.jpg" alt=""></p>
+<h2 id="JMS和MQ的关系"><a href="#JMS和MQ的关系" class="headerlink" title="JMS和MQ的关系"></a>JMS和MQ的关系</h2><p>JMS是一个用于提供消息服务的技术规范，它制定了在整个消息服务提供过程中的所有数据结构和交互流程。而MQ则是消息队列服务，是面向消息中间件（MOM）的最终实现，是真正的服务提供者；MQ的实现可以基于JMS，也可以基于其他规范或标准。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="http://www.imooc.com/learn/856" title="源码：https://github.com/qgchou/jms" target="_blank" rel="noopener">慕课网-Java消息中间件</a></li>
+<li><a href="http://blog.csdn.net/zzjjiandan/article/details/23746233" target="_blank" rel="noopener">MQ、JMS以及ActiveMQ 关系的理解</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2017/09/28/bad-msg/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/28/bad-msg/" itemprop="url">悲伤的故事</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-28T15:31:08+08:00">
+                2017-09-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/09/28/bad-msg/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/09/28/bad-msg/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/09/28/bad-msg/" class="leancloud_visitors" data-flag-title="悲伤的故事">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Q:人生最悲伤的事情是什么？<br>A:为了安全，给一文件加密码，最后自己也不记得密码了。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2017/09/27/evernote-use/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/27/evernote-use/" itemprop="url">印象笔记试用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-27T08:38:10+08:00">
+                2017-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/09/27/evernote-use/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/09/27/evernote-use/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/09/27/evernote-use/" class="leancloud_visitors" data-flag-title="印象笔记试用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>拖拽一个txt文件到印象笔记编辑页面，可以将页面内容提取出来，置于印象笔记编辑区。<br>如下图：<br><img src="http://owyvgfyba.bkt.clouddn.com/3.png" alt="evernote" title="new file"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qgchou.com/2017/09/25/intellij-idea/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -389,13 +1179,13 @@
       
         
           
-            <h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
+            <h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>首先，在idea的编辑界面给了几个有用的快捷键：<br><img src="http://media.qgchou.top/18-4-14/55738302.jpg"></p>
+<ul>
 <li>重命名文件：alt+shift+r</li>
 <li>最大化窗口：ctrl+shift+f12</li>
 <li>错误处理建议：ctrl+f12<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-2/10684981.jpg" alt="">  </li>
 <li>删除当前行：ctrl+d</li>
 <li>复制当前行并插入在当前行的下面：ctrl+y</li>
-<li></li>
 </ul>
 <h2 id="Postfix-completion-后缀补全"><a href="#Postfix-completion-后缀补全" class="headerlink" title="Postfix completion 后缀补全"></a>Postfix completion 后缀补全</h2><p>设置：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-2/3883544.jpg" alt=""><br>使用：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-2/36095503.jpg" alt=""><br>按下Enter键或Tab键就得到了：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-2/38366350.jpg" alt="">  </p>
 <h2 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h2><ul>
@@ -1002,6 +1792,277 @@ hello!
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2017/09/21/git-use/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/21/git-use/" itemprop="url">学习使用git</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-21T16:38:37+08:00">
+                2017-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/09/21/git-use/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/09/21/git-use/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/09/21/git-use/" class="leancloud_visitors" data-flag-title="学习使用git">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><p>git命令的参数如何使用，见参考7，这是官方文档。</p>
+<h2 id="将服务器代码更到本地"><a href="#将服务器代码更到本地" class="headerlink" title="将服务器代码更到本地"></a><a href="http://www.cnblogs.com/sunshine2016/p/5749098.html" target="_blank" rel="noopener">将服务器代码更到本地</a></h2><pre><code>git checkout -- file1.md （该命令表示，把file1.md文件在工作区的修改全部撤销）
+git pull origin master （取回远程主机origin的master分支，与本地的当前分支合并）
+</code></pre><p>上面的： <strong>git pull origin master</strong> 很常用！</p>
+<h2 id="测试ssh是否添加成功"><a href="#测试ssh是否添加成功" class="headerlink" title="测试ssh是否添加成功"></a>测试ssh是否添加成功</h2><pre><code>ssh -T git@github.com
+</code></pre><h2 id="从github克隆项目到本地"><a href="#从github克隆项目到本地" class="headerlink" title="从github克隆项目到本地"></a>从github克隆项目到本地</h2><pre><code>git clone -o github https://github.com/XXXXXXXX(仓库的地址)
+下载指定分支的代码：
+git clone -b branch1 https://github.com/XXXXXXXX
+</code></pre><h2 id="本地有修改，要更新到服务器"><a href="#本地有修改，要更新到服务器" class="headerlink" title="本地有修改，要更新到服务器"></a>本地有修改，要更新到服务器</h2><pre><code>查看本地修改的文件：git status
+git add .
+提交到本地仓库：git commit -m &quot;log&quot;
+将本地仓库文件提交到github：git push origin master
+</code></pre><h2 id="将本地项目提交到github"><a href="#将本地项目提交到github" class="headerlink" title="将本地项目提交到github"></a>将本地项目提交到github</h2><p>首先在本地新建一个git项目：</p>
+<pre><code>mkdir test  
+cd test  
+git init  
+touch README  
+</code></pre><font color="red">git add README</font><br><font color="red">git commit -m ‘first commit’</font>
+
+<p>git commit是将本地项目提交到本地仓库，本地Git仓库和Github仓库之间的传输是通过SSH加密的，所以连接时需要设置一下：</p>
+<pre><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot;
+</code></pre><p>登录Github,找到右上角的图标，打开点进里面的Settings，再选中里面的SSH and GPG KEYS，点击右上角的New SSH key，然后Title里面随便填，再把刚才id_rsa.pub里面的内容复制到Title下面的Key内容框里面，最后点击Add SSH key，这样就完成了SSH Key的加密。<br>在Github上创建好Git仓库之后我们就可以和本地仓库进行关联了，可以用git remote add命令将 “<a href="https://github.com/XXX/test.git”" target="_blank" rel="noopener">https://github.com/XXX/test.git”</a> 设置为本地仓库的远程仓库，在本地test仓库的命令行输入：</p>
+<pre><code>git remote add origin https://github.com/XXX/test.git
+</code></pre><p>（git remote add 命令用于添加远程主机），上面操作后git会自动将 <a href="https://github.com/XXX/test.git" target="_blank" rel="noopener">https://github.com/XXX/test.git</a> 远程名称设置为origin。<br>git remote add命令可以为本地仓库设置多个远程仓库，例如我先后添加了两个远程仓库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git remote add origin https://github.com/XXX/XXXX.git</div><div class="line">$ git remote add origin2 https://gitee.com/YYY/YYYY.git</div></pre></td></tr></table></figure>
+<p>然后在仓库的配置文件.git/config中就能看到两条配置：</p>
+<pre><code>[remote &quot;origin&quot;]
+    url = https://github.com/XXX/XXXX.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
+[remote &quot;origin2&quot;]
+    url = https://gitee.com/YYY/YYYY.git
+    fetch = +refs/heads/*:refs/remotes/origin2/*
+</code></pre><p>添加多个仓库是有应用场景的，比如我们在github上看到一个公开仓库，git clone下来后，自己改了改，然后觉得写的东西不好，想放在码云的私有仓库里，就可以先在码云建一个空的私有仓库，然后按上面的操作把 git clone 下来的改后的工程先关联到码云的私有仓库，然后 git push 到码云仓库。<br>关联好之后我们就可以把本地库的所有内容推送到名称为origin的远程仓库（也就是Github）上了，通过：</p>
+<pre><code>git push -u origin master
+</code></pre><p>远程仓库不为空时，可能会报错提示“hint: Updates were rejected because the tip of your current branch is behind”，办法：</p>
+<pre><code>git push -u -f origin master
+</code></pre><p>加参数-f表示将本地仓库覆盖远程仓库，-f 参数是 –force 的简写。第一次push时加-u参数，这个参数是 –set-upstream 的简写，可以在推送的同时，将origin仓库的master分支设置为本地仓库当前分支的 upstream（上游）。添加了这个参数，将来要从远程仓库获取内容时，直接：</p>
+<pre><code>git pull
+</code></pre><p>本地仓库的这个分支就可以直接从 origin 的 master 分支获取内容，省去了另外添加参数的麻烦。</p>
+<h2 id="一些命令的用法"><a href="#一些命令的用法" class="headerlink" title="一些命令的用法"></a>一些命令的用法</h2><p>git操作涉及四个位置，本地工作树、暂存区、本地仓库、远程仓库。</p>
+<h3 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h3><p>本地进行编辑修改后，修改只是存在于本地工作树，git add命令用于将本地工作树中的修改加入到暂存区（Stage或者Index）中。暂存区是提交之前的一个临时区域。</p>
+<h3 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h3><p>$ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</p>
+<pre><code>git push origin master：
+</code></pre><p>表示将本地的master分支推送到远程origin主机<br>注意，分支推送顺序的写法是&lt;来源地&gt;:&lt;目的地&gt;，所以git pull是&lt;远程分支&gt;:&lt;本地分支&gt;，而git push是&lt;本地分支&gt;:&lt;远程分支&gt;。</p>
+<h3 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h3><p>git pull命令的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并<br>$ git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;<br>比如，<strong> 取回origin主机的next分支，与本地的master分支合并，需要写成下面这样：</strong><br><strong>git pull origin next:master </strong><br>如果远程分支是与当前分支合并，则冒号后面的部分可以省略：</p>
+<pre><code>git pull origin next
+</code></pre><h3 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h3><p>查看提交历史：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-25/90731445.jpg" alt=""><br>只查看与某文件相关的日志：</p>
+<pre><code>git log README.md  
+</code></pre><p>加上参数-p，文件的前后差别就会显示在提交信息之后：</p>
+<pre><code>git log -p
+</code></pre><p>如果只想看某个提交日志前后的差别：</p>
+<pre><code>git log -p file1.md
+</code></pre><h3 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h3><p>查看当前工作树与暂存区的具体差别，看打印日志，可以观察发现，git log -p相当于是git log与git diff的结合。<br>如果要看本地工作树与本地仓库最新记录的区别：</p>
+<pre><code>git diff HEAD
+</code></pre><p>如果要看某个文件相对于暂存区的具体修改，即那些还没有 git add 操作的文件，可以通过：  </p>
+<pre><code>git diff -w file1.md
+</code></pre><h3 id="git-reset-–hard-commit-id"><a href="#git-reset-–hard-commit-id" class="headerlink" title="git reset –hard commit_id"></a>git reset –hard commit_id</h3><p><a href="http://www.cnblogs.com/ningkyolei/p/4334990.html" target="_blank" rel="noopener">git撤销commit</a><br>本地删除一个文件，git commit后，还没有push。我觉得不应该删掉，于是执行上文中的命令，先是git log，能看到所有git commit的记录，然后用git reset –hard commit_id，回到指定的位置，操作后，删掉的文件又回来了。有趣的事，git reset操作后，我再看git log，最近的一次失误commit记录没有了。</p>
+<h3 id="git-branch-testBranch"><a href="#git-branch-testBranch" class="headerlink" title="git branch testBranch"></a>git branch testBranch</h3><p>创建名为testBranch的分支，直接git branch，则是显示分支一览表，分支左侧标有星号（*）表示这是当前所在的分支。</p>
+<h3 id="git-checkout-testBranch"><a href="#git-checkout-testBranch" class="headerlink" title="git checkout testBranch"></a>git checkout testBranch</h3><p>切换到testBranch分支，创建testBranch分支并切换到该分支的另一种写法：</p>
+<pre><code>git checkout -b testBranch
+</code></pre><h3 id="git-checkout-file1-md"><a href="#git-checkout-file1-md" class="headerlink" title="git checkout file1.md"></a>git checkout file1.md</h3><p>关于git checkout的用法之二：git add之前，git status显示文件file1.md做了修改，如果要舍弃掉本地对file1.md的修改，执行git checkout file1.md，则文件file1.md恢复到原来版本。</p>
+<h3 id="git-remote"><a href="#git-remote" class="headerlink" title="git remote"></a>git remote</h3><p>用于管理远程仓库，见参考8。</p>
+<h4 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h4><pre><code>git remote add [shortname] [url]
+</code></pre><h4 id="删除远程仓库（解除与远程仓库的关系）"><a href="#删除远程仓库（解除与远程仓库的关系）" class="headerlink" title="删除远程仓库（解除与远程仓库的关系）"></a>删除远程仓库（解除与远程仓库的关系）</h4><pre><code>git remote rm [shortname]
+</code></pre><h4 id="查看某个远程仓库信息"><a href="#查看某个远程仓库信息" class="headerlink" title="查看某个远程仓库信息"></a>查看某个远程仓库信息</h4><pre><code>git remote show [shortname]
+</code></pre><h4 id="列出所有的远程仓库详细信息"><a href="#列出所有的远程仓库详细信息" class="headerlink" title="列出所有的远程仓库详细信息"></a>列出所有的远程仓库详细信息</h4><pre><code>git remote -v
+-v是--verbose的简写
+</code></pre><h3 id="查看当前分支的upstream"><a href="#查看当前分支的upstream" class="headerlink" title="查看当前分支的upstream"></a>查看当前分支的upstream</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git branch -vv</div><div class="line">  main   aaf02f0 [main/master: ahead 25] Some other commit</div><div class="line">* master add0a03 [jdsumsion/master] Some commit</div></pre></td></tr></table></figure>
+<p>下面是参考7的官方文档上git branch命令的参数说明：</p>
+<pre><code>-v
+-vv
+--verbose
+When in list mode, show sha1 and commit subject line for each head, along with relationship to upstream branch (if any). If given twice, print the name of the upstream branch, as well (see also git remote show &lt;remote&gt;).
+</code></pre><p>所以在使用 git push 命令推送到远程仓库前，先做个例行检查：  </p>
+<ol>
+<li>git branch -vv 看看upstream是哪个，例如是origin2。  </li>
+<li>git remote show origin2，看看这个远程仓库的详细信息，核验一下远程仓库的地址有没有错。</li>
+</ol>
+<h3 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h3><p>参考链接10，这个命令用于查看以及修改 git 配置。config 配置有system级别 global（用户级别） 和local（当前仓库）三个 设置先从system-》global-》local  底层配置会覆盖顶层配置 分别使用–system/global/local 可以定位到配置文件。</p>
+<h4 id="查看配置信息"><a href="#查看配置信息" class="headerlink" title="查看配置信息"></a>查看配置信息</h4><p>查看所有配置信息：</p>
+<pre><code>git config -l
+</code></pre><p>查看系统配置：  </p>
+<pre><code>git config --system --list
+</code></pre><p>查看当前用户的配置：    </p>
+<pre><code>git config --global --list
+</code></pre><p>查看当前仓库的配置：  </p>
+<pre><code>git config --local --list
+</code></pre><h4 id="编码配置"><a href="#编码配置" class="headerlink" title="编码配置"></a>编码配置</h4><p>避免git gui中的中文乱码：  </p>
+<pre><code>git config --global gui.encoding utf-8    
+</code></pre><p>避免git status显示的中文文件名乱码：  </p>
+<pre><code>git config --global core.quotepath off
+</code></pre><h4 id="git修改提交的用户名和Email"><a href="#git修改提交的用户名和Email" class="headerlink" title="git修改提交的用户名和Email"></a>git修改提交的用户名和Email</h4><pre><code>git config --global user.name &quot;Your Name&quot;  
+git config --global user.email you@example.com  
+</code></pre><p>全局的通过vim ~/.gitconfig来查看，可以直接编辑该文件修改提交的用户名和Email。windows下这个文件的地址是：<br><img src="http://media.qgchou.top/18-4-15/73562552.jpg"></p>
+<p>我的git管理的项目既有公司的项目，也有自己的项目。这两套我想用不同的签名信息。配置信息时用 local 参数就可以啦。 –local 参数只能作用于一个仓库里面。</p>
+<p>例如：  </p>
+<pre><code>git config --local user.name &quot;Your Name&quot;  
+git config --local user.email you@example.com  
+</code></pre><p>这样就设置了当前仓库的签名，其他仓库还是用全局的签名。</p>
+<h2 id="在本分支下修改文件之前合并主分支"><a href="#在本分支下修改文件之前合并主分支" class="headerlink" title="在本分支下修改文件之前合并主分支"></a>在本分支下修改文件之前合并主分支</h2><pre><code>git merge origin master
+</code></pre><h2 id="版本标签tag"><a href="#版本标签tag" class="headerlink" title="版本标签tag"></a>版本标签tag</h2><p>一般是生成一个大版本时要创建个tag：  </p>
+<pre><code>git tag tag123  
+</code></pre><p>将这个tag提交到远程：</p>
+<pre><code>git push origin tag123
+</code></pre><h2 id="删除未监视的文件-untracked-files"><a href="#删除未监视的文件-untracked-files" class="headerlink" title="删除未监视的文件 untracked  files"></a>删除未监视的文件 untracked  files</h2><pre><code># 删除 untracked files
+git clean -f
+# 连 untracked 的目录也一起删掉
+git clean -fd
+</code></pre><h2 id="GitHub-Desktop"><a href="#GitHub-Desktop" class="headerlink" title="GitHub Desktop"></a>GitHub Desktop</h2><p>挺好用的，可以在图形化界面显示当前版本的修改情况，可以方便进行还原，方便选择要推送到仓库的文件。</p>
+<h2 id="码云"><a href="#码云" class="headerlink" title="码云"></a>码云</h2><p>eclipse编辑器中的一个项目想到托管在码云，步骤见参考5，相比于github，码云最大的好处是可以建私有仓库。一些见不得人的代码可以放在码云私有库。<br>后来在idea下有个项目，也想托管在码云，没有找到特别好的图形化操作教程，在慕课网的一个课程上，老师用命令行教我提交一个idea下的项目，见参考6。先在码云新建一个仓库，地址 <a href="https://gitee.com/XXX/YYY.git" target="_blank" rel="noopener">https://gitee.com/XXX/YYY.git</a> ，然后到项目所在目录，创建.gitignore文件，然后就是上文中说了很多次的一些命令，git init，git add，git commit，这样就将当前项目提交到了本地仓库。<br>然后与远程仓库进行关联：  </p>
+<pre><code>git remote add origin https://gitee.com/XXX/YYY.git
+</code></pre><p>然后进行git push操作，将本地仓库内容推送到远程仓库，这一步操作可能会提示要先更新本地仓库，先git pull即可。也可以不git pull，用本地仓库内容覆盖远程仓库内容，git push加个参数-f即可：</p>
+<pre><code>git push -u -f origin master
+</code></pre><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>让git不要管windows/unix换行符转换的事：<br>git config –global core.autocrlf false</p>
+<h2 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h2><h3 id="代码冲突"><a href="#代码冲突" class="headerlink" title="代码冲突"></a>代码冲突</h3><p>服务器上的代码与本地的修改有冲突，参考 <a href="http://blog.csdn.net/iefreer/article/details/7679631" target="_blank" rel="noopener">Git:代码冲突常见解决方法</a>：  </p>
+<pre><code>error: Your local changes to the following files would be overwritten by merge:
+    protected/config/main.php
+Please, commit your changes or stash them before you can merge.
+</code></pre><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="http://www.ruanyifeng.com/blog/2014/06/git_remote.html" target="_blank" rel="noopener">Git远程操作详解</a></li>
+<li><a href="http://blog.csdn.net/zamamiro/article/details/70172900" target="_blank" rel="noopener">如何将本地项目上传到github</a></li>
+<li><a href="http://blog.jobbole.com/87700/" target="_blank" rel="noopener">如何在 Git 里撤销(几乎)任何操作</a></li>
+<li><a href="http://www.cnblogs.com/hutaoer/archive/2013/05/07/git_checkout.html" target="_blank" rel="noopener">git checkout 命令详解</a></li>
+<li><a href="http://blog.csdn.net/LanTingShuXu/article/details/53563433" target="_blank" rel="noopener">使用eclipse自带git插件托管项目到”码云”</a></li>
+<li><a href="https://coding.imooc.com/lesson/96.html#mid=3268" target="_blank" rel="noopener">慕课网-git初始化</a></li>
+<li><a href="https://git-scm.com/docs/git" target="_blank" rel="noopener">Git-Documentation</a></li>
+<li><a href="http://blog.csdn.net/north1989/article/details/53314345" target="_blank" rel="noopener">Git–Remote远程仓库的使用</a></li>
+<li><a href="https://www.zhihu.com/question/27324031" target="_blank" rel="noopener">git 如何查看当前分支的upstream?</a></li>
+<li><a href="https://www.cnblogs.com/merray/p/6006411.html" target="_blank" rel="noopener">GIT-查看config配置信息</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1056,7 +2117,7 @@ hello!
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">94</span>
+                  <span class="site-state-item-count">100</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1078,7 +2139,7 @@ hello!
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -296,6 +296,782 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/23/html-study/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/23/html-study/" itemprop="url">html学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-23T20:28:28+08:00">
+                2018-01-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/23/html-study/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/23/html-study/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/01/23/html-study/" class="leancloud_visitors" data-flag-title="html学习">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="form标签的-enctype-属性"><a href="#form标签的-enctype-属性" class="headerlink" title="form标签的 enctype 属性"></a>form标签的 enctype 属性</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">"form1"</span> <span class="attr">action</span>=<span class="string">"/manage/product/upload.do"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"upload_file"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"springmvc上传文件"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>enctype 属性规定在发送到服务器之前应该如何对表单数据进行编码。默认地，表单数据会编码为 “application/x-www-form-urlencoded”。就是说，在发送到服务器之前，所有字符都会进行编码。<br>enctype的值为“multipart/form-data”，在使用包含文件上传控件的表单时，必须使用该值。</p>
+<p>提交一个form表单，除了上文用的：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"springmvc上传文件"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p>另一种方法是：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">onclick</span>=<span class="string">"document.getElementById('Form_Name').submit();"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p>form元素写法是：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"Form_Name"</span> <span class="attr">onSubmit</span>=<span class="string">"return check(this);"</span> &gt;</span></div><div class="line">    <span class="comment">&lt;!-- test --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>表单的onSubmit事件用于对表单内容进行验证，onSubmit函数的返回值为false时，表单不会提交。</p>
+<h2 id="html中的元素"><a href="#html中的元素" class="headerlink" title="html中的元素"></a>html中的元素</h2><p>html中的元素，大致可以分为两类，行级元素和块级元素。行级元素又称内联元素，在一行中水平排列，行内元素的高度由其内容撑开，不可显式地设置其高度，块级元素可通过 css 的 display:inline 变成行级元素。块级元素一般是其他元素的容器，其宽度、高度都是可设置的，默认每次占用一整个行，非块级元素可通过 css 的 display:block 将其改成块级元素，任何一个块级元素，均可以用Box model解释说明。<br>行级元素：span input a li img<br>块级元素：p ul form div h1~h6<br>ul（unordered list 无序列表）</p>
+<h2 id="div的居中问题"><a href="#div的居中问题" class="headerlink" title="div的居中问题"></a>div的居中问题</h2><p>div中的文字需要垂直居中的话，设置div的 line-height 属性，设成与div的 height 属性一样就行了。<br>如果要把该div设成在外面的div或form中水平居中，则设置该div的属性 margin:0 auto</p>
+<h2 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h2><p>绝对定位使元素的位置与文档流无关，也不占据文档流空间，普通流中的元素布局就像绝对定位元素不存在一样。</p>
+<h2 id="html5的新标签"><a href="#html5的新标签" class="headerlink" title="html5的新标签"></a>html5的新标签</h2><p><time>标签是html5的新标签，目前所有浏览器都不支持<time>标签。</time></time></p>
+<h2 id="前端的难点"><a href="#前端的难点" class="headerlink" title="前端的难点"></a>前端的难点</h2><p>浏览器的兼容性，PC端与移动端的兼容性。</p>
+<h2 id="CSS-伪元素"><a href="#CSS-伪元素" class="headerlink" title="CSS 伪元素"></a>CSS 伪元素</h2><p>CSS 伪元素用于向某些选择器设置特殊效果。例如，content属性与:before及:after伪元素配合使用，来插入生成内容。  </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:after</span> &#123;</div><div class="line">    <span class="attribute">content</span>:<span class="built_in">attr</span>(href)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>作用于正面的html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"www.baidu.com"</span>&gt;</span>百度<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>显示效果是：<br>百度www.baidu.com</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/22/HttpSession/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/22/HttpSession/" itemprop="url">HttpSession学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-22T20:12:02+08:00">
+                2018-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/22/HttpSession/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/22/HttpSession/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/01/22/HttpSession/" class="leancloud_visitors" data-flag-title="HttpSession学习">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>javax.servlet.http.HttpSession是jdk自带的一个interface。在设计业务系统的接口时，有些数据的访问需要先进行权限认证，比如，只有登录用户才能修改个人信息，需要先验证是否是登录用户。这里用session来进行权限判断，因此在接口设计时，每个接口函数的参数列表中都有HttpSession，例如登录接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"login.do"</span>,method = RequestMethod.POST)</div><div class="line"><span class="meta">@ResponseBody</span></div><div class="line"><span class="function"><span class="keyword">public</span> ServerResponse&lt;User&gt; <span class="title">login</span><span class="params">(String username, String password, HttpSession session)</span></span>&#123;</div><div class="line">    <span class="comment">//something</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在用户登录成功后，把用户信息记录在session中，session保证在服务器端。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ServerResponse&lt;User&gt; response = iUserService.login(username,password);</div><div class="line"><span class="keyword">if</span>(response.isSuccess())&#123;</div><div class="line">    session.setAttribute(Const.CURRENT_USER,response.getData());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当用户查看个人信息时，先判断session中是否有登录用户，有的话，则表明用户处于登录状态，可以查看个人信息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">User user = (User) session.getAttribute(Const.CURRENT_USER);</div><div class="line"><span class="keyword">if</span>(user != <span class="keyword">null</span>)&#123;</div><div class="line">    <span class="keyword">return</span> ServerResponse.createBySuccess(user);</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> ServerResponse.createByErrorMessage(<span class="string">"用户未登录,无法获取当前用户的信息"</span>);</div></pre></td></tr></table></figure>
+<p>有些操作需要是管理员权限，通过session来判断用户角色，决定是否有权限操作，这里参考 SpringMVC-study 一文：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">User user = (User)session.getAttribute(Const.CURRENT_USER);</div><div class="line"><span class="keyword">if</span>(user == <span class="keyword">null</span>)&#123;</div><div class="line">    <span class="keyword">return</span> ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),<span class="string">"用户未登录,请登录管理员"</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span>(iUserService.checkAdminRole(user).isSuccess())&#123;</div><div class="line">    <span class="comment">//需要管理员权限的操作逻辑放这里</span></div><div class="line">    <span class="keyword">return</span> ServerResponse.createBySuccess(XXX);</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="keyword">return</span> ServerResponse.createByErrorMessage(<span class="string">"无权限操作"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/22/mybatis-study/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/22/mybatis-study/" itemprop="url">Mybatis学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-22T18:23:30+08:00">
+                2018-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/22/mybatis-study/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/22/mybatis-study/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/01/22/mybatis-study/" class="leancloud_visitors" data-flag-title="Mybatis学习">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="resultType和resultMap"><a href="#resultType和resultMap" class="headerlink" title="resultType和resultMap"></a>resultType和resultMap</h2><p>Mybatis使用 SQL映射语句文件 来放置对数据库的访问逻辑。MyBatis中在查询进行select映射的时候，返回类型可以用resultType，也可以用resultMap，resultType是直接表示返回类型的，而resultMap则是对外部resultMap的引用，但是resultType跟resultMap不能同时存在。<br>例如，可以在SQL映射语句文件中定义一个resultMap：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"BaseResultMap"</span> <span class="attr">type</span>=<span class="string">"com.mmall.pojo.User"</span> &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">constructor</span> &gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">idArg</span> <span class="attr">column</span>=<span class="string">"id"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> <span class="attr">javaType</span>=<span class="string">"java.lang.Integer"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">arg</span> <span class="attr">column</span>=<span class="string">"username"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> <span class="attr">javaType</span>=<span class="string">"java.lang.String"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">arg</span> <span class="attr">column</span>=<span class="string">"password"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> <span class="attr">javaType</span>=<span class="string">"java.lang.String"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">constructor</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>在该SQL映射语句文件中就可以在定义一个select查询时使用这个resultMap：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectLogin"</span> <span class="attr">resultMap</span>=<span class="string">"BaseResultMap"</span> <span class="attr">parameterType</span>=<span class="string">"map"</span>&gt;</span></div><div class="line">    SELECT</div><div class="line">    <span class="tag">&lt;<span class="name">include</span> <span class="attr">refid</span>=<span class="string">"Base_Column_List"</span> /&gt;</span></div><div class="line">    from mmall_user</div><div class="line">    where username = #&#123;username&#125;</div><div class="line">    and password = #&#123;password&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="parameterType-和-parameterMap"><a href="#parameterType-和-parameterMap" class="headerlink" title="parameterType 和 parameterMap"></a>parameterType 和 parameterMap</h2><p>类似resultMap，如果要在mapper.xml中使用parameterMap，需要先定义一个parameterMap。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">parameterMap</span> <span class="attr">type</span>=<span class="string">"Book.dao.Book"</span> <span class="attr">id</span>=<span class="string">"BookParameterMap"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">parameter</span> <span class="attr">property</span>=<span class="string">"bookName"</span> <span class="attr">resultMap</span>=<span class="string">"BookResultMap"</span> /&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">parameter</span> <span class="attr">property</span>=<span class="string">"bookPrice"</span> <span class="attr">resultMap</span>=<span class="string">"BookResultMap"</span> /&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">parameterMap</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>然后才能使用parameterMap时引用上面定义的BookParameterMap，例如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"saveBook"</span> <span class="attr">parameterMap</span>=<span class="string">"BookParameterMap"</span>&gt;</span></div><div class="line">    insert into BOOK_MANAGE</div><div class="line">     (NAME,PRICE)</div><div class="line">      values</div><div class="line">     (#&#123;bookName&#125;,#&#123;bookPrice&#125;)</div><div class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>不推荐使用parameterMap，一般使用parameterType直接将查询结果列值类型自动对应到java对象属性类型上，不再配置映射关系一一对应。多个参数时使用 parameterType=”map”，例如在声明接口时在ProductMapper.java中定义：</p>
+<pre><code>List&lt;Product&gt; selectByNameAndProductId(@Param(&quot;productName&quot;)String productName,@Param(&quot;productId&quot;) Integer productId);
+</code></pre><p>在ProductMapper.xml中定义对应的sql查询语句为：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectByNameAndProductId"</span> <span class="attr">resultMap</span>=<span class="string">"BaseResultMap"</span> <span class="attr">parameterType</span>=<span class="string">"map"</span>&gt;</span></div><div class="line">  SELECT</div><div class="line">  <span class="tag">&lt;<span class="name">include</span> <span class="attr">refid</span>=<span class="string">"Base_Column_List"</span>/&gt;</span></div><div class="line">  from mmall_product</div><div class="line">  <span class="tag">&lt;<span class="name">where</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"productName != null"</span>&gt;</span></div><div class="line">      and name like #&#123;productName&#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"productId != null"</span>&gt;</span></div><div class="line">      and id = #&#123;productId&#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">where</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="编写SQL语句注意事项"><a href="#编写SQL语句注意事项" class="headerlink" title="编写SQL语句注意事项"></a>编写SQL语句注意事项</h2><p>SQL查询语句中，尽量不要使用”select *“,因为数据库表可能会有其他同事添加字段，用“select *”就会返回许多自己并不关心的数据。对于多个sql查询中都会用到的字段集，可以在mapper.xml中声明一个sql id，然后在sql语句中用“include”引用这个sql id。例如上面的：</p>
+<pre><code>&lt;include refid=&quot;Base_Column_List&quot; /&gt;
+</code></pre><p>先要定义这个Base_Column_List：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">sql</span> <span class="attr">id</span>=<span class="string">"Base_Column_List"</span> &gt;</span></div><div class="line">    id, username, password, email, phone, question, answer, role, create_time, update_time</div><div class="line"><span class="tag">&lt;/<span class="name">sql</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="和-的区别"><a href="#和-的区别" class="headerlink" title="#和$的区别"></a>#和$的区别</h2><p>#{}表示一个占位符<br>${}表示拼接sql串<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-16/6213899.jpg" alt=""></p>
+<p>//TODO 参考 2 笔记</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="http://blog.csdn.net/tomcat_2014/article/details/49719047" target="_blank" rel="noopener">Mybatis中resultMap和resultType</a></li>
+<li><a href="http://blog.csdn.net/j04110414/article/details/78914787" target="_blank" rel="noopener">Mybatis中的 ${} 和 #{}区别与用法</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/19/blockchain-study/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/19/blockchain-study/" itemprop="url">区块链学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T10:19:24+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/19/blockchain-study/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/19/blockchain-study/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/01/19/blockchain-study/" class="leancloud_visitors" data-flag-title="区块链学习">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>区块链并不是新发明的一种技术，而是一系列技术的集成，包括非对称加密技术、时间戳、共识机制等。以比特币为例，区块链通过时间戳（Timestamp）和工作量证明（Proof of Work）机制解决了双重支付（Double Spending）和拜占庭将军问题（Byzantine Generals’ Problem），即保证同一笔比特币不可能被花费2次，并且在整个去中心化的区块链网络中，在所有节点间保持一致。非对称加密机制保证私钥的安全性，时间戳保证区块按顺序连接成链，工作量证明机制解决了在去中心化系统中如何公平地分发2100万个比特币的问题。区块链技术具有匿名性、去中心化、公开透明等特点。所以，区块链被誉为制造信用的机器。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://weibo.com/a/hot/7550037992675329_1.html?type=new" target="_blank" rel="noopener">区块链100问</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/18/Unity3D-study/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/18/Unity3D-study/" itemprop="url">学习Unity</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-18T17:00:02+08:00">
+                2018-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/18/Unity3D-study/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/18/Unity3D-study/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/01/18/Unity3D-study/" class="leancloud_visitors" data-flag-title="学习Unity">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>基本不玩游戏，碰巧看到一个Unity3D的学习资源，为了完善我的知识框架，浅浅地了解一下也是很好的了。此外，我开通博客的初衷之一也是将其作为自己用的资源整理平台。</p>
+<hr>
+<p>Unity3D是一款游戏引擎。<br>感谢参考1的课程带我入门，课程中提到Unity官网中提供了一个游戏Demo：angryBots，我搜了下，参考2中是CSDN中找到的安卓安装包，我在手机上安装了下，不错，可以用！github中我也找到angryBots对应的源码，没clone下来在本地跑跑代码，这里就不贴地址了。  </p>
+<h1 id="关于游戏开发"><a href="#关于游戏开发" class="headerlink" title="关于游戏开发"></a>关于游戏开发</h1><h2 id="游戏的要素"><a href="#游戏的要素" class="headerlink" title="游戏的要素"></a>游戏的要素</h2><p><img src="http://owyvgfyba.bkt.clouddn.com/18-1-18/98270812.jpg" alt=""></p>
+<h2 id="游戏团队中的角色"><a href="#游戏团队中的角色" class="headerlink" title="游戏团队中的角色"></a>游戏团队中的角色</h2><ol>
+<li>策划：设计游戏</li>
+<li>美术：制作游戏需要的美术资源</li>
+<li>程序员：编写游戏逻辑，整合一切</li>
+</ol>
+<h2 id="游戏引擎的作用"><a href="#游戏引擎的作用" class="headerlink" title="游戏引擎的作用"></a>游戏引擎的作用</h2><ol>
+<li>减少我们的工作</li>
+<li>减少重复开发</li>
+<li>降低游戏开发的门槛</li>
+</ol>
+<h1 id="关于Unity"><a href="#关于Unity" class="headerlink" title="关于Unity"></a>关于Unity</h1><h2 id="Unity模块组成"><a href="#Unity模块组成" class="headerlink" title="Unity模块组成"></a>Unity模块组成</h2><p><img src="http://owyvgfyba.bkt.clouddn.com/18-1-18/14050705.jpg" alt=""></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://www.imooc.com/learn/313" target="_blank" rel="noopener">Unity3D快速入门</a></li>
+<li><a href="http://download.csdn.net/download/mlzhp03/4261703" target="_blank" rel="noopener">UNITY3D自带的angryBots项目的android apk包</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/18/design-pattern/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1075,762 +1851,6 @@ Accept: application/json; version=1.0
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/14/maven-use/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qgchou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/default_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qgchou">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/14/maven-use/" itemprop="url">学习maven的使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-14T14:36:23+08:00">
-                2018-01-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/14/maven-use/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/14/maven-use/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/01/14/maven-use/" class="leancloud_visitors" data-flag-title="学习maven的使用">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="maven下载jar包问题"><a href="#maven下载jar包问题" class="headerlink" title="maven下载jar包问题"></a>maven下载jar包问题</h2><p>eclipse中不能下载jar包依赖</p>
-<pre><code>del D:\{XXXX}\*lastUpdate* /a/s  
-</code></pre><h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><pre><code>mvn clean package
-mvn clean：清除target目录下的所有文件
-在使用mvn package进行编译、打包时，Maven会执行src/test/java中的JUnit测试用例，有时为了跳过测试，会使用参数-DskipTests和-Dmaven.test.skip=true
-</code></pre><h2 id="安装到本地仓库"><a href="#安装到本地仓库" class="headerlink" title="安装到本地仓库"></a>安装到本地仓库</h2><pre><code>mvn clean install
-</code></pre><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="https://www.cnblogs.com/wangcp-2014/p/6211439.html" target="_blank" rel="noopener">Maven中-DskipTests和-Dmaven.test.skip=true的区别</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/13/why-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qgchou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/default_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qgchou">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/13/why-blog/" itemprop="url">为什么写博客</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T11:14:14+08:00">
-                2018-01-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/13/why-blog/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/13/why-blog/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/01/13/why-blog/" class="leancloud_visitors" data-flag-title="为什么写博客">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>看了不少书，见过不少人。前段时间租的房子到期了，搬家。这才发现工作一年半来，存了不少书。不少人文社科类的书，也有不少专业书籍，看过的与没看的大概一半一半吧。我是个爱书的人，很多书是趁京东的满减大促销买的。搬家的时间才意识到存了一大堆书，这对于一个在京的无产阶级来说是件痛苦的事。搬吧，快递太贵，曾寄了十几本书从北京到郑州，运费150，一公斤10元。这钱基本上赶得上我重买一套了，把手头这套扔了，然后买套新的吧，但转念一想，我选择用快递，既养活了快递公司，同时也是一种低碳生活。<br>看过《断舍离》，对于手上的一本书来说，什么时候可以处理掉呢，也可以问，怎样才算读完了一本书呢？首先，有些特别经典的书对于特定的人来说可能是需要常备手边的，比如，对于一个红学家来说，一本红楼梦的书的是不能扔的。<br>我发现以我现在的水平是讨论不清楚的。参考1，知乎上有个人的问答是“读书就和走路一样，本身不是为了读书，而是为了更高的目标。”，我的理解是，书其实对于人来说是个工具，我们可以借助书来提升自己，将书上的知识内化为我们的技能或智慧。所以，当我们抱着一定目的去读书时，有所收获就是真读到书味了。哪怕是你因为心情忧闷去看了一书笑话大全，然后里面的一个段子把你逗笑了，这就是收获。所以，我觉得囤些书是没毛病的，时不时地去书中的相应章节汲取养分。所以对书的态度，是要区分的，有些好书，经典的书，可以囤着，不时去造访学习。也有些养分不太全的书，一方面在购买时就要仔细甄别，谨慎下单，这种书把养分吸得差不多了，就可以作废品处理了。计算机专业的很多技术书籍，由于技术更新换代太快，这类书可以大胆些处理。所以，读书，关键是从书中汲取养分，我认为一边读书，一边记笔记是个汲取养分的好办法。适时的写博客做读书总结是个好办法。终于扯到正题了。<br>为什么要写博客？<br>文字书写的过程也是一个整理思路的过程，学习的最好办法是教，你能把别人教会了就说明你是真懂了。直接转载不是个好选择，可以把好的文章放在参考链接中，可以是博客中引用里面的好句子。我相信，当你看了一篇好文章，然后你向别人转述时，你的表述跟原文肯定不是完全相同的。<br>功利的角度来说，写博客是一个自我营销的过程。</p>
-<p>待看：参考2</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="https://www.zhihu.com/question/22922176" target="_blank" rel="noopener">怎样才算读完一本书？</a></li>
-<li><a href="http://www.ituring.com.cn/article/111023" target="_blank" rel="noopener">阮一峰：为什么写博客？（图灵访谈）</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/10/linux-command-in-backend/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qgchou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/default_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qgchou">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/10/linux-command-in-backend/" itemprop="url">linux后台运行程序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-10T22:46:37+08:00">
-                2018-01-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/10/linux-command-in-backend/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/10/linux-command-in-backend/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/01/10/linux-command-in-backend/" class="leancloud_visitors" data-flag-title="linux后台运行程序">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>secureCRT登录一个机器后，在控制台启动一个服务或运行一个程序，这时控制台就监控着这个程序并适时打印日志。想继续使用这个控制台进行其他操作怎么办，或者想关闭控制台退出与服务器的连接怎么办？如何让命令提交后不受本地关闭终端窗口、网络断开连接的干扰呢？关闭控制台，对应的在正打印实时日志的控制台就会中断当前这个进程唉。办法是，让这个进程在后台运行。</p>
-<h2 id="重定向日志打印"><a href="#重定向日志打印" class="headerlink" title="重定向日志打印"></a>重定向日志打印</h2><pre><code>command &gt;temp.txt &amp;
-</code></pre><p>常规的linux命令command后加上“&gt;temp.txt &amp;”表示将该命令的日志打印重定向到temp.txt文件，而不是打印到屏幕上。</p>
-<h2 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h2><p>我在用ngrok进行公网域名映射，上面重定向日志打印的办法不生效，参考2给出了解决方案，用screen。问题是我还没明白，为啥启动ngrok用重定向日志方法不行。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="https://linux.cn/article-7170-1.html" target="_blank" rel="noopener">Linux 下让进程在后台可靠运行的几种方法</a></li>
-<li><a href="http://blog.csdn.net/x_zcl/article/details/50622201" target="_blank" rel="noopener">ngrok 后台运行方法</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/04/program-language/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qgchou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/default_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qgchou">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/04/program-language/" itemprop="url">关于编程语言</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-04T10:30:30+08:00">
-                2018-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/04/program-language/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/04/program-language/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/01/04/program-language/" class="leancloud_visitors" data-flag-title="关于编程语言">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>前些时候搬家，对自己所有的东西做了个梳理，小到一本书，一张纸。遵照断舍离的观念，“舍弃对物质的迷恋，让自己处于宽敞舒适，自由自在的空间”，丢了不少东西。找到两页笔记，记录在博客上是个不错的选择，纸质的东西就消失吧。这里要写的一些内容，之前上学时，教师讲过这课，当时基础太差，没学懂，真是惭愧不已。<a href="https://baike.baidu.com/item/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E5%8E%9F%E7%90%86" target="_blank" rel="noopener">程序设计语言原理</a>，有时间一定要把这本书拾起来好好看看。  </p>
-<h2 id="对向对象"><a href="#对向对象" class="headerlink" title="对向对象"></a>对向对象</h2><p>面向对象方法具有3个基本特征：</p>
-<ol>
-<li>封装 Encapsulation</li>
-<li>继承 Inheritance</li>
-<li>多态 Ploymorphism</li>
-</ol>
-<p>虽然抽象是面向对象的重要组成部分，但它不是面向对象的特征之一，因为所有的编程语言都需要抽象。<br>判断一门语言是否是面向对象的，通常可以使用继承和多态来加以判断：<br>“面向对象”和“基于对象”都实现了“封装”的概念，但是“面向对象”实现了“继承和多态”，而“基于对象”没有实现这些。<br>例如，javascript语言就是“基于对象”的，它使用一些封装好的对象，调用对象的方法，设置对象的属性，但是它们无法让开发者派生新的类，开发者只能使用现有对象的方法和属性。</p>
-<h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><p>python是一门面向对象的解释型编程语言，不同于编译型语言，代码中的变量必须先定义再使用。<br>对于解释型编程语言：跨平台比较容易，只需要提供我写平台的解释器即可，每个特定平台的解释器负责将源代码解释成特定平台的机器指令即可。</p>
-<h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2><p>java语言即是编译型语言，又是解释型语言，或者说java语言即不是纯粹的编译型语言，也不是纯粹的解释型语言。java程序的执行过程必须经过先编译后解释两个步骤。  </p>
-<ol>
-<li>java源文件（*.java），使用javac编译</li>
-<li>得到：字节码文件（*.class）（与平台无关），使用java解释执行，java中负责解释执行字节码文件的是java虚拟机（JVM）</li>
-<li>得到：特定平台的机器码<br>（编者按，想在markdown环境下使用流程图，未生效，我的环境是sublime3 + 插件Markdown Editing + 插件OmniMarkupPreviewer）</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/03/ngrok-内网穿透/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qgchou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/default_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qgchou">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/03/ngrok-内网穿透/" itemprop="url">ngrok-内网穿透</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-03T11:54:55+08:00">
-                2018-01-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/03/ngrok-内网穿透/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/03/ngrok-内网穿透/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/01/03/ngrok-内网穿透/" class="leancloud_visitors" data-flag-title="ngrok-内网穿透">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>开发需要，要进行内网穿透，在外网测试本地的程序。之前慕名花生壳，搜搜资料，一堆人建议使用ngrok，于是来学学ngrok。<br>感谢参考1的作者，很快就顺利把本地一个nodejs服务映射到了外网。</p>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>ngrok是一个反向代理，通过在公共的端点和本地运行的Web服务器之间建立一个安全的通道。ngrok可捕获和分析所有通道上的流量，便于后期分析和重放。</p>
-<h2 id="内网穿透"><a href="#内网穿透" class="headerlink" title="内网穿透"></a>内网穿透</h2><p>内网穿透即NAT穿透<br>NAT英文全拼是Network Address Translator（网络地址转换器），说白了就是凡是经过NAT发出去的数据包，都会通过一定的端口转换（而非使用原端口）再发出去。</p>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>快速测试的话，nodejs或启动tomcat都可以。这里我选的是nodejs方法，参考<a href="http://www.runoob.com/nodejs/nodejs-http-server.html" target="_blank" rel="noopener">这里</a>，我在本地的80端口启了一个服务：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-1-3/99918168.jpg" alt=""><br>然后就是开始使用ngrok将本地的80端口映射一个公网的服务。<br>如果直接看参考1的话，很快，我是windows版的，作者写了个批处理文件，直接运行批处理文件：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-1-3/38532040.jpg" alt=""><br>然后按提示输入要映射的本地端口号，这里是80，然后设置域名前缀，比如这里写chou，这样就能访问了：  </p>
-<pre><code>chou.ngrok.xiaomiqiu.cn
-</code></pre><p>如果使用正规的ngrok教程，官网的教程：<a href="https://www.sunnyos.com/article-show-67.html" target="_blank" rel="noopener">Sunny-Ngrokhttp前置域名使用方法</a><br>大致过程是，先注册，然后开通隧道（先购买，这里我选的是免费版的，然后填隧道信息），在隧道管理中能看到自己的隧道id，这个下面要用，复制下来。填隧道信息时要填该隧道的前置域名，比如我这里写chou，本地端口填127.0.0.1:80，表示对本地的80端口进行映射。<br>然后，在ngrok的<a href="https://www.ngrok.cc/#down-client" target="_blank" rel="noopener">首页</a>，下载相应操作系统的ngrok客户端，然后就是启动ngrok客户端了，这里有windows版的启动<a href="https://www.sunnyos.com/article-show-71.html" target="_blank" rel="noopener">教程</a>，在命令行中：</p>
-<pre><code>sunny.exe clientid 上面复制的clientid
-</code></pre><p>然后就可以使用了：</p>
-<pre><code>chou.free.ngrok.cc
-</code></pre><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="http://ngrok.ciqiuwl.cn/" target="_blank" rel="noopener">关于ngrok及小米球ngrok</a></li>
-<li><a href="https://baike.baidu.com/item/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F" target="_blank" rel="noopener">内网穿透</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1885,7 +1905,7 @@ mvn clean：清除target目录下的所有文件
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">94</span>
+                  <span class="site-state-item-count">100</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1907,7 +1927,7 @@ mvn clean：清除target目录下的所有文件
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
