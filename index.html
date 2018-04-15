@@ -1136,7 +1136,7 @@
           
             <p>公司配了台新的笔记本。然后我要在这台机器上办公，所以得在新机器上配一下我的环境。</p>
 <h2 id="一些软件"><a href="#一些软件" class="headerlink" title="一些软件"></a>一些软件</h2><p>微信、QQ、蓝灯、FSCapture、teamviewer、everything、360安全卫士、有道词典、chrome、sublime、idea、navicat、git、secureCRT、SwitchHosts、Fiddler、射手播放器、搜狗五笔、印象笔记、百度云盘、jdk、360压缩、foxmail、githubDesktop。然后是公司内部使用的一套软件。</p>
-<h2 id="hexo-和-sublime"><a href="#hexo-和-sublime" class="headerlink" title="hexo 和 sublime"></a>hexo 和 sublime</h2><p>hexo博客我之前用得挺顺溜的，也感觉有些作用，要在新机器上配下hexo。有时我想这些博客写在自己的印象笔记不也可以吗？写在github博客就是public权限了，权限放得越开，管理成本越小，人生于天地间，要是能同山川河流一样坦荡，我觉得是件很棒的事。言归正传，怎么在新机器上部署hexo呢。<br>我的博客编辑器用的是sublime，先整sublime，就是一堆插件，我在新机上安装sublime后，把原机器上的插件文件夹下的插件全拷过来了。<br><img src="http://media.qgchou.top/18-4-14/95500458.jpg"><br>把这个文件夹全拷过来就行了。然后我的markdown及其实时预览的插件在新机上就能用了。<br>hexo博客我托管在github上，先把这个仓库clone到本地。</p>
+<h2 id="hexo-和-sublime"><a href="#hexo-和-sublime" class="headerlink" title="hexo 和 sublime"></a>hexo 和 sublime</h2><p>hexo博客我之前用得挺顺溜的，也感觉有些作用，要在新机器上配下hexo。有时我想这些博客写在自己的印象笔记不也可以吗？写在github博客就是public权限了，权限放得越开，管理成本越小，人生于天地间，要是能同山川河流一样坦荡，我觉得是件很棒的事。言归正传，怎么在新机器上部署hexo呢。<br>我的博客编辑器用的是sublime，先整sublime，就是一堆插件，我在新机上安装sublime后，把原机器上的插件文件夹下的插件全拷过来了。<br><img src="http://media.qgchou.top/18-4-15/88201064.jpg"><br>把这个文件夹全拷过来就行了。然后我的markdown及其实时预览的插件在新机上就能用了。<br>hexo博客我托管在github上，先把这个仓库clone到本地。</p>
 <pre><code>https://github.com/qgchou/qgchou.github.io.git
 </code></pre><p>然后要是安装hexo的一些命令了。这里可以参考我的另外一篇关于hexo的文章《hexo学习》。<br>先要安装npm，然后才是hexo：  </p>
 <pre><code>npm install hexo  
@@ -1147,7 +1147,10 @@ npm install hexo-deployer-git
 <pre><code>cnpm install -g hexo-cli
 </code></pre><p>另外，我的博客发布用了一段js脚本，得要装一下js插件，<a href="http://zhujiegao.com/2015/12/06/automatic-backup/" target="_blank" rel="noopener">自动备份Hexo博客源文件</a></p>
 <pre><code>npm install --save shelljs
-</code></pre><p>上面一番设置后，就可以愉快地用sublime写博客了。</p>
+</code></pre><p>上面一番设置后，就可以愉快地用sublime写博客了。<br>公司电脑上公司的项目是用git，这里的博客也是用git，我想用不同的签名。<br>用命令：  </p>
+<pre><code>git config --local user.name &quot;Your Name&quot;  
+git config --local user.email you@example.com 
+</code></pre><p>在下面两个仓库设置一下本仓库的签名就可以了：<br><img src="http://media.qgchou.top/18-4-15/7288438.jpg"><br><img src="http://media.qgchou.top/18-4-15/96574551.jpg"></p>
 
           
         
@@ -1432,7 +1435,7 @@ npm install hexo-deployer-git
         
           
             <ul>
-<li>项目地址：<a href="https://github.com/qgchou/iBase4J" target="_blank" rel="noopener">https://github.com/qgchou/iBase4J</a><br>1、从群文件中下载一些工具<br><img src="/img/2017-9-29/1.png" alt=""><br>(咦，上面用本地目录的方式也挺方便的，但是一个问题是，每次hexo clean，都会重新上传图片到服务器，白白耗费流量)<br>于是我删了上图，换成图床：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-9-30/86747298.jpg" alt=""><br>解压后放在D盘：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-9-29/28380213.jpg" alt=""><br>2、配置nginx<br><img src="http://owyvgfyba.bkt.clouddn.com/17-9-29/74169062.jpg" alt=""><br>3、运行脚本文件run.cmd，这样就启动了下图中的4个服务<br><img src="http://owyvgfyba.bkt.clouddn.com/17-9-29/97250737.jpg" alt=""><br>nginx启动后，访问localhost可看到下面页面：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-9-29/74083665.jpg" alt=""><br>4、将工程clone到本地，并导入到intellij idea，执行sql脚本，建立数据库。<br>5、配置好idea的maven环境，点下图按钮，建立project之间的依赖<br><img src="http://owyvgfyba.bkt.clouddn.com/17-9-29/95118942.jpg" alt=""><br>6、运行参数配置<br><img src="http://owyvgfyba.bkt.clouddn.com/17-9-29/34339158.jpg" alt=""><br><img src="http://owyvgfyba.bkt.clouddn.com/17-9-29/78757095.jpg" alt=""><br>7、解压war包文件到对应的tomcat/webapps/ROOT目录，每个tomcat只放一个项目（有用？）：<br>解压iBase4J-SYS-Service/target/iBase4J-SYS-Service.war 到tomcat1；<br>解压iBase4J-SYS-Web/target/iBase4J-SYS-Web.war 到tomcat2<br>8、先后启动service和web<br>9、访问 localhost ，输入账号密码admin/111111，可看到：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-9-29/56429433.jpg" alt=""><br>访问 localhost:8088/swagger-ui.html 查看Restful接口：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-9-29/24623690.jpg" alt=""><br>访问 <a href="http://localhost:8085/druid" target="_blank" rel="noopener">http://localhost:8085/druid</a> ，输入账号密码druid/druid，可查看druid sql监控：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-9-30/33229945.jpg" alt=""></li>
+<li>项目地址：<a href="https://github.com/qgchou/iBase4J" target="_blank" rel="noopener">https://github.com/qgchou/iBase4J</a><br>1、从群文件中下载一些工具<br><img src="/img/2017-9-29/1.png" alt=""><br>(咦，上面用本地目录的方式也挺方便的，但是一个问题是，每次hexo clean，都会重新上传图片到服务器，白白耗费流量)<br>于是我删了上图，换成图床：<br><img src="http://media.qgchou.top.com/17-9-30/86747298.jpg" alt=""><br>解压后放在D盘：<br><img src="http://media.qgchou.top.com/17-9-29/28380213.jpg" alt=""><br>2、配置nginx<br><img src="http://media.qgchou.top.com/17-9-29/74169062.jpg" alt=""><br>3、运行脚本文件run.cmd，这样就启动了下图中的4个服务<br><img src="http://media.qgchou.top.com/17-9-29/97250737.jpg" alt=""><br>nginx启动后，访问localhost可看到下面页面：<br><img src="http://media.qgchou.top.com/17-9-29/74083665.jpg" alt=""><br>4、将工程clone到本地，并导入到intellij idea，执行sql脚本，建立数据库。<br>5、配置好idea的maven环境，点下图按钮，建立project之间的依赖<br><img src="http://media.qgchou.top.com/17-9-29/95118942.jpg" alt=""><br>6、运行参数配置<br><img src="http://media.qgchou.top.com/17-9-29/34339158.jpg" alt=""><br><img src="http://media.qgchou.top.com/17-9-29/78757095.jpg" alt=""><br>7、解压war包文件到对应的tomcat/webapps/ROOT目录，每个tomcat只放一个项目（有用？）：<br>解压iBase4J-SYS-Service/target/iBase4J-SYS-Service.war 到tomcat1；<br>解压iBase4J-SYS-Web/target/iBase4J-SYS-Web.war 到tomcat2<br>8、先后启动service和web<br>9、访问 localhost ，输入账号密码admin/111111，可看到：<br><img src="http://media.qgchou.top.com/17-9-29/56429433.jpg" alt=""><br>访问 localhost:8088/swagger-ui.html 查看Restful接口：<br><img src="http://media.qgchou.top.com/17-9-29/24623690.jpg" alt=""><br>访问 <a href="http://localhost:8085/druid" target="_blank" rel="noopener">http://localhost:8085/druid</a> ，输入账号密码druid/druid，可查看druid sql监控：<br><img src="http://media.qgchou.top.com/17-9-30/33229945.jpg" alt=""></li>
 </ul>
 <hr>
 <h2 id="完毕，感谢分享，感谢开源！"><a href="#完毕，感谢分享，感谢开源！" class="headerlink" title="完毕，感谢分享，感谢开源！"></a>完毕，感谢分享，感谢开源！</h2><hr>

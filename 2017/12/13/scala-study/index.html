@@ -87,14 +87,14 @@
 <meta property="og:site_name" content="qgchou">
 <meta property="og:description" content="关于scala scala来自单词scalable（可伸缩的） scala是一门纯正的面向对象语言 scala具有函数式编程特性 scala可运行于jvm之上，可以与java无缝互操作 scala的发明者：Martin Odersky  函数式编程就是只用纯函数来编写程序维基百科： In computer science, functional programming is a programmi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-12-13/36188284.jpg">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-12-13/28522382.jpg">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-12-13/97313663.jpg">
-<meta property="og:updated_time" content="2018-04-13T06:34:35.847Z">
+<meta property="og:image" content="http://media.qgchou.top.com/17-12-13/36188284.jpg">
+<meta property="og:image" content="http://media.qgchou.top.com/17-12-13/28522382.jpg">
+<meta property="og:image" content="http://media.qgchou.top.com/17-12-13/97313663.jpg">
+<meta property="og:updated_time" content="2018-04-15T08:17:10.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="scala学习">
 <meta name="twitter:description" content="关于scala scala来自单词scalable（可伸缩的） scala是一门纯正的面向对象语言 scala具有函数式编程特性 scala可运行于jvm之上，可以与java无缝互操作 scala的发明者：Martin Odersky  函数式编程就是只用纯函数来编写程序维基百科： In computer science, functional programming is a programmi">
-<meta name="twitter:image" content="http://owyvgfyba.bkt.clouddn.com/17-12-13/36188284.jpg">
+<meta name="twitter:image" content="http://media.qgchou.top.com/17-12-13/36188284.jpg">
 
 
 
@@ -401,7 +401,7 @@
 <pre><code>In computer science, functional programming is a programming paradigm—a style of building the structure 
 and elements of computer programs—that treats computation as the evaluation of mathematical functions 
 and avoids changing-state and mutable data. 
-</code></pre><p>几个关键词：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-12-13/36188284.jpg" alt=""></p>
+</code></pre><p>几个关键词：<br><img src="http://media.qgchou.top.com/17-12-13/36188284.jpg" alt=""></p>
 <ol>
 <li><p>纯函数（Pure Function），或者函数的纯粹性（Purity），没有副作用（Side Effect）  </p>
 <p> 副作用指状态的变化（Mutation）<br> 例如：<br> 修改全局变量<br> 抛出异常<br> IO读写<br> 调用有副作用的函数</p>
@@ -432,7 +432,7 @@ scala&gt; lazy val c = a*b
 g: Int = &lt;lazy&gt;
 scala&gt; c
 res0: Int = 600
-</code></pre><h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><p>scala的类型层级关系图：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-12-13/28522382.jpg" alt=""><br>scala中赋值一个变量时，可以不指定变量类型，系统根据赋的值自动识别出变量的类型：</p>
+</code></pre><h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><p>scala的类型层级关系图：<br><img src="http://media.qgchou.top.com/17-12-13/28522382.jpg" alt=""><br>scala中赋值一个变量时，可以不指定变量类型，系统根据赋的值自动识别出变量的类型：</p>
 <pre><code>可以显式指定变量类型：
 scala&gt; val c:Int = 30
 c: Int = 30
@@ -496,7 +496,7 @@ curriedAdd(2)(3)                          //&gt; res5: Int = 5
 //利用偏应用函数的柯里化技术来构造新的函数
 val addOne = curriedAdd(1)_               //&gt; addOne  : Int =&gt; Int = test$$$Lambda$13/434091818@17c68925
 addOne(4)                                 //&gt; res6: Int = 5
-</code></pre><p>##　集合Collections<br>集合包：scala.collection.immutable<br><img src="http://owyvgfyba.bkt.clouddn.com/17-12-13/97313663.jpg" alt=""></p>
+</code></pre><p>##　集合Collections<br>集合包：scala.collection.immutable<br><img src="http://media.qgchou.top.com/17-12-13/97313663.jpg" alt=""></p>
 <h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p>空列表Nil</p>
 <pre><code>scala&gt; Nil
 res6: scala.collection.immutable.Nil.type = List()

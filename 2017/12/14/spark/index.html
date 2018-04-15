@@ -87,19 +87,19 @@
 <meta property="og:site_name" content="qgchou">
 <meta property="og:description" content="Spark是什么Spark是一个快速且通用的集群计算平台。 Spark的特点Spark是快速的Spark扩充了流行的Mapreduce计算模型Spark是基于内存的计算 Spark是通用的Spark的设计容纳了其它分布式系统拥有的功能：批处理、迭代式计算、交互查询和流计算等。优点：降低了维护成本 Spark是高度开放的Spark提供了Python、Java、Scala、SQL的API和丰富的内置库">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-12-14/82400650.jpg">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-12-21/42531242.jpg">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-12-21/8235479.jpg">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-12-21/17454756.jpg">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-12-21/85411786.jpg">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-12-21/72049498.jpg">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-12-21/4360237.jpg">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-12-21/93529975.jpg">
-<meta property="og:updated_time" content="2018-04-13T06:34:35.856Z">
+<meta property="og:image" content="http://media.qgchou.top.com/17-12-14/82400650.jpg">
+<meta property="og:image" content="http://media.qgchou.top.com/17-12-21/42531242.jpg">
+<meta property="og:image" content="http://media.qgchou.top.com/17-12-21/8235479.jpg">
+<meta property="og:image" content="http://media.qgchou.top.com/17-12-21/17454756.jpg">
+<meta property="og:image" content="http://media.qgchou.top.com/17-12-21/85411786.jpg">
+<meta property="og:image" content="http://media.qgchou.top.com/17-12-21/72049498.jpg">
+<meta property="og:image" content="http://media.qgchou.top.com/17-12-21/4360237.jpg">
+<meta property="og:image" content="http://media.qgchou.top.com/17-12-21/93529975.jpg">
+<meta property="og:updated_time" content="2018-04-15T08:17:10.665Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spark学习">
 <meta name="twitter:description" content="Spark是什么Spark是一个快速且通用的集群计算平台。 Spark的特点Spark是快速的Spark扩充了流行的Mapreduce计算模型Spark是基于内存的计算 Spark是通用的Spark的设计容纳了其它分布式系统拥有的功能：批处理、迭代式计算、交互查询和流计算等。优点：降低了维护成本 Spark是高度开放的Spark提供了Python、Java、Scala、SQL的API和丰富的内置库">
-<meta name="twitter:image" content="http://owyvgfyba.bkt.clouddn.com/17-12-14/82400650.jpg">
+<meta name="twitter:image" content="http://media.qgchou.top.com/17-12-14/82400650.jpg">
 
 
 
@@ -399,7 +399,7 @@
 <h2 id="Spark的特点"><a href="#Spark的特点" class="headerlink" title="Spark的特点"></a>Spark的特点</h2><h3 id="Spark是快速的"><a href="#Spark是快速的" class="headerlink" title="Spark是快速的"></a>Spark是快速的</h3><p>Spark扩充了流行的Mapreduce计算模型<br>Spark是基于内存的计算</p>
 <h3 id="Spark是通用的"><a href="#Spark是通用的" class="headerlink" title="Spark是通用的"></a>Spark是通用的</h3><p>Spark的设计容纳了其它分布式系统拥有的功能：批处理、迭代式计算、交互查询和流计算等。<br>优点：降低了维护成本</p>
 <h3 id="Spark是高度开放的"><a href="#Spark是高度开放的" class="headerlink" title="Spark是高度开放的"></a>Spark是高度开放的</h3><p>Spark提供了Python、Java、Scala、SQL的API和丰富的内置库。<br>Spark和其他大数据工具整合得很好，包括hadoop、kafaka等。</p>
-<h2 id="Spark生态"><a href="#Spark生态" class="headerlink" title="Spark生态"></a>Spark生态</h2><p>Spark包括多个紧密集成的组件<br><img src="http://owyvgfyba.bkt.clouddn.com/17-12-14/82400650.jpg" alt="">  </p>
+<h2 id="Spark生态"><a href="#Spark生态" class="headerlink" title="Spark生态"></a>Spark生态</h2><p>Spark包括多个紧密集成的组件<br><img src="http://media.qgchou.top.com/17-12-14/82400650.jpg" alt="">  </p>
 <ol>
 <li>Spark Core<br>包含Spark的基本功能，包含任务调度、内存管理、容错机制等。<br>内部定义了RDDs（弹性分布式数据集）。<br>提供了很多APIs来创建和操作这些RDDs。<br>应用场景：为其他组件提供底层的服务。  </li>
 <li>Spark SQL<br>是Spark处理结构化数据的库，就像Hive SQL，Mysql一样。<br>应用场景：企业中用来做报表统计。  </li>
@@ -430,7 +430,7 @@ rdd.foreach(println)
 <li>flatMap()<br>对每个输入元素，输出多个输出元素。flat压扁的意思，将RDD中元素压扁后返回一个新的RDD。</li>
 <li>集合运算<br>RDDs支持数学集合的计算，例如并集，交集计算。<br>去重：distinct()<br>并集：rdd1.union(rdd2)<br>交集：rdd1.intersection(rdd2)<br>减操作：rdd1.subtract(rdd2)</li>
 </ol>
-<h3 id="RDDs基本操作之Action"><a href="#RDDs基本操作之Action" class="headerlink" title="RDDs基本操作之Action"></a>RDDs基本操作之Action</h3><p>Action是在RDD上计算出来一个结果，把结果返回给driver program或保存在文件系统。<br>几个常见的Action操作：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-12-21/42531242.jpg" alt=""><br><img src="http://owyvgfyba.bkt.clouddn.com/17-12-21/8235479.jpg" alt="">  </p>
+<h3 id="RDDs基本操作之Action"><a href="#RDDs基本操作之Action" class="headerlink" title="RDDs基本操作之Action"></a>RDDs基本操作之Action</h3><p>Action是在RDD上计算出来一个结果，把结果返回给driver program或保存在文件系统。<br>几个常见的Action操作：<br><img src="http://media.qgchou.top.com/17-12-21/42531242.jpg" alt=""><br><img src="http://media.qgchou.top.com/17-12-21/8235479.jpg" alt="">  </p>
 <p>reduce()<br>接收一个函数，作用在RDD两个类型相同的元素上，返回新元素。可以实现，RDD中元素的累加，计数，和其他类型的聚集操作。</p>
 <pre><code>//计算rdd中元素之和
 val sum = rdd.reduce((x,y) =&gt; x+y)
@@ -438,12 +438,12 @@ val sum = rdd.reduce((x,y) =&gt; x+y)
 <p>take(n)<br>返回RDD的n个元素（同时尝试访问最少的partitions）,返回结果是无序的，测试使用。  </p>
 <p>top()<br>排序（根据RDD中数据的比较器）  </p>
 <p>foreach()<br>计算RDD中的每个元素，但不返回到本地。可以配合println()友好地打印出数据。  </p>
-<h3 id="RDD的特性"><a href="#RDD的特性" class="headerlink" title="RDD的特性"></a>RDD的特性</h3><h4 id="RDDs的血统关系图"><a href="#RDDs的血统关系图" class="headerlink" title="RDDs的血统关系图"></a>RDDs的血统关系图</h4><p>Spark维护着RDDs之间的依赖关系和创建关系，叫做血统关系图。Spark使用血统关系图来计算每个RDD的需求和恢复丢失的数据。<br><img src="http://owyvgfyba.bkt.clouddn.com/17-12-21/17454756.jpg" alt="">  </p>
+<h3 id="RDD的特性"><a href="#RDD的特性" class="headerlink" title="RDD的特性"></a>RDD的特性</h3><h4 id="RDDs的血统关系图"><a href="#RDDs的血统关系图" class="headerlink" title="RDDs的血统关系图"></a>RDDs的血统关系图</h4><p>Spark维护着RDDs之间的依赖关系和创建关系，叫做血统关系图。Spark使用血统关系图来计算每个RDD的需求和恢复丢失的数据。<br><img src="http://media.qgchou.top.com/17-12-21/17454756.jpg" alt="">  </p>
 <h4 id="延迟计算（Lazy-Evaluation）"><a href="#延迟计算（Lazy-Evaluation）" class="headerlink" title="延迟计算（Lazy Evaluation）"></a>延迟计算（Lazy Evaluation）</h4><p>Spark对RDDs的计算是，它们第一次使用action操作的时候，这种方式在处理大数据的时候特别有用，可以减少数据的传输。<br>Spark内部记录metadata信息表明transformations操作已经被响应了。<br>加载数据也是延迟计算，数据只有要必要的时候，才会被加载进去。</p>
-<h4 id="RDD-persist"><a href="#RDD-persist" class="headerlink" title="RDD.persist()"></a>RDD.persist()</h4><p>默认每次在RDDs上面进行action操作时，Spark都重新计算RDDs。<br>如果想重复利用一个RDD，可以使用RDD.persist()。<br>unpersist()方法从缓存中移除。<br>RDD.persist()可以传一个参数表明缓存级别：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-12-21/85411786.jpg" alt=""><br><img src="http://owyvgfyba.bkt.clouddn.com/17-12-21/72049498.jpg" alt="">  </p>
+<h4 id="RDD-persist"><a href="#RDD-persist" class="headerlink" title="RDD.persist()"></a>RDD.persist()</h4><p>默认每次在RDDs上面进行action操作时，Spark都重新计算RDDs。<br>如果想重复利用一个RDD，可以使用RDD.persist()。<br>unpersist()方法从缓存中移除。<br>RDD.persist()可以传一个参数表明缓存级别：<br><img src="http://media.qgchou.top.com/17-12-21/85411786.jpg" alt=""><br><img src="http://media.qgchou.top.com/17-12-21/72049498.jpg" alt="">  </p>
 <h3 id="RDDs之KeyValue对"><a href="#RDDs之KeyValue对" class="headerlink" title="RDDs之KeyValue对"></a>RDDs之KeyValue对</h3><p>例如：包含数行数据的RDD，把每行数据的第一个单词作为keys。</p>
 <pre><code>val rdd2 = rdd.map(line =&gt; (line.split(&quot; &quot;)(0),line))
-</code></pre><p>对KeyValue对的转换操作（Transformations），以{(1,2),(3,4),(5,6)}为例：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-12-21/4360237.jpg" alt=""><br><img src="http://owyvgfyba.bkt.clouddn.com/17-12-21/93529975.jpg" alt="">  </p>
+</code></pre><p>对KeyValue对的转换操作（Transformations），以{(1,2),(3,4),(5,6)}为例：<br><img src="http://media.qgchou.top.com/17-12-21/4360237.jpg" alt=""><br><img src="http://media.qgchou.top.com/17-12-21/93529975.jpg" alt="">  </p>
 <pre><code>scala&gt; val rdd = sc.parallelize(Array((1,2),(3,4),(3,6)))
 rdd: org.apache.spark.rdd.RDD[(Int, Int)] = ParallelCollectionRDD[2] at parallelize at &lt;console&gt;:24
 

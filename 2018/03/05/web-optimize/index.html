@@ -87,14 +87,14 @@
 <meta property="og:site_name" content="qgchou">
 <meta property="og:description" content="高并发的网页应用中，每秒内查询次数QPS(Query Per Second)是个很重要的性能指标。数据库查询是代码层面的性能瓶颈，此外还有http连接也会产生性能开销。提高服务器性能的一个重要技术就是用缓存。浏览器缓存，CDN缓存，页面缓存，对象缓存等，其中redis是实现页面缓存和对象缓存的常用方法。浏览器缓存一般结合web开发中的静态分离技术。 用jsp还是html？jsp中填充数据是同步加载">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/18-3-7/46604374.jpg">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/18-3-7/79377041.jpg">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/18-3-7/1004233.jpg">
-<meta property="og:updated_time" content="2018-04-13T06:34:35.894Z">
+<meta property="og:image" content="http://media.qgchou.top.com/18-3-7/46604374.jpg">
+<meta property="og:image" content="http://media.qgchou.top.com/18-3-7/79377041.jpg">
+<meta property="og:image" content="http://media.qgchou.top.com/18-3-7/1004233.jpg">
+<meta property="og:updated_time" content="2018-04-15T08:17:07.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="web开发中的优化技术">
 <meta name="twitter:description" content="高并发的网页应用中，每秒内查询次数QPS(Query Per Second)是个很重要的性能指标。数据库查询是代码层面的性能瓶颈，此外还有http连接也会产生性能开销。提高服务器性能的一个重要技术就是用缓存。浏览器缓存，CDN缓存，页面缓存，对象缓存等，其中redis是实现页面缓存和对象缓存的常用方法。浏览器缓存一般结合web开发中的静态分离技术。 用jsp还是html？jsp中填充数据是同步加载">
-<meta name="twitter:image" content="http://owyvgfyba.bkt.clouddn.com/18-3-7/46604374.jpg">
+<meta name="twitter:image" content="http://media.qgchou.top.com/18-3-7/46604374.jpg">
 
 
 
@@ -392,8 +392,8 @@
       
         <p>高并发的网页应用中，每秒内查询次数QPS(Query Per Second)是个很重要的性能指标。数据库查询是代码层面的性能瓶颈，此外还有http连接也会产生性能开销。提高服务器性能的一个重要技术就是用缓存。浏览器缓存，CDN缓存，页面缓存，对象缓存等，其中redis是实现页面缓存和对象缓存的常用方法。浏览器缓存一般结合web开发中的静态分离技术。</p>
 <p>用jsp还是html？<br>jsp中填充数据是同步加载，因此页面响应有时会很慢。第一次请求jsp，必须要在web服务器中编译成servlet，第一次运行会较慢。每次请求jsp都是访问servlet再用输出流输出的html页面，效率没有直接使用html高。静态分离后，页面用纯html编写，异步请求服务器的数据，然后填充到页面。</p>
-<p>使用jsp是在服务端把视图渲染好后再返回给浏览器，用户发送一个http请求，请求首先会进入控制器，然后控制器去获取数据并将其封装为模型，最后将模型传递到视图中进行展现。这种方式的mvc交互过程如下图：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-3-7/46604374.jpg">  </p>
-<p>使用静态分离后，从浏览器发送AJAX请求，然后服务端接受该请求并返回JSON数据返回给浏览器，最后在浏览器中进行界面渲染。这种方式的mvc交互过程如下图：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-3-7/79377041.jpg"><br>上图的MVC模式简化为以下前后端分离模式：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-3-7/1004233.jpg">  </p>
+<p>使用jsp是在服务端把视图渲染好后再返回给浏览器，用户发送一个http请求，请求首先会进入控制器，然后控制器去获取数据并将其封装为模型，最后将模型传递到视图中进行展现。这种方式的mvc交互过程如下图：<br><img src="http://media.qgchou.top.com/18-3-7/46604374.jpg">  </p>
+<p>使用静态分离后，从浏览器发送AJAX请求，然后服务端接受该请求并返回JSON数据返回给浏览器，最后在浏览器中进行界面渲染。这种方式的mvc交互过程如下图：<br><img src="http://media.qgchou.top.com/18-3-7/79377041.jpg"><br>上图的MVC模式简化为以下前后端分离模式：<br><img src="http://media.qgchou.top.com/18-3-7/1004233.jpg">  </p>
 <h2 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h2><p>见参考2，参考1中也有提及。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://www.csdn.net/article/2015-10-25/2826033" target="_blank" rel="noopener">从MVC到前后端分离</a></li>

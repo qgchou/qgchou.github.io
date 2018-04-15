@@ -87,10 +87,13 @@
 <meta property="og:site_name" content="qgchou">
 <meta property="og:description" content="chrome浏览器简洁的UI风格以及强大的功能吸引了大量拥趸，以前刚接触电脑时，纠结于用哪个浏览器好，本科时留下的一个印象是电脑里装了各种各样浏览器，傲游、世界之窗、枫叶、Opera、极速、IE，当然也是有chrome，然而我当时不做h5，装一堆浏览器纯粹就是想找个最称心的，好比孙悟空到东海找龙王要兵器。最后我还是选择了360的极速浏览器，双核，方便，可以用国内邮箱登录，登录浏览器很重要，这样换电">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-13T06:34:35.729Z">
+<meta property="og:image" content="http://media.qgchou.top/18-4-15/68452661.jpg">
+<meta property="og:image" content="http://media.qgchou.top/18-4-15/60976867.jpg">
+<meta property="og:updated_time" content="2018-04-15T08:06:05.800Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="chrome标签同步问题——xmarks">
 <meta name="twitter:description" content="chrome浏览器简洁的UI风格以及强大的功能吸引了大量拥趸，以前刚接触电脑时，纠结于用哪个浏览器好，本科时留下的一个印象是电脑里装了各种各样浏览器，傲游、世界之窗、枫叶、Opera、极速、IE，当然也是有chrome，然而我当时不做h5，装一堆浏览器纯粹就是想找个最称心的，好比孙悟空到东海找龙王要兵器。最后我还是选择了360的极速浏览器，双核，方便，可以用国内邮箱登录，登录浏览器很重要，这样换电">
+<meta name="twitter:image" content="http://media.qgchou.top/18-4-15/68452661.jpg">
 
 
 
@@ -349,8 +352,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/小技巧/" itemprop="url" rel="index">
-                    <span itemprop="name">小技巧</span>
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">tools</span>
                   </a>
                 </span>
 
@@ -415,6 +418,8 @@
 <p>上网找解决方案，<a href="https://www.v2ex.com/t/296718" target="_blank" rel="noopener">大家都是怎么同步 chrome 收藏夹的？</a>,里面提到xmarks，我赶紧试了下，的确不错，墙内就可以在不同浏览器之间同步，不过是国外服务器，同步有点慢。<br>刚刚，我在本机同步了极速浏览器和chrome，我之前同步chrome和firefox做实验，firefox只有个位数的标签，同步没问题，能正常合并。刚才同步极速和chrome出问题了，这两个浏览器我都用了很多时间，还曾经手工导出导入过，所以两个浏览器都有大量的标签，且有很多是相同的，刚才这两个浏览器之间我用xmarks同步，弄丢了几十条标签。唉，做罢，就这样吧。丢了也就算了吧，像我这样留几百个收藏标签的，估计也没啥意义。有些是留了好几年的，一直计划看却是没有看。另外一个隐藏忧虑，要是xmarks被黑客破解，我的个人信息就泄露了，要是哪天xmarks宣布不再提供服务，岂不是就不能用了！我想，最关键的是要放弃收藏癖。</p>
 <h3 id="2017-10-25-23-12-52"><a href="#2017-10-25-23-12-52" class="headerlink" title="2017-10-25 23:12:52"></a>2017-10-25 23:12:52</h3><p>关于xmarks又用于一堆问题，一个基本的原理我没搞清理，所谓的自动同步，是将本地同步到服务器，还是将服务器同步到本地？处于同步状态后，假设我删掉一个标签，点同步操作，是把本地的修改同步到了服务器呢，还是将服务器所保存的数据覆盖掉本地的修改？</p>
 <h3 id="2017-10-26-9-35-37"><a href="#2017-10-26-9-35-37" class="headerlink" title="2017-10-26 9:35:37"></a>2017-10-26 9:35:37</h3><p>针对上面的疑问，我早上又看了下xmarks的使用，测试，开始时A、B两台机器的标签和服务器一致，都有tab1，然后，在A机器删掉tab1，A机器的xmarks图标提示标签有修改，提示同步，我手动点同步后，再到“My Xmarks”看，服务器上tab1删掉了，然后到B机器上手动点同步，注意，这一步操作就是我昨晚的疑惑，同步方向是怎样的，是会把服务器上的状态同步到B机器呢，还是检测B机器多了一个tab1标签，进而向服务器做一次添加操作，也就是将B机器同步到服务器，那样服务器上的tab1标签又回来了。经验证，是第一种结果，B机器上执行同步后，B机器上的tab1标签也删掉了。这是怎么做到的呢，我猜测，每一次同步操作，服务器会记录一个时间戳，比如上面的例子，A机器9:30同步操作后，就有一个日志，时间戳是9:30。9:50时，B机器执行同步操作时，服务器先查看同步日志，会将B机器的标签同步到9:30时的状态。<br>xmarks图标，黄色表示本地有修改，绿色表示正在进行同步。</p>
+<h3 id="2018-4-15-15-57-3"><a href="#2018-4-15-15-57-3" class="headerlink" title="2018-4-15 15:57:3"></a>2018-4-15 15:57:3</h3><p>我现在的策略是关掉自动同步的选项：<br><img src="http://media.qgchou.top/18-4-15/68452661.jpg"><br>真正的操作只用到下面两个按钮：<br><img src="http://media.qgchou.top/18-4-15/60976867.jpg"></p>
+<p>公司电脑如果有修改收藏夹，在公司电脑上点“upload”，这样就用本机的收藏夹替换掉了xmarks服务器上的收藏夹。然后我回家后，先在浏览器插件上点“download”，这样就用服务器上的收藏夹把家里电脑本机上的收藏夹替掉了。完美解决！现在添加新的收藏的频率很低了，所以这样一个下载，一个上传来达到同步收藏夹的方法还是可以用的。</p>
 
       
     </div>
@@ -619,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-10-25-23-12-52"><span class="nav-number">1.</span> <span class="nav-text">2017-10-25 23:12:52</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-10-26-9-35-37"><span class="nav-number">2.</span> <span class="nav-text">2017-10-26 9:35:37</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-10-25-23-12-52"><span class="nav-number">1.</span> <span class="nav-text">2017-10-25 23:12:52</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-10-26-9-35-37"><span class="nav-number">2.</span> <span class="nav-text">2017-10-26 9:35:37</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-4-15-15-57-3"><span class="nav-number">3.</span> <span class="nav-text">2018-4-15 15:57:3</span></a></li></ol></div>
             
 
           </div>

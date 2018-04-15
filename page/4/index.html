@@ -390,154 +390,9 @@
         
           
             <p>无论是 github，还是码云，我们要clone一个工程时，会有两个地址供选择，HTTPS和SSH，有什么区别呢？</p>
-<p>公钥有两种，部署公钥和个人公钥：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-4/36526033.jpg"><br>配置了部署公钥，只支持只读操作；如果想要对仓库进行写操作，请添加个人公钥。</p>
-<p>似乎个人公钥是针对整个机器而言的，我在码云上添加了我的某个阿里云服务器的个人公钥，然后就可以在我的那个阿里云服务器上任意clone(也可以其他操作？)我的码云上的仓库了，当然这要求是使用SSH地址，如果使用HTTPS地址来clone的话，则要求输入码云的用户名密码，挺麻烦的，我猜想啊，如果我在码云的某个仓库A配置了我的阿里云服务器的部署公钥，估计用HTTPS也可以免密了，什么原理呢，有待学习。<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-4/12039364.jpg"></p>
-<p>我在git bash中要把本地仓库关联一个远程仓库，开始时使用远程仓库的SSH地址，然后报错了，提示权限问题：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-4/38216257.jpg"><br>关联远程仓库的HTTPS地址就没报错。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/02/01/sleep&wait/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qgchou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/default_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qgchou">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/01/sleep&wait/" itemprop="url">多线程中的sleep方法和wait方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T18:48:20+08:00">
-                2018-02-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/02/01/sleep&wait/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/02/01/sleep&wait/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/02/01/sleep&wait/" class="leancloud_visitors" data-flag-title="多线程中的sleep方法和wait方法">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>sleep和wait都会释放CPU的执行权，区别是sleep不释放锁，wait释放锁。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li>《Java并发编程从入门到精通》，张振华，清华大学出版社，2015年7月第一版</li>
-</ol>
+<p>公钥有两种，部署公钥和个人公钥：<br><img src="http://media.qgchou.top.com/18-2-4/36526033.jpg"><br>配置了部署公钥，只支持只读操作；如果想要对仓库进行写操作，请添加个人公钥。</p>
+<p>似乎个人公钥是针对整个机器而言的，我在码云上添加了我的某个阿里云服务器的个人公钥，然后就可以在我的那个阿里云服务器上任意clone(也可以其他操作？)我的码云上的仓库了，当然这要求是使用SSH地址，如果使用HTTPS地址来clone的话，则要求输入码云的用户名密码，挺麻烦的，我猜想啊，如果我在码云的某个仓库A配置了我的阿里云服务器的部署公钥，估计用HTTPS也可以免密了，什么原理呢，有待学习。<br><img src="http://media.qgchou.top.com/18-2-4/12039364.jpg"></p>
+<p>我在git bash中要把本地仓库关联一个远程仓库，开始时使用远程仓库的SSH地址，然后报错了，提示权限问题：<br><img src="http://media.qgchou.top.com/18-2-4/38216257.jpg"><br>关联远程仓库的HTTPS地址就没报错。</p>
 
           
         
@@ -733,6 +588,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/02/01/sleep&wait/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/01/sleep&wait/" itemprop="url">多线程中的sleep方法和wait方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T18:48:20+08:00">
+                2018-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/01/sleep&wait/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/02/01/sleep&wait/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/02/01/sleep&wait/" class="leancloud_visitors" data-flag-title="多线程中的sleep方法和wait方法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>sleep和wait都会释放CPU的执行权，区别是sleep不释放锁，wait释放锁。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li>《Java并发编程从入门到精通》，张振华，清华大学出版社，2015年7月第一版</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/02/01/uml-study/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -826,12 +826,12 @@
       
         
           
-            <p>UML类图，类之间的几种主要关系：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-1/48978202.jpg"></p>
+            <p>UML类图，类之间的几种主要关系：<br><img src="http://media.qgchou.top.com/18-2-1/48978202.jpg"></p>
 <p>几种关系的强弱比较：<br>组合&gt;聚合&gt;关联&gt;依赖</p>
-<h2 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h2><p>大雁与大雁的翅膀的关系是组合关系，contains-a：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-1/82098117.jpg"></p>
-<h2 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h2><p>雁群与大雁的关系是聚合关系，has-a：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-1/81163810.jpg"></p>
-<h2 id="关联"><a href="#关联" class="headerlink" title="关联"></a>关联</h2><p>强关联关系。被关联类B以类属性的形式出现在关联类A中，也可能是关联类A引用了一个类B的全局变量。<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-1/30183125.jpg"></p>
-<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><p>类A的方法中用到类B，类B作为参数被A的某个方法中使用，这种关系是偶然的，临时的，非常弱的。<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-1/17627166.jpg"></p>
+<h2 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h2><p>大雁与大雁的翅膀的关系是组合关系，contains-a：<br><img src="http://media.qgchou.top.com/18-2-1/82098117.jpg"></p>
+<h2 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h2><p>雁群与大雁的关系是聚合关系，has-a：<br><img src="http://media.qgchou.top.com/18-2-1/81163810.jpg"></p>
+<h2 id="关联"><a href="#关联" class="headerlink" title="关联"></a>关联</h2><p>强关联关系。被关联类B以类属性的形式出现在关联类A中，也可能是关联类A引用了一个类B的全局变量。<br><img src="http://media.qgchou.top.com/18-2-1/30183125.jpg"></p>
+<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><p>类A的方法中用到类B，类B作为参数被A的某个方法中使用，这种关系是偶然的，临时的，非常弱的。<br><img src="http://media.qgchou.top.com/18-2-1/17627166.jpg"></p>
 
           
         
@@ -1451,10 +1451,10 @@
 <p>下面来用Charles看看，用https来传数据是不是真的安全，先安利一个提供API服务的公司 <a href="https://www.showapi.com/" target="_blank" rel="noopener">易源数据</a> ，先说句题外化，有了这些专门提供数据接口的公司，我认为很多app应用的后端开发可以不用请专门的后台的开发工程师了，突然又多了一丝危机感。易源数据的数据接口支持http和https两种形式，下面是分为用 http 和 https 两种方式请求QQ音乐接口，搜索关键词“我”的歌曲列表，然后用Charles截包，试试能不能看到传输的数据，首先，两种方式在浏览器端返回的数据都是一样的：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"showapi_res_code"</span>: <span class="number">0</span>,</div><div class="line">    <span class="attr">"showapi_res_error"</span>: <span class="string">""</span>,</div><div class="line">    <span class="attr">"showapi_res_body"</span>: &#123;</div><div class="line">        <span class="attr">"ret_code"</span>: <span class="number">0</span>,</div><div class="line">        <span class="attr">"pagebean"</span>: &#123;</div><div class="line">            <span class="attr">"w"</span>: <span class="string">"我"</span>,</div><div class="line">            <span class="attr">"allPages"</span>: <span class="number">14</span>,</div><div class="line">            <span class="attr">"ret_code"</span>: <span class="number">0</span>,</div><div class="line">            <span class="attr">"contentlist"</span>: [</div><div class="line">                &#123;</div><div class="line">                    <span class="attr">"m4a"</span>: <span class="string">"http://ws.stream.qqmusic.qq.com/5516807.m4a?fromtag=46"</span>,</div><div class="line">                    <span class="attr">"media_mid"</span>: <span class="string">"0004caJA35Oeuo"</span>,</div><div class="line">                    <span class="attr">"songid"</span>: <span class="number">5516807</span>,</div><div class="line">                    <span class="attr">"singerid"</span>: <span class="number">65319</span>,</div><div class="line">                    <span class="attr">"albumname"</span>: <span class="string">"我"</span>,</div><div class="line">                    <span class="attr">"downUrl"</span>: <span class="string">"http://dl.stream.qqmusic.qq.com/5516807.m4a?vkey=34B7AD5C9175C712C73FB6C75DD32B073D2B6F5B63BB7B9C99DDE4AA4597CA0143578A988DB6DF5333FF5BFA6B84E6B765B56E4E2DFAF140&amp;guid=2718671044"</span>,</div><div class="line">                    <span class="attr">"singername"</span>: <span class="string">"魏语诺"</span>,</div><div class="line">                    <span class="attr">"songname"</span>: <span class="string">"我"</span>,</div><div class="line">                    <span class="attr">"strMediaMid"</span>: <span class="string">"0004caJA35Oeuo"</span>,</div><div class="line">                    <span class="attr">"albummid"</span>: <span class="string">"004d8lSi2SADaf"</span>,</div><div class="line">                    <span class="attr">"songmid"</span>: <span class="string">"0004caJA35Oeuo"</span>,</div><div class="line">                    <span class="attr">"albumpic_big"</span>: <span class="string">"http://i.gtimg.cn/music/photo/mid_album_300/a/f/004d8lSi2SADaf.jpg"</span>,</div><div class="line">                    <span class="attr">"albumpic_small"</span>: <span class="string">"http://i.gtimg.cn/music/photo/mid_album_90/a/f/004d8lSi2SADaf.jpg"</span>,</div><div class="line">                    <span class="attr">"albumid"</span>: <span class="number">491426</span></div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    <span class="attr">"m4a"</span>: <span class="string">"http://ws.stream.qqmusic.qq.com/203108192.m4a?fromtag=46"</span>,</div><div class="line">                    <span class="attr">"media_mid"</span>: <span class="string">"002wFoJ62fqw0u"</span>,</div><div class="line">                    <span class="attr">"songid"</span>: <span class="number">203108192</span>,</div><div class="line">                    <span class="attr">"singerid"</span>: <span class="number">22820</span>,</div><div class="line">                    <span class="attr">"albumname"</span>: <span class="string">"我"</span>,</div><div class="line">                    <span class="attr">"downUrl"</span>: <span class="string">"http://dl.stream.qqmusic.qq.com/203108192.m4a?vkey=34B7AD5C9175C712C73FB6C75DD32B073D2B6F5B63BB7B9C99DDE4AA4597CA0143578A988DB6DF5333FF5BFA6B84E6B765B56E4E2DFAF140&amp;guid=2718671044"</span>,</div><div class="line">                    <span class="attr">"singername"</span>: <span class="string">"海龟先生"</span>,</div><div class="line">                    <span class="attr">"songname"</span>: <span class="string">"我"</span>,</div><div class="line">                    <span class="attr">"strMediaMid"</span>: <span class="string">"002wFoJ62fqw0u"</span>,</div><div class="line">                    <span class="attr">"albummid"</span>: <span class="string">"000V1wYm2jw606"</span>,</div><div class="line">                    <span class="attr">"songmid"</span>: <span class="string">"002wFoJ62fqw0u"</span>,</div><div class="line">                    <span class="attr">"albumpic_big"</span>: <span class="string">"http://i.gtimg.cn/music/photo/mid_album_300/0/6/000V1wYm2jw606.jpg"</span>,</div><div class="line">                    <span class="attr">"albumpic_small"</span>: <span class="string">"http://i.gtimg.cn/music/photo/mid_album_90/0/6/000V1wYm2jw606.jpg"</span>,</div><div class="line">                    <span class="attr">"albumid"</span>: <span class="number">2149730</span></div><div class="line">                &#125;</div><div class="line">            ],</div><div class="line">            <span class="attr">"currentPage"</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">"notice"</span>: <span class="string">""</span>,</div><div class="line">            <span class="attr">"allNum"</span>: <span class="number">400</span>,</div><div class="line">            <span class="attr">"maxResult"</span>: <span class="number">30</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="http请求"><a href="#http请求" class="headerlink" title="http请求"></a>http请求</h3><pre><code>http://route.showapi.com/213-1?showapi_appid={appid}&amp;showapi_sign={sign}&amp;keyword=我
-</code></pre><p><img src="http://owyvgfyba.bkt.clouddn.com/18-2-6/72683355.jpg"><br>这里我们看到，不管是请求的参数，还是返回的结果，都是明文可见的。</p>
+</code></pre><p><img src="http://media.qgchou.top.com/18-2-6/72683355.jpg"><br>这里我们看到，不管是请求的参数，还是返回的结果，都是明文可见的。</p>
 <h3 id="https请求"><a href="#https请求" class="headerlink" title="https请求"></a>https请求</h3><pre><code>http://route.showapi.com/213-1?showapi_appid={appid}&amp;showapi_sign={sign}&amp;keyword=我
-</code></pre><p><img src="http://owyvgfyba.bkt.clouddn.com/18-2-6/61821127.jpg"><br>这里我们看到，不管是请求的参数，还是返回的结果，都有一堆乱码。</p>
-<h3 id="chrome-与-https"><a href="#chrome-与-https" class="headerlink" title="chrome 与 https"></a>chrome 与 https</h3><p>前些天（2018-2-9），看到一则新闻，新Chrome将标记非HTTPS网站为不安全，天呐，”这是谷歌为推动更多网络管理员采用HTTPS加密而采取的最新升级措施，这种加密协议意味着任何从用户电脑或设备发送到网站的数据都可安全传输，而不会被黑客截获。另外，HTTPS加密还可确保黑客无法对内容进行修改。”我相信，google的此举会大力推动https的流行。<br>然后我在chrome中看了看新华网：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-25/15886312.jpg"><br>当前我的chrome版本是64，据悉今年7月份发布chrome68，到时候，这个新华网估计会标示为“不安全”，到时候，估计一大堆网站蒙圈。<br>我赶紧看了下360的极速浏览器：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-26/89658369.jpg"><br>这个认证是啥，莫不是新华网给360交钱了？360的认证有公信力吗？<br><img src="http://owyvgfyba.bkt.clouddn.com/18-2-26/56680983.jpg"><br>印象中，好像上图这个“官网”字眼，也得网站所有方的人向百度交一笔钱的，真是，国人想赚钱，五花八门的方法多的是。</p>
+</code></pre><p><img src="http://media.qgchou.top.com/18-2-6/61821127.jpg"><br>这里我们看到，不管是请求的参数，还是返回的结果，都有一堆乱码。</p>
+<h3 id="chrome-与-https"><a href="#chrome-与-https" class="headerlink" title="chrome 与 https"></a>chrome 与 https</h3><p>前些天（2018-2-9），看到一则新闻，新Chrome将标记非HTTPS网站为不安全，天呐，”这是谷歌为推动更多网络管理员采用HTTPS加密而采取的最新升级措施，这种加密协议意味着任何从用户电脑或设备发送到网站的数据都可安全传输，而不会被黑客截获。另外，HTTPS加密还可确保黑客无法对内容进行修改。”我相信，google的此举会大力推动https的流行。<br>然后我在chrome中看了看新华网：<br><img src="http://media.qgchou.top.com/18-2-25/15886312.jpg"><br>当前我的chrome版本是64，据悉今年7月份发布chrome68，到时候，这个新华网估计会标示为“不安全”，到时候，估计一大堆网站蒙圈。<br>我赶紧看了下360的极速浏览器：<br><img src="http://media.qgchou.top.com/18-2-26/89658369.jpg"><br>这个认证是啥，莫不是新华网给360交钱了？360的认证有公信力吗？<br><img src="http://media.qgchou.top.com/18-2-26/56680983.jpg"><br>印象中，好像上图这个“官网”字眼，也得网站所有方的人向百度交一笔钱的，真是，国人想赚钱，五花八门的方法多的是。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="http://blog.51cto.com/libincla/1534200" target="_blank" rel="noopener">网络传输的加密与解密</a></li>
 <li><a href="http://www.ruanyifeng.com/blog/2006/12/notes_on_cryptography.html" target="_blank" rel="noopener">密码学笔记</a></li>
@@ -1604,7 +1604,7 @@
       
         
           
-            <p>一个小程序项目的目录结构：<br><img src="http://owyvgfyba.bkt.clouddn.com/18-1-29/37114164.jpg" alt="" title="见参考2"></p>
+            <p>一个小程序项目的目录结构：<br><img src="http://media.qgchou.top.com/18-1-29/37114164.jpg" alt="" title="见参考2"></p>
 <h1 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h1><p>一个小程序项目中的文件类型有以下几种：</p>
 <h2 id="json-后缀的-JSON-配置文件："><a href="#json-后缀的-JSON-配置文件：" class="headerlink" title=".json 后缀的 JSON 配置文件："></a>.json 后缀的 JSON 配置文件：</h2><h3 id="小程序配置-app-json"><a href="#小程序配置-app-json" class="headerlink" title="小程序配置 app.json"></a>小程序配置 app.json</h3><p>app.json 是对当前小程序的全局配置，包括了小程序的所有页面路径、界面表现、网络超时时间、底部 tab 等。</p>
 <h3 id="工具配置-project-config-json"><a href="#工具配置-project-config-json" class="headerlink" title="工具配置 project.config.json"></a>工具配置 project.config.json</h3><p>包括appid，调试基础库版本libVersion，项目设置里的设置项“ES6 转 ES5”、“上传代码时样式自动补全”等。</p>
@@ -1612,7 +1612,7 @@
 <h2 id="wxml-后缀的-WXML-模板文件"><a href="#wxml-后缀的-WXML-模板文件" class="headerlink" title=".wxml 后缀的 WXML 模板文件"></a>.wxml 后缀的 WXML 模板文件</h2><p>WXML 充当的就是类似 HTML 的角色，用来描述当前这个页面的结构。</p>
 <h2 id="wxss-后缀的-WXSS-样式文件"><a href="#wxss-后缀的-WXSS-样式文件" class="headerlink" title=".wxss 后缀的 WXSS 样式文件"></a>.wxss 后缀的 WXSS 样式文件</h2><p>WXSS 具有 CSS 大部分的特性，小程序在 WXSS 也做了一些扩充和修改。</p>
 <h2 id="js-后缀的-JS-脚本逻辑文件"><a href="#js-后缀的-JS-脚本逻辑文件" class="headerlink" title=".js 后缀的 JS 脚本逻辑文件"></a>.js 后缀的 JS 脚本逻辑文件</h2><p>JS 脚本文件用来处理用户的操作。</p>
-<h1 id="体验小程序"><a href="#体验小程序" class="headerlink" title="体验小程序"></a>体验小程序</h1><p>参考4，微信官方给了一个绝好的demo，根据这个demo可以学学小程序的常用组件和接口怎么用的，以及最终的效果展示。<br><img src="http://owyvgfyba.bkt.clouddn.com/18-1-29/14435659.jpg" alt=""></p>
+<h1 id="体验小程序"><a href="#体验小程序" class="headerlink" title="体验小程序"></a>体验小程序</h1><p>参考4，微信官方给了一个绝好的demo，根据这个demo可以学学小程序的常用组件和接口怎么用的，以及最终的效果展示。<br><img src="http://media.qgchou.top.com/18-1-29/14435659.jpg" alt=""></p>
 <h1 id="基础库版本"><a href="#基础库版本" class="headerlink" title="基础库版本"></a>基础库版本</h1><p>小程序的能力需要微信客户端来支撑，每一个基础库都只能在对应的客户端版本上运行，高版本的基础库无法兼容低版本的微信客户端。微信web开发者工具的“项目设置”可以设置“调试基础库”版本。</p>
 <h1 id="腾讯云支持"><a href="#腾讯云支持" class="headerlink" title="腾讯云支持"></a>腾讯云支持</h1><p>按照参考5进行操作，腾讯云为开发者提供免费的开发环境和生产环境，按流程操作下来，跑通了。如果纯粹是跑跑样例程序来学小程序，这样做就行了唉，干啥还去买小程序解决方案呢！</p>
 <h1 id="关于小程序的几个基础问题"><a href="#关于小程序的几个基础问题" class="headerlink" title="关于小程序的几个基础问题"></a>关于小程序的几个基础问题</h1><h2 id="为什么小程序解决方案有会话管理服务器"><a href="#为什么小程序解决方案有会话管理服务器" class="headerlink" title="为什么小程序解决方案有会话管理服务器"></a>为什么小程序解决方案有会话管理服务器</h2><p>见参考9，因为小程序是CS模式的，和服务器的通讯是通过发送HTTP请求的方法来实现，没有session、cookie的概念，可以理解为传统C/S中客户端和服务器通讯。小程序和传统的WEB开发完全不同，没有会话也就是没有session功能，因此要用会话管理服务器专门处理。<br>会话管理服务器，也叫鉴权服务器，专门用来处理微信登录鉴权信息。</p>

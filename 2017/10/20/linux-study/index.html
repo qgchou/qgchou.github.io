@@ -87,18 +87,18 @@
 <meta property="og:site_name" content="qgchou">
 <meta property="og:description" content="find在当前目录下按文件名查找文件example.java： find . -name example.java   上面的用法可以在查看find的man手册。还有个-type参数，可以指定搜索的文件类型：在当前目录搜索文件内容含有某字符串（大小写敏感）的特定文件，xargs展开find获得的结果，使其作为grep的参数：find . -type f -name ‘.sh’ | xargs gr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-10-26/41390363.jpg">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-10-20/36920806.jpg">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-10-20/24351690.jpg">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-10-20/666908.jpg">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-10-20/59705959.jpg">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-10-20/63587740.jpg">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-10-31/6956495.jpg">
-<meta property="og:updated_time" content="2018-04-13T06:34:35.799Z">
+<meta property="og:image" content="http://media.qgchou.top.com/17-10-26/41390363.jpg">
+<meta property="og:image" content="http://media.qgchou.top.com/17-10-20/36920806.jpg">
+<meta property="og:image" content="http://media.qgchou.top.com/17-10-20/24351690.jpg">
+<meta property="og:image" content="http://media.qgchou.top.com/17-10-20/666908.jpg">
+<meta property="og:image" content="http://media.qgchou.top.com/17-10-20/59705959.jpg">
+<meta property="og:image" content="http://media.qgchou.top.com/17-10-20/63587740.jpg">
+<meta property="og:image" content="http://media.qgchou.top.com/17-10-31/6956495.jpg">
+<meta property="og:updated_time" content="2018-04-15T08:17:10.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习linux">
 <meta name="twitter:description" content="find在当前目录下按文件名查找文件example.java： find . -name example.java   上面的用法可以在查看find的man手册。还有个-type参数，可以指定搜索的文件类型：在当前目录搜索文件内容含有某字符串（大小写敏感）的特定文件，xargs展开find获得的结果，使其作为grep的参数：find . -type f -name ‘.sh’ | xargs gr">
-<meta name="twitter:image" content="http://owyvgfyba.bkt.clouddn.com/17-10-26/41390363.jpg">
+<meta name="twitter:image" content="http://media.qgchou.top.com/17-10-26/41390363.jpg">
 
 
 
@@ -396,10 +396,10 @@
       
         <h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p>在当前目录下按文件名查找文件example.java：</p>
 <pre><code>find . -name example.java  
-</code></pre><p><img src="http://owyvgfyba.bkt.clouddn.com/17-10-26/41390363.jpg" alt=""><br>上面的用法可以在查看find的man手册。<br>还有个-type参数，可以指定搜索的文件类型：<br>在当前目录搜索文件内容含有某字符串（大小写敏感）的特定文件，xargs展开find获得的结果，使其作为grep的参数：<br>find . -type f -name ‘<em>.sh’ | xargs grep ‘your_string’<br>注意：find命令的查询条件可以使用通配符，上面表示所有.sh格式的文件，通配符是“</em>”，开始时，我以为是“%”，这是与mysql搞混淆了。<br>这里补充一下mysql的模糊查询like：</p>
+</code></pre><p><img src="http://media.qgchou.top.com/17-10-26/41390363.jpg" alt=""><br>上面的用法可以在查看find的man手册。<br>还有个-type参数，可以指定搜索的文件类型：<br>在当前目录搜索文件内容含有某字符串（大小写敏感）的特定文件，xargs展开find获得的结果，使其作为grep的参数：<br>find . -type f -name ‘<em>.sh’ | xargs grep ‘your_string’<br>注意：find命令的查询条件可以使用通配符，上面表示所有.sh格式的文件，通配符是“</em>”，开始时，我以为是“%”，这是与mysql搞混淆了。<br>这里补充一下mysql的模糊查询like：</p>
 <pre><code>SELECT * FROM user WHERE u_name LIKE ‘张%&apos;
 </code></pre><p>“%”表示任意个或多个字符。可匹配任意类型和长度的字符<br>“*”匹配零个或多个在它前面的东西。例如，“x<em>”匹配任何数量的“x”字符，“[0-9]</em>”匹配的任何数量的数字，而“.*”匹配任何数量的任何东西。<br>“.”匹配任何单个的字符。（单字节字符）<br>“[…]”匹配在方括号内的任何字符。例如，“[abc]”匹配“a”、“b”或“c”。为了命名字符的一个范围，使用一个“-”。“[a-z]”匹配任何小写字母，而“[0-9]”匹配任何数字。</p>
-<h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><h3 id="ls-lh"><a href="#ls-lh" class="headerlink" title="ls -lh"></a>ls -lh</h3><p>在Linux中显示文件大小的时候，通常的做法是使用“ls -l”，显示的大小是文件的字节大小。但是，如果文件比较大的话，显示起来不是特别易读，这个时候，可以使用“ls -lh”，就可以使用比较接近文件大小的单位显示文件的大小，如下：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-20/36920806.jpg" alt=""><br>第一列，文件属性字段总共有10个字母组成；第一个字符代表文件的类型。</p>
+<h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><h3 id="ls-lh"><a href="#ls-lh" class="headerlink" title="ls -lh"></a>ls -lh</h3><p>在Linux中显示文件大小的时候，通常的做法是使用“ls -l”，显示的大小是文件的字节大小。但是，如果文件比较大的话，显示起来不是特别易读，这个时候，可以使用“ls -lh”，就可以使用比较接近文件大小的单位显示文件的大小，如下：<br><img src="http://media.qgchou.top.com/17-10-20/36920806.jpg" alt=""><br>第一列，文件属性字段总共有10个字母组成；第一个字符代表文件的类型。</p>
 <blockquote>
 <p>字母“-”表示该文件是一个普通文件<br>字母“d”表示该文件是一个目录，字母”d”，是dirtectory(目录)的缩写<br>注意：目录或者是特殊文件，这个特殊文件存放其他文件或目录的相关信息<br>字母“l”表示该文件是一个链接文件。字母”l”是link(链接)的缩写，类似于windows下的快捷方式<br>字母“b”的表示块设备文件(block)，一般置于/dev目录下，设备文件是普通文件和程序访问硬件设备的入口，是很特殊的文件。没有文件大小，只有一个主设备号和一个辅设备号。一次传输数据为一整块的被称为块设备，如硬盘、光盘等。最小数据传输单位为一个数据块(通常一个数据块的大小为512字节)<br>字母为“c”表示该文件是一个字符设备文件(character)，一般置于/dev目录下，一次传输一个字节的设备被称为字符设备，如键盘、字符终端等，传输数据的最小单位为一个字节。<br>字母为“p”表示该文件为命令管道文件。与shell编程有关的文件。<br>字母“s”表示该文件为sock文件。与shell编程有关的文件。</p>
 </blockquote>
@@ -411,7 +411,7 @@
 </code></pre><h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><p>grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本。<br>grep的工作方式是这样的，它在一个或多个文件中搜索字符串模板。如果模板包括空格，则必须被引用，模板后的所有字符串被看作文件名。搜索的结果被送到标准输出，不影响原文件内容。<br>grep [option] pattern file<br>参数：</p>
 <pre><code>-c    --count   #计算符合样式的行数。  
 -n   --line-number   #在显示符合样式的那一行之前，标示出该行的行数编号。  
-</code></pre><p>从文件查找关键词：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-20/24351690.jpg" alt=""><br>如果待查找的关键词中有双引号比如要查找文件test.c中的”aa”:”bb”，则在命令中在每一个双引号前加一个反斜杠’\’，对应的命令是：</p>
+</code></pre><p>从文件查找关键词：<br><img src="http://media.qgchou.top.com/17-10-20/24351690.jpg" alt=""><br>如果待查找的关键词中有双引号比如要查找文件test.c中的”aa”:”bb”，则在命令中在每一个双引号前加一个反斜杠’\’，对应的命令是：</p>
 <pre><code>cat test.c |grep \&quot;aa\&quot;:\&quot;bb\&quot;  
 </code></pre><p>显示上下文：</p>
 <pre><code>grep -C 5 foo file 显示file文件中匹配foo字串那行以及上下5行（或者 grep -5 foo file）  
@@ -419,10 +419,10 @@ grep -B 5 foo file 显示foo及前5行
 grep -A 5 foo file 显示foo及后5行  
 </code></pre><h3 id="grep和find的区别"><a href="#grep和find的区别" class="headerlink" title="grep和find的区别"></a>grep和find的区别</h3><p>find是搜索文件名，查找匹配条件的文件，输出匹配文件<br>grep是搜索文件内容，查找匹配条件的文件行，输出匹配行或含有匹配内容的文件</p>
 <h3 id="grep和find的组合使用"><a href="#grep和find的组合使用" class="headerlink" title="grep和find的组合使用"></a>grep和find的组合使用</h3><p>查找目录 /PATH 中，所有”.h”文件中的含有”helloworld”字符串的文件：<br>find /PATH -name “*.h” | xargs grep -in “helloworld”</p>
-<h2 id=""><a href="#" class="headerlink" title="|"></a>|</h2><p>管道命令操作符是：”|”,它仅能处理经由前面一个指令传出的正确输出信息，也就是 standard output 的信息，然后，传递给下一个命令，作为标准的输入 standard input。<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-20/666908.jpg" alt=""><br>注意：</p>
+<h2 id=""><a href="#" class="headerlink" title="|"></a>|</h2><p>管道命令操作符是：”|”,它仅能处理经由前面一个指令传出的正确输出信息，也就是 standard output 的信息，然后，传递给下一个命令，作为标准的输入 standard input。<br><img src="http://media.qgchou.top.com/17-10-20/666908.jpg" alt=""><br>注意：</p>
 <ul>
 <li>管道命令只处理前一个命令正确输出，不处理错误输出</li>
-<li>管道命令右边命令，必须能够接收标准输入流命令才行。<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-20/59705959.jpg" alt=""><br><a href="http://www.cnblogs.com/chengmo/archive/2010/10/21/1856577.html" target="_blank" rel="noopener">linux shell 管道命令(pipe)使用及与shell重定向区别</a><h2 id="gt-和-gt-gt"><a href="#gt-和-gt-gt" class="headerlink" title="&gt;和&gt;&gt;"></a>&gt;和&gt;&gt;</h2><a href="https://jingyan.baidu.com/article/358570f64345c4ce4724fcba.html" target="_blank" rel="noopener">输出重定向&gt;和&gt;&gt;的区别</a><br><a href="http://www.cnblogs.com/chengmo/archive/2010/10/21/1856577.html" target="_blank" rel="noopener">linux shell 管道命令(pipe)使用及与shell重定向区别</a><h2 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h2>tail 命令从指定点开始将文件写到标准输出<br>tail [参数] [文件]<br>-f 循环读取<br>tail -f filename会把filename里最尾部的内容显示在屏幕上,并且不断刷新,使你看到最新的文件内容。<br>例如：tail -f test.log<br>-n 显示多少行<br>例如，显示文件最后5行内容：<br>tail -n 5 test.log<h2 id="test"><a href="#test" class="headerlink" title="test"></a>test</h2>判断一个命令的结果使用test，其返回0，或一个整数。返回0表示true，返回整数表示错误码<br>test命令是shell环境中测试条件表达式的实用工具<br>获取上一个命令的返回结果使用$？<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-20/63587740.jpg" alt=""><h2 id="vi"><a href="#vi" class="headerlink" title="vi"></a>vi</h2>在命令模式下：  <h3 id="移动光标类命令"><a href="#移动光标类命令" class="headerlink" title="移动光标类命令"></a>移动光标类命令</h3>h ：光标左移一个字符<br>l ：光标右移一个字符<br>k或Ctrl+p：光标上移一行<br>j或Ctrl+n ：光标下移一行<br>0：（注意是数字零）光标移至当前行首<br>$：光标移至当前行尾<br>) ：光标移至句尾<br>( ：光标移至句首  <h3 id="屏幕翻滚类命令"><a href="#屏幕翻滚类命令" class="headerlink" title="屏幕翻滚类命令"></a>屏幕翻滚类命令</h3>Ctrl+u：向文件首翻半屏<br>Ctrl+d：向文件尾翻半屏 <h3 id="搜索及替换命令"><a href="#搜索及替换命令" class="headerlink" title="搜索及替换命令"></a>搜索及替换命令</h3>/pattern：从光标开始处向文件尾搜索pattern<br>?pattern：从光标开始处向文件首搜索pattern<br>说明：上面的搜索命令，默认是区分大小写的，先输入：<blockquote>
+<li>管道命令右边命令，必须能够接收标准输入流命令才行。<br><img src="http://media.qgchou.top.com/17-10-20/59705959.jpg" alt=""><br><a href="http://www.cnblogs.com/chengmo/archive/2010/10/21/1856577.html" target="_blank" rel="noopener">linux shell 管道命令(pipe)使用及与shell重定向区别</a><h2 id="gt-和-gt-gt"><a href="#gt-和-gt-gt" class="headerlink" title="&gt;和&gt;&gt;"></a>&gt;和&gt;&gt;</h2><a href="https://jingyan.baidu.com/article/358570f64345c4ce4724fcba.html" target="_blank" rel="noopener">输出重定向&gt;和&gt;&gt;的区别</a><br><a href="http://www.cnblogs.com/chengmo/archive/2010/10/21/1856577.html" target="_blank" rel="noopener">linux shell 管道命令(pipe)使用及与shell重定向区别</a><h2 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h2>tail 命令从指定点开始将文件写到标准输出<br>tail [参数] [文件]<br>-f 循环读取<br>tail -f filename会把filename里最尾部的内容显示在屏幕上,并且不断刷新,使你看到最新的文件内容。<br>例如：tail -f test.log<br>-n 显示多少行<br>例如，显示文件最后5行内容：<br>tail -n 5 test.log<h2 id="test"><a href="#test" class="headerlink" title="test"></a>test</h2>判断一个命令的结果使用test，其返回0，或一个整数。返回0表示true，返回整数表示错误码<br>test命令是shell环境中测试条件表达式的实用工具<br>获取上一个命令的返回结果使用$？<br><img src="http://media.qgchou.top.com/17-10-20/63587740.jpg" alt=""><h2 id="vi"><a href="#vi" class="headerlink" title="vi"></a>vi</h2>在命令模式下：  <h3 id="移动光标类命令"><a href="#移动光标类命令" class="headerlink" title="移动光标类命令"></a>移动光标类命令</h3>h ：光标左移一个字符<br>l ：光标右移一个字符<br>k或Ctrl+p：光标上移一行<br>j或Ctrl+n ：光标下移一行<br>0：（注意是数字零）光标移至当前行首<br>$：光标移至当前行尾<br>) ：光标移至句尾<br>( ：光标移至句首  <h3 id="屏幕翻滚类命令"><a href="#屏幕翻滚类命令" class="headerlink" title="屏幕翻滚类命令"></a>屏幕翻滚类命令</h3>Ctrl+u：向文件首翻半屏<br>Ctrl+d：向文件尾翻半屏 <h3 id="搜索及替换命令"><a href="#搜索及替换命令" class="headerlink" title="搜索及替换命令"></a>搜索及替换命令</h3>/pattern：从光标开始处向文件尾搜索pattern<br>?pattern：从光标开始处向文件首搜索pattern<br>说明：上面的搜索命令，默认是区分大小写的，先输入：<blockquote>
 <p>:set ignorecase //忽略大小写  </p>
 </blockquote>
 </li>
@@ -439,7 +439,7 @@ grep -A 5 foo file 显示foo及后5行
 <h3 id="使用-执行历史命令："><a href="#使用-执行历史命令：" class="headerlink" title="使用! 执行历史命令："></a>使用! 执行历史命令：</h3><p>! number 执行第几条命令<br>! command 从最近的命令查到以command开头的命令执行<br>!! 执行上一条</p>
 <h3 id="history命令显示执行时间和执行者："><a href="#history命令显示执行时间和执行者：" class="headerlink" title="history命令显示执行时间和执行者："></a>history命令显示执行时间和执行者：</h3><ol>
 <li>export HISTTIMEFORMAT=”%Y-%m-%d:%H-%M-%S:<code>whoami</code>:    “</li>
-<li>history<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-31/6956495.jpg" alt=""><h3 id="ctrl-r-反向查询历史命令"><a href="#ctrl-r-反向查询历史命令" class="headerlink" title="ctrl+r 反向查询历史命令"></a>ctrl+r 反向查询历史命令</h3>使用ctrl+r反向查询历史命令，将匹配的最新一条显示出来<br>如果还想继续向上查询，继续按ctrl+r<h2 id="export"><a href="#export" class="headerlink" title="export"></a>export</h2>export命令 用于将shell变量输出为环境变量，或者将shell函数输出为环境变量。<br>一个变量创建时，它不会自动地为在它之后创建的shell进程所知。而命令export可以向后面的shell传递变量的值。当一个shell脚本调用并执 行时，它不会自动得到原为脚本（调用者）里定义的变量的访问权，除非这些变量已经被显式地设置为可用。export命令可以用于传递一个或多个变量的值到任何后继脚本。  </li>
+<li>history<br><img src="http://media.qgchou.top.com/17-10-31/6956495.jpg" alt=""><h3 id="ctrl-r-反向查询历史命令"><a href="#ctrl-r-反向查询历史命令" class="headerlink" title="ctrl+r 反向查询历史命令"></a>ctrl+r 反向查询历史命令</h3>使用ctrl+r反向查询历史命令，将匹配的最新一条显示出来<br>如果还想继续向上查询，继续按ctrl+r<h2 id="export"><a href="#export" class="headerlink" title="export"></a>export</h2>export命令 用于将shell变量输出为环境变量，或者将shell函数输出为环境变量。<br>一个变量创建时，它不会自动地为在它之后创建的shell进程所知。而命令export可以向后面的shell传递变量的值。当一个shell脚本调用并执 行时，它不会自动得到原为脚本（调用者）里定义的变量的访问权，除非这些变量已经被显式地设置为可用。export命令可以用于传递一个或多个变量的值到任何后继脚本。  </li>
 </ol>
 <h2 id="source"><a href="#source" class="headerlink" title="source"></a>source</h2><p>在当前Shell环境中从指定文件读取和执行命令，命令返回退出状态。</p>
 <h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><h3 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h3><p>yum（全称为 Yellow dog Updater, Modified）是一个在Fedora和RedHat以及SUSE中的Shell前端软件包管理器。基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软体包，无须繁琐地一次次下载、安装。<br>-y：对所有的提问都回答“yes”；<br>记得刚开始用windows时，很难理解，要安装一个软件，为什么要有两步，先下载一个安装包，再安装，这样文件系统里有两个文件夹，一个放安装包，一个放安装的目录，安装完后能不能删掉安装包？百思不得其解。在linux下用yum安装，就没有我之前的疑惑了。</p>

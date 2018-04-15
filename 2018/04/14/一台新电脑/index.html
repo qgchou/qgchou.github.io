@@ -87,12 +87,14 @@
 <meta property="og:site_name" content="qgchou">
 <meta property="og:description" content="公司配了台新的笔记本。然后我要在这台机器上办公，所以得在新机器上配一下我的环境。 一些软件微信、QQ、蓝灯、FSCapture、teamviewer、everything、360安全卫士、有道词典、chrome、sublime、idea、navicat、git、secureCRT、SwitchHosts、Fiddler、射手播放器、搜狗五笔、印象笔记、百度云盘、jdk、360压缩、foxmail、">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://media.qgchou.top/18-4-14/95500458.jpg">
-<meta property="og:updated_time" content="2018-04-15T06:35:43.820Z">
+<meta property="og:image" content="http://media.qgchou.top/18-4-15/88201064.jpg">
+<meta property="og:image" content="http://media.qgchou.top/18-4-15/7288438.jpg">
+<meta property="og:image" content="http://media.qgchou.top/18-4-15/96574551.jpg">
+<meta property="og:updated_time" content="2018-04-15T08:12:39.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="新电脑上配置环境">
 <meta name="twitter:description" content="公司配了台新的笔记本。然后我要在这台机器上办公，所以得在新机器上配一下我的环境。 一些软件微信、QQ、蓝灯、FSCapture、teamviewer、everything、360安全卫士、有道词典、chrome、sublime、idea、navicat、git、secureCRT、SwitchHosts、Fiddler、射手播放器、搜狗五笔、印象笔记、百度云盘、jdk、360压缩、foxmail、">
-<meta name="twitter:image" content="http://media.qgchou.top/18-4-14/95500458.jpg">
+<meta name="twitter:image" content="http://media.qgchou.top/18-4-15/88201064.jpg">
 
 
 
@@ -390,7 +392,7 @@
       
         <p>公司配了台新的笔记本。然后我要在这台机器上办公，所以得在新机器上配一下我的环境。</p>
 <h2 id="一些软件"><a href="#一些软件" class="headerlink" title="一些软件"></a>一些软件</h2><p>微信、QQ、蓝灯、FSCapture、teamviewer、everything、360安全卫士、有道词典、chrome、sublime、idea、navicat、git、secureCRT、SwitchHosts、Fiddler、射手播放器、搜狗五笔、印象笔记、百度云盘、jdk、360压缩、foxmail、githubDesktop。然后是公司内部使用的一套软件。</p>
-<h2 id="hexo-和-sublime"><a href="#hexo-和-sublime" class="headerlink" title="hexo 和 sublime"></a>hexo 和 sublime</h2><p>hexo博客我之前用得挺顺溜的，也感觉有些作用，要在新机器上配下hexo。有时我想这些博客写在自己的印象笔记不也可以吗？写在github博客就是public权限了，权限放得越开，管理成本越小，人生于天地间，要是能同山川河流一样坦荡，我觉得是件很棒的事。言归正传，怎么在新机器上部署hexo呢。<br>我的博客编辑器用的是sublime，先整sublime，就是一堆插件，我在新机上安装sublime后，把原机器上的插件文件夹下的插件全拷过来了。<br><img src="http://media.qgchou.top/18-4-14/95500458.jpg"><br>把这个文件夹全拷过来就行了。然后我的markdown及其实时预览的插件在新机上就能用了。<br>hexo博客我托管在github上，先把这个仓库clone到本地。</p>
+<h2 id="hexo-和-sublime"><a href="#hexo-和-sublime" class="headerlink" title="hexo 和 sublime"></a>hexo 和 sublime</h2><p>hexo博客我之前用得挺顺溜的，也感觉有些作用，要在新机器上配下hexo。有时我想这些博客写在自己的印象笔记不也可以吗？写在github博客就是public权限了，权限放得越开，管理成本越小，人生于天地间，要是能同山川河流一样坦荡，我觉得是件很棒的事。言归正传，怎么在新机器上部署hexo呢。<br>我的博客编辑器用的是sublime，先整sublime，就是一堆插件，我在新机上安装sublime后，把原机器上的插件文件夹下的插件全拷过来了。<br><img src="http://media.qgchou.top/18-4-15/88201064.jpg"><br>把这个文件夹全拷过来就行了。然后我的markdown及其实时预览的插件在新机上就能用了。<br>hexo博客我托管在github上，先把这个仓库clone到本地。</p>
 <pre><code>https://github.com/qgchou/qgchou.github.io.git
 </code></pre><p>然后要是安装hexo的一些命令了。这里可以参考我的另外一篇关于hexo的文章《hexo学习》。<br>先要安装npm，然后才是hexo：  </p>
 <pre><code>npm install hexo  
@@ -401,7 +403,10 @@ npm install hexo-deployer-git
 <pre><code>cnpm install -g hexo-cli
 </code></pre><p>另外，我的博客发布用了一段js脚本，得要装一下js插件，<a href="http://zhujiegao.com/2015/12/06/automatic-backup/" target="_blank" rel="noopener">自动备份Hexo博客源文件</a></p>
 <pre><code>npm install --save shelljs
-</code></pre><p>上面一番设置后，就可以愉快地用sublime写博客了。</p>
+</code></pre><p>上面一番设置后，就可以愉快地用sublime写博客了。<br>公司电脑上公司的项目是用git，这里的博客也是用git，我想用不同的签名。<br>用命令：  </p>
+<pre><code>git config --local user.name &quot;Your Name&quot;  
+git config --local user.email you@example.com 
+</code></pre><p>在下面两个仓库设置一下本仓库的签名就可以了：<br><img src="http://media.qgchou.top/18-4-15/7288438.jpg"><br><img src="http://media.qgchou.top/18-4-15/96574551.jpg"></p>
 
       
     </div>

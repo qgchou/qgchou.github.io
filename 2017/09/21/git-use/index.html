@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="官方文档git命令的参数如何使用，见参考7，这是官方文档。 将服务器代码更到本地git checkout -- file1.md （该命令表示，把file1.md文件在工作区的修改全部撤销） git pull origin master （取回远程主机origin的master分支，与本地的当前分支合并） 上面的： git pull origin master 很常用！ 测试ssh是否添加成功ss">
+<meta name="description" content="官方文档git命令的参数如何使用，见参考7，这是官方文档。英文不好？有中文文档，见参考11。 将服务器代码更到本地git checkout -- file1.md （该命令表示，把file1.md文件在工作区的修改全部撤销） git pull origin master （取回远程主机origin的master分支，与本地的当前分支合并） 上面的： git pull origin master 很">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习使用git">
 <meta property="og:url" content="http://qgchou.com/2017/09/21/git-use/index.html">
 <meta property="og:site_name" content="qgchou">
-<meta property="og:description" content="官方文档git命令的参数如何使用，见参考7，这是官方文档。 将服务器代码更到本地git checkout -- file1.md （该命令表示，把file1.md文件在工作区的修改全部撤销） git pull origin master （取回远程主机origin的master分支，与本地的当前分支合并） 上面的： git pull origin master 很常用！ 测试ssh是否添加成功ss">
+<meta property="og:description" content="官方文档git命令的参数如何使用，见参考7，这是官方文档。英文不好？有中文文档，见参考11。 将服务器代码更到本地git checkout -- file1.md （该命令表示，把file1.md文件在工作区的修改全部撤销） git pull origin master （取回远程主机origin的master分支，与本地的当前分支合并） 上面的： git pull origin master 很">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://owyvgfyba.bkt.clouddn.com/17-10-25/90731445.jpg">
+<meta property="og:image" content="http://media.qgchou.top.com/17-10-25/90731445.jpg">
 <meta property="og:image" content="http://media.qgchou.top/18-4-15/73562552.jpg">
-<meta property="og:updated_time" content="2018-04-15T07:20:14.164Z">
+<meta property="og:updated_time" content="2018-04-15T08:17:10.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习使用git">
-<meta name="twitter:description" content="官方文档git命令的参数如何使用，见参考7，这是官方文档。 将服务器代码更到本地git checkout -- file1.md （该命令表示，把file1.md文件在工作区的修改全部撤销） git pull origin master （取回远程主机origin的master分支，与本地的当前分支合并） 上面的： git pull origin master 很常用！ 测试ssh是否添加成功ss">
-<meta name="twitter:image" content="http://owyvgfyba.bkt.clouddn.com/17-10-25/90731445.jpg">
+<meta name="twitter:description" content="官方文档git命令的参数如何使用，见参考7，这是官方文档。英文不好？有中文文档，见参考11。 将服务器代码更到本地git checkout -- file1.md （该命令表示，把file1.md文件在工作区的修改全部撤销） git pull origin master （取回远程主机origin的master分支，与本地的当前分支合并） 上面的： git pull origin master 很">
+<meta name="twitter:image" content="http://media.qgchou.top.com/17-10-25/90731445.jpg">
 
 
 
@@ -389,7 +389,7 @@
       
 
       
-        <h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><p>git命令的参数如何使用，见参考7，这是官方文档。</p>
+        <h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><p>git命令的参数如何使用，见参考7，这是官方文档。英文不好？有中文文档，见参考11。</p>
 <h2 id="将服务器代码更到本地"><a href="#将服务器代码更到本地" class="headerlink" title="将服务器代码更到本地"></a><a href="http://www.cnblogs.com/sunshine2016/p/5749098.html" target="_blank" rel="noopener">将服务器代码更到本地</a></h2><pre><code>git checkout -- file1.md （该命令表示，把file1.md文件在工作区的修改全部撤销）
 git pull origin master （取回远程主机origin的master分支，与本地的当前分支合并）
 </code></pre><p>上面的： <strong>git pull origin master</strong> 很常用！</p>
@@ -435,7 +435,7 @@ touch README
 </code></pre><p>表示将本地的master分支推送到远程origin主机<br>注意，分支推送顺序的写法是&lt;来源地&gt;:&lt;目的地&gt;，所以git pull是&lt;远程分支&gt;:&lt;本地分支&gt;，而git push是&lt;本地分支&gt;:&lt;远程分支&gt;。</p>
 <h3 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h3><p>git pull命令的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并<br>$ git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;<br>比如，<strong> 取回origin主机的next分支，与本地的master分支合并，需要写成下面这样：</strong><br><strong>git pull origin next:master </strong><br>如果远程分支是与当前分支合并，则冒号后面的部分可以省略：</p>
 <pre><code>git pull origin next
-</code></pre><h3 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h3><p>查看提交历史：<br><img src="http://owyvgfyba.bkt.clouddn.com/17-10-25/90731445.jpg" alt=""><br>只查看与某文件相关的日志：</p>
+</code></pre><h3 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h3><p>查看提交历史：<br><img src="http://media.qgchou.top.com/17-10-25/90731445.jpg" alt=""><br>只查看与某文件相关的日志：</p>
 <pre><code>git log README.md  
 </code></pre><p>加上参数-p，文件的前后差别就会显示在提交信息之后：</p>
 <pre><code>git log -p
@@ -518,6 +518,7 @@ Please, commit your changes or stash them before you can merge.
 <li><a href="http://blog.csdn.net/north1989/article/details/53314345" target="_blank" rel="noopener">Git–Remote远程仓库的使用</a></li>
 <li><a href="https://www.zhihu.com/question/27324031" target="_blank" rel="noopener">git 如何查看当前分支的upstream?</a></li>
 <li><a href="https://www.cnblogs.com/merray/p/6006411.html" target="_blank" rel="noopener">GIT-查看config配置信息</a></li>
+<li><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">Git-Documentation 中文版</a></li>
 </ol>
 
       
