@@ -296,6 +296,989 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/03/08/zookeeper-study/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/08/zookeeper-study/" itemprop="url">zookeeper学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T12:02:31+08:00">
+                2018-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/08/zookeeper-study/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/03/08/zookeeper-study/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/08/zookeeper-study/" class="leancloud_visitors" data-flag-title="zookeeper学习">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>zookeeper是一个典型的发布/订阅模式的分布式数据管理与协调框架，开发人员可以用它来进行分布式数据的发布和订阅，另一方面，通过zookeepre中丰富的节点类型进行交叉使用，配合watcher事件通知机制，可以非常方便地构建一系列分布式应用中都会涉及的核心功能，如数据发布/订阅，负载均衡，命名服务，分布式协调/通知，集群管理，Master选举，分布式锁和分布式队列等。</p>
+<p>zookeeper是Google Chubby的开源实现，zookeeper的设计目标是将那些复杂且容易出错的分布式一致性服务封装起来，构成一个高效可靠的原语集，并以一系列简单易用的接口给用户使用。</p>
+<p>zk将全量数据存储在内存中，以此来实现提交服务器吞吐，减少延迟的目的。<br>zk用来进行分布式环境的协调。<br>zk引入了Leader、Follower和Observer三种角色。<br>zk集群中所有机器通过一个Leader选举过程来选定一台被称为Leader的机器，Leader服务器为客户端提供读和写服务，除Leader外，其他机器包括Follower和Observer，Follower和Observer都能够提供读服务，唯一区别在于Observer机器不参与Leader选举过程，也不参与写操作的“过半写成功”策略，因此Observer可以在不影响写性能的情况下提升集群的读性能。<br>zk允许用户在指定节点上注册一些watcher(事件监听器)，并且在一些特定事件触发时，zk服务端将事件通知到感兴趣的客户端上去，该机制是zk实现分布式协调服务的重要特性。<br>zk已经得到了广泛的应用，诸如hadoop、Hbase、Storm和Solr等越来越多的大型分布式项目都已经将zk作为其核心组件。</p>
+<p>在Dubbo的实现中，对注册中心模块抽象封装，因此可以基于其提供的外部接口来实现各种不同类型的注册中心，例如数据库，zookeeper和Redis等。zk是一个树形结构的目录服务，支持变更推送，因此非常适合作为Dubbo服务的注册中心。</p>
+<h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><p>ZNode是zk中数据的最小单元，每个ZNode上都可以保存数据，同时还可以挂载子节点，因而构成了一个层次化的命名空间，我们称之为树。zk中有四种节点类型：<br>1.持久节点：persistent<br>创建后一直存在zk服务器上，直到有删除操作来主动清除这个节点。<br>2.持久顺序节点：persistent-sequential<br>在zk中，每个父节点会为它的第一级子节点维护一份顺序，用于记录每个子节点创建的先后顺序。<br>3.临时节点：Ephemeral<br>临时节点的生命周期和客户端的会话绑定到一起，如果客户端会话失效，那么这个节点会自动清理。zk规定了不能基于临时节点来创建节点，即临时节点只能作为叶子节点。<br>4.临时顺序节点：Ephemeral_sequential</p>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><p>在zk中，事务是指能够改变zk服务器状态的操作，我们称之为事务操作或更新操作，一般包括数据节点的创建和删除、数据节点内容更新和客户端会话创建与失效等操作。<br>每一个事务请求，zk都会为其分配一个全局唯一的事务ID，用ZXID表示，通常是一个64位的数字。每个ZXID对应了一次更新操作，从这些ZXID中可以间接识别出zk处理这些更新操作请求的全局顺序。</p>
+<h2 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h2><p>如果不同的系统或是同一系统的不同主机之间共享了一个或一组资源，那么访问这些资源的时候，往往需要通过一些互斥手段来防止彼此之间的干扰，以保证一致性。在这种情况下，就需要使用分布式锁了。<br>X锁和S锁的根本区别在于，加X锁后，数据对象只对一个事务可见，而加S锁后，数据对所有事务都可见。</p>
+<h3 id="排他锁（X锁）"><a href="#排他锁（X锁）" class="headerlink" title="排他锁（X锁）"></a>排他锁（X锁）</h3><p>zk上用一个数据节点来表示一个锁，例如 /exclusive_lock/lock 节点就可以定义为一个锁。<br>在需要获取排他锁时，所有客户端都会通过调用create()方法，在 /exclusive_lock 节点下创建临时子节点 /exclusive_lock/lock，zk会保证在所有的客户端中最终只有一个客户端能创建成功，那么就可以认为该客户端获取到了锁。同时，所有没有获取到锁的客户端就需要到 /exclusive_lock 节点上注册一个子节点变更的 watcher 监听，以便实时监听到 lock 节点的变更情况。<br>释放锁，有两种情形：</p>
+<ol>
+<li>当前获取到锁的客户端机器宕机，那个zk上这个临时节点就会被移除。</li>
+<li>正常执行完业务逻辑后，客户端就会主动将自己创建的临时节点删除。  </li>
+</ol>
+<p>之前获取到锁的客户端释放锁后，zk会通知所有在 /exclusive_lock 节点上注册了子节点变更 watcher 监听的客户端，这些客户端在接到到通知后，再次重新发起分布式锁的获取，即重复“获取锁”过程。</p>
+<h3 id="共享锁（S锁）"><a href="#共享锁（S锁）" class="headerlink" title="共享锁（S锁）"></a>共享锁（S锁）</h3><p>用一个临时顺序子节点表示一个共享锁，例如“/shared_lock/[Hostname]-请求类型-序号”。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li>从Paxos到Zookeeper分布式一致性原理与实践，倪超，出版时间：2015-02-01</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/03/07/女生节二维码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/07/女生节二维码/" itemprop="url">女生节二维码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T22:23:35+08:00">
+                2018-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/07/女生节二维码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/03/07/女生节二维码/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/07/女生节二维码/" class="leancloud_visitors" data-flag-title="女生节二维码">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>3.7号女生节，网上一些学校拉了些祝福标语，微博上看到了个视频，里面各种祝福语，然后，一个二维码一闪而过。<br><img src="http://media.qgchou.top/18-3-8/92473382.jpg"><br>我机智地截了个图发到自己微信上，然后识别二维码，打开了一个页面：<br><img src="http://media.qgchou.top/18-3-8/42760983.jpg"><br>挺有创意的啊，怎么做的，我在浏览器端打开看了下网址：</p>
+<pre><code>https://morestory.github.io/morestory/
+</code></pre><p>原来是用的github，源码这么简单，假设账户名为AA，在B目录下建一个index.md，然后把静态页面逻辑写在这个index.md中。然后访问 AA.github.io/B 这么简单就能看到渲染后的H5页面，我试验了一下失败了。看了下morestory的这个仓库，有另一个分支，里面提到jekyll，难道是用到了jekyll？有待研究。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/03/07/todo-miao_sha/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/07/todo-miao_sha/" itemprop="url">《Java秒杀系统方案优化 高性能高并发实战》学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T17:42:45+08:00">
+                2018-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/07/todo-miao_sha/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/03/07/todo-miao_sha/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/07/todo-miao_sha/" class="leancloud_visitors" data-flag-title="《Java秒杀系统方案优化 高性能高并发实战》学习笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="spring-boot"><a href="#spring-boot" class="headerlink" title="spring-boot"></a>spring-boot</h2><p>这个项目是基于spring-boot来做的，教了如何打包成jar包和war包，spring-boot内置了tomcat，一个spring-boot项目运行起来非常方便。</p>
+<h2 id="数据校验"><a href="#数据校验" class="headerlink" title="数据校验"></a>数据校验</h2><p>JSR-303是一个数据验证的规范，引入依赖spring-boot-starter-validation，就可以在后台做各种数据校验，还可以自定义验证器。项目中定义了一个验证器IsMobile，验证是不是一个合法的手机号。</p>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>这个项目中一些代码的封装方法值得学习，用类com.imooc.miaosha.result.Result<t>统一封装json接口数据。<br>异常类com.imooc.miaosha.exception.GlobalException 和 com.imooc.miaosha.exception.GlobalExceptionHandler 统一处理各种异常情形，从而接口总是能返回json串。<br>统一异常处理可以参考：<a href="https://www.cnblogs.com/ssslinppp/p/7606038.html" target="_blank" rel="noopener">Controller层方法，进行统一异常处理</a><br>有两种解决方案：通知控制器@ControllerAdvice或者使用AOP。项目中用的是通知控制器。<br>项目中GlobalExceptionHandler类定义了异常处理逻辑，对类加了注解：</t></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@ControllerAdvice</span></div><div class="line"><span class="meta">@ResponseBody</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GlobalExceptionHandler</span> </span>&#123;&#125;</div></pre></td></tr></table></figure>
+<p>很多博客里说用@RestControllerAdvice注解，这样就可以不用加@ResponseBody了。<br>@RestControllerAdvice和@ControllerAdvice的区别见：  </p>
+<ol>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/RestControllerAdvice.html" target="_blank" rel="noopener">Annotation Type RestControllerAdvice</a></li>
+<li><a href="https://stackoverflow.com/questions/43124391/restcontrolleradvice-vs-controlleradvice/43124517" target="_blank" rel="noopener">@RestControllerAdvice vs @ControllerAdvice</a></li>
+</ol>
+<p>@RestControllerAdvice：</p>
+<pre><code>A convenience annotation that is itself annotated with @ControllerAdvice and @ResponseBody.
+</code></pre><h2 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h2><p>见识了redis的强大之处，项目里封装了一个用redis存取对象的方法，先用com.alibaba.fastjson.JSON将对象序列化成json字符串，然后将json字符串存在redis中。<br>redis缓存可以设置过期时间，利用这一特性，项目中有多处应用：图片验证码可以用redis缓存，一定时间后失效；用户登录session可以保存在redis中，一段时间后失效；接口限流防刷，例如一个用户1分钟内对同一个接口的请求不能超过100次。项目中讲了很多页面优化的方法，其中很多方法是用到了redis，例如页面缓存，对象缓存等。</p>
+<h2 id="分布式session"><a href="#分布式session" class="headerlink" title="分布式session"></a>分布式session</h2><p>将登录用户的信息保存在redis中，实现分布式session。<br>用户登录时，生成一个uuid，作为redis的key，value是用户信息，并且将这个key放在cookie中，然后response.addCookie(cookie)，把cookie返回给浏览器。<br>拦截器中，在控制器请求处理前，会从redis中取到用户信息，key从哪里来的呢，一个http请求会在cookie或者请求参数中带上前面的key。</p>
+<h2 id="JMeter"><a href="#JMeter" class="headerlink" title="JMeter"></a>JMeter</h2><p>使用JMeter进行压测</p>
+<h2 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h2><p>之前学过activemq，这里又学习了一下rabbitmq。<br>秒杀操作的逻辑是先在redis中预减库存，然后再去操作数据库。<br>为了减轻redis的压力，用本地HashMap保存了可秒杀商品的剩余数量，相当于对库存做了个内存标记。<br>操作数据库也是不是直接同步去访问，而是使用了消息列队异步访问，把一条秒杀请求放入消息队列，然后再慢慢处理。<br>rabbitmq有四种交换机模式：Direct模式、Topic模式、Fanout模式、Header模式。<br>项目中用的是最简单的Direct模式。</p>
+<h2 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h2><p>拦截器 com.imooc.miaosha.access.AccessInterceptor，接口方法真正的业务逻辑之前常有些共同的逻辑，比如判断用户是否登录，以及对接口的限流防刷控制，可以一并放在拦截器中。<br>项目用的是spring-boot，不用写各种xml配置文件了，拦截器在类com.imooc.miaosha.config.WebConfig中进行注册。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebConfig</span>  <span class="keyword">extends</span> <span class="title">WebMvcConfigurerAdapter</span></span>&#123;&#125;</div></pre></td></tr></table></figure>
+<p>如果在处理接口跨域问题，也是在这个类中进行配置，类WebMvcConfigurerAdapter中有抽象方法public void addCorsMappings(CorsRegistry registry) {}，实现一下就可以了。</p>
+<h2 id="静态分离"><a href="#静态分离" class="headerlink" title="静态分离"></a>静态分离</h2><p>java web项目中前端页面的展示，以及用得比较多的是返回一个jsp，后台控制器方法绑定参数，把jsp渲染好后返回给前台。现在主流的做法是，前端用纯html编写，后台返回json串，前台用异步请求到json格式的接口数据，然后填充到html中。这就是静态分离。</p>
+<p>此外还有关于加盐加密、图形验证码等知识。</p>
+<h2 id="秒杀流程"><a href="#秒杀流程" class="headerlink" title="秒杀流程"></a>秒杀流程</h2><ol>
+<li>秒杀活动开始之前有个活动倒计时，时间到了则会放开秒杀的权限，并生成一个验证码展示在前面页面，并把验证结果存在redis中，这里利用redis有过期时间的特性，也给验证码的缓存加了个过期时间。这里的redis缓存用的是redis的string类型。</li>
+<li>在秒杀之前先要填一个验证码verifyCode，点击秒杀按钮时，先发送ajax请求到后台获取真实的秒杀地址path，这里秒杀地址是隐藏的，目的是防止有人恶意刷秒杀接口。所谓隐藏地址，其实是在请求地址中加一段随机字符串，这段字符串是变化的，因此秒杀请求地址是动态的；</li>
+<li>先说下如何获取真实的秒杀地址，后台先访问redis，验证一下这个验证码有没有过期以及这个verifyCode是不是正确，验证码验证通过后，先删除这个验证码缓存，然后生成真实地址；</li>
+<li>真实地址随机字符串由uuid以及md5加密生成，并且保存在redis中，并且设置了有效期；</li>
+<li>从浏览器端向秒杀地址发起请求，带上path参数去后台调用真正的秒杀接口，下面是秒杀接口的逻辑；</li>
+<li>访问redis，验证path有没有过期，以及是不是正确。这里验证path以及上面的校验验证码，都是用userId对应生成的一个key值去取redis中的数据；</li>
+<li>path验证通过后，先访问内存标识，看秒杀的这个商品有没有卖完。每一种参与秒杀活动的商品都在内存里用HashMap设置了一个标识，标识某个商品id商品是否卖完了。这里的是否卖完的内存标识设置以及每种参与秒杀商品的库存存入redis是在系统启动时做的；</li>
+<li>如果内存标识中这个商品没有卖完，则要看这个用户在这次活动中是否已经秒杀到过这种商品，因为我们的秒杀规则是一个用户id对于某个商品id的商品只能秒杀一件。如何判断该用户有没有秒杀过这件商品呢，秒杀记录也保存在redis缓存中；</li>
+<li>如果判断秒杀过则返回提示，如果没有秒杀过，继续；</li>
+<li>上面说过系统加载时redis中保存了各商品对应的库存，这里用到redis的原子操作的方法decr，将对应商品的库存减1，此时数据库时的库存还没有减，因此是预减库存；</li>
+<li>desc方法返回该商品此时的库存，如果小于0，说明商品已经卖完了，此次秒杀无效，并且设置该商品的内存标识为true，表示已卖完；</li>
+<li>正确地预减库存后，然后就要真正操作数据库了，数据库一般是性能瓶颈，比较耗时，因此决定用异步方式处理。对于每一条秒杀请求存入消息队列RabbitMQ中，消息体中要包含哪个用户秒杀哪个商品的信息，这里是封装了一个消息体类，这样一个秒杀请求就进入了消息队列，一个秒杀请求还没有完成，真正的秒杀请求的完成得要持久化到数据库，生成订单，减了数据库的库存才能算数，这时在客户端显示的一般是排队中，比如以前在抢购小米手机时，我就看到这样的展示，过一会再刷新页面就显示没抢到；</li>
+<li>消息队列处理秒杀请求。先从消息体中解析出用户id和商品id，查数据库看这个商品是否卖完了，查数据库看该用户对于这个商品是否有过秒杀记录；</li>
+<li>数据库减库存，数据库生成订单，这两项持久化地写数据库操作放在同一个事务中，要么都执行成功，要么都失败。其中生成订单又是另外一个事务中，在这个生成订单事务中，会分别在订单表、秒杀订单表生成一条记录，并把秒杀记录对象，包括秒杀单号、订单号、用户id、商品id，存入redis中。如果数据库减库存失败，表明商品卖完了，则要在redis中设置该商品已卖完的标识。spring项目中使用事务，只用在相应的方法前面加个注解@Transactional，那么这个方法里的操作都在一个事务里了；</li>
+<li>ajax发起秒杀请求，秒杀请求的处理逻辑最后也只是把这条请求放入消息队列，并不能返回是否秒杀成功的结果。因此，当秒杀请求正确响应后，即请求放入消息队列后，需要另外一个请求去轮询秒杀结果，秒杀成功的标志是生成秒杀订单，并把秒杀订单对象放入redis中。所以轮询秒杀结果，只用去轮询redis中是否有对应于该用户的该商品的秒杀订单对象，如果有，则表明秒杀成功，并在前台给出提示。  </li>
+</ol>
+<p>上面的秒杀流程对应的流程图如下：<br>步骤1到12，主体是redis预减库存，生成消息队列：<br><img src="http://media.qgchou.top/18-3-14/72751281.jpg">  </p>
+<p>步骤13到14是处理消息队列：<br><img src="http://media.qgchou.top/18-3-14/11616668.jpg">  </p>
+<p>步骤15，是客户端请求秒杀结果：<br><img src="http://media.qgchou.top/18-3-14/60772984.jpg">  </p>
+<p>秒杀场景是从客户端的ajax请求发起的，上面15个步骤可以用下面的js串起来：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//秒杀按钮触发下面的js方法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMiaoshaPath</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> goodsId = $(<span class="string">"#goodsId"</span>).val();</div><div class="line">    g_showLoading();</div><div class="line">    $.ajax(&#123;</div><div class="line">        url:<span class="string">"/miaosha/path"</span>,</div><div class="line">        type:<span class="string">"GET"</span>,</div><div class="line">        data:&#123;</div><div class="line">            goodsId:goodsId,</div><div class="line">            verifyCode:$(<span class="string">"#verifyCode"</span>).val()</div><div class="line">        &#125;,</div><div class="line">        success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">            <span class="keyword">if</span>(data.code == <span class="number">0</span>)&#123;</div><div class="line">                <span class="keyword">var</span> path = data.data;</div><div class="line">                <span class="comment">//获取到秒杀地址后，发起秒杀请求</span></div><div class="line">                doMiaosha(path);</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                layer.msg(data.msg);</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        error:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            layer.msg(<span class="string">"客户端请求有误"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//发起秒杀请求</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doMiaosha</span>(<span class="params">path</span>)</span>&#123;</div><div class="line">    $.ajax(&#123;</div><div class="line">        url:<span class="string">"/miaosha/"</span>+path+<span class="string">"/do_miaosha"</span>,</div><div class="line">        type:<span class="string">"POST"</span>,</div><div class="line">        data:&#123;</div><div class="line">            goodsId:$(<span class="string">"#goodsId"</span>).val()</div><div class="line">        &#125;,</div><div class="line">        success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">            <span class="keyword">if</span>(data.code == <span class="number">0</span>)&#123;</div><div class="line">                <span class="comment">//获取秒杀结果</span></div><div class="line">                getMiaoshaResult($(<span class="string">"#goodsId"</span>).val());</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                layer.msg(data.msg);</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        error:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            layer.msg(<span class="string">"客户端请求有误"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;); </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//获取秒杀结果</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMiaoshaResult</span>(<span class="params">goodsId</span>)</span>&#123;</div><div class="line">    g_showLoading();</div><div class="line">    $.ajax(&#123;</div><div class="line">        url:<span class="string">"/miaosha/result"</span>,</div><div class="line">        type:<span class="string">"GET"</span>,</div><div class="line">        data:&#123;</div><div class="line">            goodsId:$(<span class="string">"#goodsId"</span>).val(),</div><div class="line">        &#125;,</div><div class="line">        success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">            <span class="keyword">if</span>(data.code == <span class="number">0</span>)&#123;</div><div class="line">                <span class="keyword">var</span> result = data.data;</div><div class="line">                <span class="keyword">if</span>(result &lt; <span class="number">0</span>)&#123;</div><div class="line">                    layer.msg(<span class="string">"对不起，秒杀失败"</span>);</div><div class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(result == <span class="number">0</span>)&#123;<span class="comment">//继续轮询</span></div><div class="line">                    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                        getMiaoshaResult(goodsId);</div><div class="line">                    &#125;, <span class="number">200</span>);</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    layer.confirm(<span class="string">"恭喜你，秒杀成功！查看订单？"</span>, &#123;<span class="attr">btn</span>:[<span class="string">"确定"</span>,<span class="string">"取消"</span>]&#125;,</div><div class="line">                            <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                                <span class="built_in">window</span>.location.href=<span class="string">"/order_detail.htm?orderId="</span>+result;</div><div class="line">                            &#125;,</div><div class="line">                            <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                                layer.closeAll();</div><div class="line">                            &#125;);</div><div class="line">                &#125;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                layer.msg(data.msg);</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        error:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            layer.msg(<span class="string">"客户端请求有误"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="内存标记的分布式一致性"><a href="#内存标记的分布式一致性" class="headerlink" title="内存标记的分布式一致性"></a>内存标记的分布式一致性</h3><p>上面采用内存标记的方式，本地hashmap变量，如果分布式场景，多份内存标记，如何实现分布式一致性？<br>两种常用办法：  </p>
+<ol>
+<li>所有的进程去访问一个共享内存，这个共享内存是虚拟的。</li>
+<li>每一个机器都有一个存储内容的本地副本，读取操作我们可以从本地内存进行读取，写入操作我们可以现在本地下入之后，再通过广播向其他的内存块发送update消息。</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://coding.imooc.com/class/168.html" target="_blank" rel="noopener">Java秒杀系统方案优化 高性能高并发实战</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/03/05/web-optimize/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/05/web-optimize/" itemprop="url">web开发中的优化技术</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-05T21:24:31+08:00">
+                2018-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/05/web-optimize/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/03/05/web-optimize/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/05/web-optimize/" class="leancloud_visitors" data-flag-title="web开发中的优化技术">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>高并发的网页应用中，每秒内查询次数QPS(Query Per Second)是个很重要的性能指标。数据库查询是代码层面的性能瓶颈，此外还有http连接也会产生性能开销。提高服务器性能的一个重要技术就是用缓存。浏览器缓存，CDN缓存，页面缓存，对象缓存等，其中redis是实现页面缓存和对象缓存的常用方法。浏览器缓存一般结合web开发中的静态分离技术。</p>
+<p>用jsp还是html？<br>jsp中填充数据是同步加载，因此页面响应有时会很慢。第一次请求jsp，必须要在web服务器中编译成servlet，第一次运行会较慢。每次请求jsp都是访问servlet再用输出流输出的html页面，效率没有直接使用html高。静态分离后，页面用纯html编写，异步请求服务器的数据，然后填充到页面。</p>
+<p>使用jsp是在服务端把视图渲染好后再返回给浏览器，用户发送一个http请求，请求首先会进入控制器，然后控制器去获取数据并将其封装为模型，最后将模型传递到视图中进行展现。这种方式的mvc交互过程如下图：<br><img src="http://media.qgchou.top/18-3-7/46604374.jpg">  </p>
+<p>使用静态分离后，从浏览器发送AJAX请求，然后服务端接受该请求并返回JSON数据返回给浏览器，最后在浏览器中进行界面渲染。这种方式的mvc交互过程如下图：<br><img src="http://media.qgchou.top/18-3-7/79377041.jpg"><br>上图的MVC模式简化为以下前后端分离模式：<br><img src="http://media.qgchou.top/18-3-7/1004233.jpg">  </p>
+<h2 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h2><p>见参考2，参考1中也有提及。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://www.csdn.net/article/2015-10-25/2826033" target="_blank" rel="noopener">从MVC到前后端分离</a></li>
+<li><a href="https://www.cnblogs.com/007sx/p/5785804.html" target="_blank" rel="noopener">服务器端解决跨域问题的三种方法</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/03/01/redis&memcache/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/01/redis&memcache/" itemprop="url">redis&memcache学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T16:34:09+08:00">
+                2018-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/01/redis&memcache/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/03/01/redis&memcache/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/01/redis&memcache/" class="leancloud_visitors" data-flag-title="redis&memcache学习">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h2><p>redis和memcache是两种流行的分布式缓存框架。<br>redis-benchmark工具可以做压测  </p>
+<p>redis做缓存，可以有页面缓存，对象级缓存。对象级缓存，如果数据对象有更新，比如修改了用户密码，则要把缓存更新掉，否则会出现数据不一致。</p>
+<h3 id="redis-cli"><a href="#redis-cli" class="headerlink" title="redis-cli"></a>redis-cli</h3><p>redis客户端 redis-cli</p>
+<pre><code>//清空 redis缓存
+flushdb
+</code></pre><p>redis缓存可以设置一个有效期，利用这个特性，redis可应用于很多场景：图片验证码可以用redis缓存，一定时间后失效；用户登录session可以保存在redis中，一定时间后失效；接口限流防刷，例如一个用户1分钟内对同一个接口的请求不能超过100次，可以将某用户对某接口的访问次数存在redis中，每访问一次value加1。</p>
+<h3 id="redis的优势"><a href="#redis的优势" class="headerlink" title="redis的优势"></a>redis的优势</h3><ol>
+<li>性能极高<br>Redis能读的速度是110000次/s,写的速度是81000次/s 。</li>
+<li>丰富的数据类型<br>Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及zset(sorted set：有序集合)。</li>
+<li>原子<br>Redis的所有操作都是原子性的，意思就是要么成功执行要么失败完全不执行。单个操作是原子性的。多个操作也支持事务，即原子性，通过MULTI和EXEC指令包起来。Redis的操作之所以是原子性的，是因为Redis是单线程的。</li>
+<li>丰富的特性<br>Redis还支持 publish/subscribe, 通知, key 过期等等特性。</li>
+</ol>
+<h3 id="redis的单线程架构"><a href="#redis的单线程架构" class="headerlink" title="redis的单线程架构"></a>redis的单线程架构</h3><p>Redis客户端对服务端的每次调用都经历了发送命令，执行命令，返回结果三个过程。其中执行命令阶段，由于Redis是单线程来处理命令的，所有每一条到达服务端的命令不会立刻执行，所有的命令都会进入一个队列中，然后逐个被执行。并且多个客户端发送的命令的执行顺序是不确定的。但是可以确定的是不会有两条命令被同时执行，不会产生并发问题，这就是Redis的单线程基本模型。</p>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ol>
+<li>redis支持数据的持久化，可以将内存中的数据保持在磁盘中，重启的时候可以再次加载进行使用。memcache不支持数据的持久化。<br>例如，redis客户端 redis-cli，执行 shutdown save，关闭redis服务，在下次重新启动redis服务后，上次保存的内存还能找得到。</li>
+</ol>
+<h2 id="进程线程模型"><a href="#进程线程模型" class="headerlink" title="进程线程模型"></a>进程线程模型</h2><ol>
+<li>单进程单线程模型：redis</li>
+<li>多进程单线程模型：Nginx</li>
+<li>单进程多线程模型：Memcached</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://www.cnblogs.com/Hondsome/p/5962144.html" target="_blank" rel="noopener">谈谈redis,memcache的区别和具体应用场景</a></li>
+<li><a href="http://blog.csdn.net/sunhuiliang85/article/details/73656830" target="_blank" rel="noopener">Redis单线程架构</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/02/07/oauth2.0-study/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qgchou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/default_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qgchou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/07/oauth2.0-study/" itemprop="url">学习oauth2.0</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-07T19:37:02+08:00">
+                2018-02-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络/" itemprop="url" rel="index">
+                    <span itemprop="name">网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/07/oauth2.0-study/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/02/07/oauth2.0-study/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/02/07/oauth2.0-study/" class="leancloud_visitors" data-flag-title="学习oauth2.0">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最喜欢参考3 的表述。参考3 最后给了个github项目地址，可惜博主后来删了这个仓库，我在其他用户的仓库里看到这个项目，于是folk到我的仓库了，见参考4，用springBoot写了两个子项目分别模拟豆瓣和QQ，运行main函数即可启动springBoot。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="http://jinnianshilongnian.iteye.com/blog/2038646" target="_blank" rel="noopener">第十七章 OAuth2集成——《跟我学Shiro》</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank" rel="noopener">理解OAuth 2.0</a></li>
+<li><a href="https://www.cnblogs.com/flashsun/p/7424071.html" target="_blank" rel="noopener">一张图搞定OAuth2.0</a></li>
+<li><a href="https://github.com/qgchou/dataU-OAuth" target="_blank" rel="noopener">dataU-OAuth</a></li>
+<li><a href="http://blog.csdn.net/jing12062011/article/details/78147306" target="_blank" rel="noopener">oauth原理简述</a></li>
+<li><a href="http://blog.csdn.net/seccloud/article/details/8192707" target="_blank" rel="noopener">帮你深入理解OAuth2.0协议</a></li>
+<li><a href="http://open.weibo.com/wiki/%E6%8E%88%E6%9D%83%E6%9C%BA%E5%88%B6%E8%AF%B4%E6%98%8E?sudaref=jinnianshilongnian.iteye.com&amp;display=0&amp;retcode=6102" target="_blank" rel="noopener">授权机制说明-微博API</a></li>
+<li><a href="http://open.weibo.com/wiki/%E5%BE%AE%E5%8D%9AAPI" target="_blank" rel="noopener">API-微博API</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/02/04/git_公钥/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -867,954 +1850,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/02/01/concurrent-study/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qgchou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/default_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qgchou">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/01/concurrent-study/" itemprop="url">java开发中的并发</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T11:57:50+08:00">
-                2018-02-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/02/01/concurrent-study/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/02/01/concurrent-study/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/02/01/concurrent-study/" class="leancloud_visitors" data-flag-title="java开发中的并发">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>彩票app有个排行榜，显示中奖率，后台程序一个线程取购彩记录，计算中奖率时，可能此刻另一个线程在更新中奖率。所以对中奖率的操作需要是线程安全的。  </p>
-<p>白名单/黑名单。黑名单可以使用 java.util.concurrent.CopyOnWriteArraySet。CopyOnWrite 并发容器即写时复制的容器，适用于读多写少的场景。在往容器中添加元素的时候，不是直接往容器中添加，而是将当前容器进行 Copy，复制出一个新的容器，然后往新的容器里添加元素，添加完之后，再将原容器的引用指向新的容器。这样做的好处是我们可以对 CopyOnWrite 容器进行并发地读，而不需要加锁，因为当前容器不会添加任何元素。所以 CopyOnWrite 容器也是一种读写分离的思想，读和写不同的容器。CopyOnWrite 有数据一致性问题。CopyOnWrite 容器只能保证数据的最终一致性，不能保证数据的实时一致性。所以如果你希望写入的数据马上能读到，请不要使用 CopyOnWrite 容器。</p>
-<h2 id="几个好的资源"><a href="#几个好的资源" class="headerlink" title="几个好的资源"></a>几个好的资源</h2><p>阿里在nignx的基础上进行改进并开源的服务器 <a href="https://tengine.taobao.org/" target="_blank" rel="noopener">tengine</a><br>阿里有开源的中间件 <a href="http://www.mycat.io/" target="_blank" rel="noopener">mycat</a>，数据库分库分表需求时可以考虑下。</p>
-<h2 id="java内存模型"><a href="#java内存模型" class="headerlink" title="java内存模型"></a>java内存模型</h2><p>Java Memory Model (JAVA 内存模型）描述线程之间如何通过内存(memory)来进行交互。 具体说来， JVM中存在一个主存区（Main Memory或Java Heap Memory），对于所有线程进行共享，而每个线程又有自己的工作内存（Working Memory），工作内存中保存的是主存中某些变量的拷贝，线程对所有变量的操作并非发生在主存区，而是发生在工作内存中，而线程之间是不能直接相互访问，变量在程序中的传递，是依赖主存来完成的。<br>对JMM的介绍，参考3和参考4的文章写得很好，一下子把JMM和JVM的关系讲清楚了。参考3中对内存交互操作：Lock(锁定)/Read(读取)/Load(加载)/Use(使用)/Assign(赋值)/Store(存储)/Write(写入)/Unlock(解锁)，做了精辟地总结，让人印象深刻。简单地讲，JVM的垃圾回收器处理的是堆区的内存，这里的堆区包括共享堆和方法区，这个堆区就对应了JMM中的主存区，为所有线程共享。JVM中的栈区就对应了JMM中每个线程自己的工作内存。</p>
-<h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h2><p>保证了线程可以正确地读取其他线程写入的值。volatile只提供了内存可见性，而没有提供原子性。synchronized作为一种同步手段，解决java多线程的执行有序性和内存可见性。</p>
-<h2 id="原子操作：atomic"><a href="#原子操作：atomic" class="headerlink" title="原子操作：atomic"></a>原子操作：atomic</h2><p>java.util.concurrent.atomic包里，有一批原子处理类，主要用于在高并发环境下的高效程序处理，这些处理类包括：<br>AtomicInteger、AtomicLong等。<br>原子操作atomic的实现原理，是利用CPU的比较并交换（即CAS）和非阻塞算法。如果查看AtomicInteger的源码，会发现有些是通过调用JNI的代码实现的。JNI（Java Native Interface）为Java本地调用，允许java调用其他语言。而CAS（compareAndSwapInt）就是借助C来调用CPU底层指令实现的。</p>
-<h2 id="Fork-Join框架"><a href="#Fork-Join框架" class="headerlink" title="Fork/Join框架"></a>Fork/Join框架</h2><p>Fork/Join框架是Java7提供的一个用于并行执行任务的框架，是一个把大任务分割成若干个小任务，最终汇总每个小任务结果后得到大任务结果的框架。Fork就是把一个大任务切分成若干个子任务并行地执行，Join就是合并这些子任务的执行结果，最后得到这个大任务的结果。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="http://www.infoq.com/cn/articles/java-memory-model-1" target="_blank" rel="noopener">深入理解Java内存模型（一）——基础</a></li>
-<li>《Java并发编程从入门到精通》，张振华，清华大学出版社，2015年7月第一版</li>
-<li><a href="http://blog.csdn.net/sc313121000/article/details/40266531" target="_blank" rel="noopener">jvm主内存与工作内存，内存模型反映的java多线程问题</a></li>
-<li><a href="http://blog.csdn.net/lzn51/article/details/71799189" target="_blank" rel="noopener">浅析jvm与jmm模型结构与关系</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/02/01/jvm-study/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qgchou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/default_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qgchou">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/01/jvm-study/" itemprop="url">jvm内存管理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T10:35:12+08:00">
-                2018-02-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/02/01/jvm-study/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/02/01/jvm-study/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/02/01/jvm-study/" class="leancloud_visitors" data-flag-title="jvm内存管理">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>jvm以分代的模式对内存进行管理。</p>
-<h2 id="永久代"><a href="#永久代" class="headerlink" title="永久代"></a>永久代</h2><p>方法区属于永久代。方法区在放装载的类数据信息，包括运行时常量池、字段信息、方法信息、静态变量。</p>
-<h2 id="jvm-参数"><a href="#jvm-参数" class="headerlink" title="jvm 参数"></a>jvm 参数</h2><p>-Xss 每个线程的栈的大小<br>-Xms 初始堆大小<br>-Xmx 最大堆大小<br>-Xmn 新生代的堆大小  </p>
-<p>-XX:PermSize 设定内存的永久区的初始大小<br>-XX:MaxPermSize 永久区的最大值<br>-XX:NewSize 新生代的初始大小<br>-XX:MaxNewSize 新生代的最大值<br>-XX:NewRatio 年轻代（包括Eden和两个Survivor区）与年老代的比值（除去持久代）<br>-XX:SurvivorRatio Eden和Survivor区的大小比值</p>
-<h2 id="jvm分析工具"><a href="#jvm分析工具" class="headerlink" title="jvm分析工具"></a>jvm分析工具</h2><h3 id="jstat"><a href="#jstat" class="headerlink" title="jstat"></a>jstat</h3><p>jstat命令可以查看堆内存各部分的使用量,以及加载类的数量。</p>
-<pre><code>jstat -gc pid
-</code></pre><p>上面命令可以显示gc的信息，查看gc的次数及时间。其中最后五项，分别是 young gc的次数，young gc的时间，full gc的次数，full gc的时间，gc的总时间。</p>
-<h3 id="jstack"><a href="#jstack" class="headerlink" title="jstack"></a>jstack</h3><p>jstack可以定位到线程堆栈，根据堆栈信息我们可以定位到具体代码<br>下面来一个实例找出某个Java进程中最耗费CPU的Java线程并定位堆栈信息<br>先用 ps -ef|grep ‘xxx’<br>比如得到进程ID为21711<br>第二步，找出该进程内最耗CPU的线程<br>用 top -Hp pid<br>找到cpu最耗时的线程pid为21742<br>21742对应的16进制是54ee<br>printf “%x\n” 21742，即可将十进制转化为十六进制数。<br>然后jstack上场了，它用来输出进程21711的堆栈信息，然后根据线程ID的十六进制值grep，  </p>
-<pre><code>jstack 21711 | grep 54ee
-</code></pre><p>这样就打印出了最耗时线程的堆栈信息。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="https://www.cnblogs.com/chengJAVA/p/5821218.html" target="_blank" rel="noopener">JVM调优之jstack找出最耗cpu的线程并定位代码</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/02/01/java标记接口/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qgchou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/default_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qgchou">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/01/java标记接口/" itemprop="url">java标记接口</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T10:08:20+08:00">
-                2018-02-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/02/01/java标记接口/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/02/01/java标记接口/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/02/01/java标记接口/" class="leancloud_visitors" data-flag-title="java标记接口">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Java中常用的三个标记接口分别是:RandomAccess、Cloneable、Serializable。标记接口的一个显著标志是没有任何方法。当某个类实现某个标记接口的时候,我们就认为这个类拥有了接口标记的某种功能。<br>考虑接口 Cloneable，它的作用是标记该对象是否拥有克隆的能力，但是，java.lang.Object类中本身已经有了一个方法：  </p>
-<pre><code>protected native Object clone()  throws CloneNotSupportedException
-</code></pre><p>按道理来说的话每一个类都应该可以运行clone方法才对呀，为什么还需要这样一个标记接口呢？接口就是用来标记某个类拥有了哪些功能、特性，而标记接口则是在面向对象的角度来看，更高级的一种抽象：即使你拥有这个方法也不行，因为你没有这个功能的标记接口，所以在调用clone方法的过程中，如果对象没有实现Cloneable接口，那么虚拟机就会抛出一个CloneNotSupportedException异常。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="https://www.cnblogs.com/xinhuaxuan/p/6349165.html" target="_blank" rel="noopener">内功心法 – Java标记接口</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/30/encryption-start/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qgchou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/default_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qgchou">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/30/encryption-start/" itemprop="url">网络传输中的密码学</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-30T19:38:40+08:00">
-                2018-01-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/30/encryption-start/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/30/encryption-start/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/01/30/encryption-start/" class="leancloud_visitors" data-flag-title="网络传输中的密码学">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>api用于服务器端和客户端之间通信。有些数据比较敏感，在设计api时需要进行加密处理。</p>
-<p>例如，用户登录密码，服务器上是不会明文存储用户登录密码的，一种做法是，对明文密码加盐后进行md5加密，得到的字符串存到用户表的密码字段。</p>
-<p>有些数据在传输过程中，不能明文传输，比如，有些应用中可以用电话卡来充值自己的账户，这样app客户端就会把卡号和密码传给服务器。如果这个包被截获了，就能随意使用这个电话卡。因此，卡号和密码在传输前，在客户端就要进行加密，在服务器端解密传过来的数据，然后验证这个卡号和密码的有效性，完成充值过程。</p>
-<p>有些服务是付费的，比如彩票投注接口，帮下游出票，然后收取佣金，下游发来投注请求，要不要出票呢。这里会先验证发送者的身份，要求发送方做数字签名，并将签名带在请求中传到服务器，服务器验证签名，确认请求用户的合法性。</p>
-<p>由上可知，一个前后端分离的系统，后端为前端提供数据时，不仅仅是简单地通过http协议将前端需要的数据以json格式传过去就行了，还要考虑很多安全问题，根本原因是，我们的传输介质是不可靠的。因此网络上如何安全地进行数据传输是个好课题。</p>
-<h2 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h2><p>发送方和接收方用同一个密钥进行加密解密。优点，速度快<br>常见的对称加密算法有：DES（Data Encryption Standard）</p>
-<h2 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h2><p>该加密方式规定了密钥需要有一对儿，一个公钥（Public Key)和 一个私钥（Private Key/Security Key),如果用公钥加密信息，就需要用相同配对的私钥才能解密，反之亦然。<br>通信双方用非对称加密进行通信，怎么取得对方的公钥呢？双方需要一个可靠的机构或者是第三方个人来担保获得的公钥是正规途径得来的。<br>非对称加密也叫做公开密钥加密，公钥是公开的，私钥是非公开的，其实使用非对称加密，只能保证单向数据传输的安全性。<br>优点：数据可靠性相当强，很大程度上保证了身份认证。<br>非对称加密算法有：RSA、D-H、Elgamal  </p>
-<p>非对称加密的一个很严重的缺点，是数据传输仅单向安全。服务器将用户的隐私数据用私钥加密后，传给客户端。客户端用公钥解密，得到自己的隐私数据。但是，服务器端用私钥加密传输到客户端的过程中，如果被第三方截获了，因为公钥是公开的，第三方用公钥解密，就得到了用户的隐私数据。因此，有公钥的客户端向服务器传数据是安全的，就算被被三方截获了，由于第三方没有私钥，所以第三方也不知道数据是真实内容。而有私钥的服务端向有公钥的客户端进行数据传输就不是安全的。</p>
-<h2 id="https"><a href="#https" class="headerlink" title="https"></a>https</h2><p>上面的对称加密，非对称加密，只有当消息在信道传输时没有被别人破坏，也就是中间人攻击，才能发挥作用。防止中间人攻击的解决办法是https。<br>https通信的过程结合了对称加密，非对称加密。上面已经阐述，对称加密传输速度快，我们希望最理想的情况，用对称加密通信，实际上，为了获取加密效率和安全性的平衡，最终也的确是进行对称加密通信，非对称加密作为破解难度更大的加密方式，一般也只用作某个对称加密算法的密钥传递信道。下面来一步步解决安全问题。  </p>
-<ol>
-<li>客户端 C 生成一个自己的对称密钥 P1，要是能把 P1 安全地告诉服务器 S，然后 C 和 S 就能用对称加密算法进行安全通信了。但是 C 怎么把 P1 安全地告诉 S 呢？  </li>
-<li>上面说了非对称加密是单向安全的，假设 S 生成一对非对称密钥，公钥 Public-S 和私钥 Private-S，如果客户端 C 有公钥 Public-S，那么 C 把自己的对称密钥 P1 用 Public-S 加密后传给服务器就是一个安全的过程。但是客户端 C 如何获取到服务器 S 的公钥 Public-S 呢，谁能保证这个 Public-S 是真的呢？因为这里有这么样一个风险，如果有中间人攻击，有个坏人用自己的服务器 S2 生成一对非对称密钥，公钥 Public-S2 和私钥 Private-S2，假设这个坏人把客户端 C 上的公钥换成自己的公钥 Public-S2 ，然后用自己的私钥来与客户端进行通信，客户端不能发觉。所以需要有人告诉 C，公钥 Public-S 是 S 的，其他的公钥都是假的。</li>
-<li>有个权威机构做公证人，这个公证人就是 CA，服务器 S 向 CA 提交了申请，CA 审核通过后，将证书颁发给 S ，客户端 C 访问服务器 S 的时候，S 将证书给到 C，C 从证书中拿到 S 的非对称加密的公钥 Public-S。 这就相当于 S 向 C 出示了自己的身份证，这真的是我。</li>
-<li>CA发给 S 的证书是如何保证 Public-S 真的是 S 的公钥呢？CA 也有自己的一套非对称加密密钥，公钥 Public-CA 和私钥 Private-CA，CA用自己的私钥，对 S 的公钥和一些相关信息一起加密，这就是”数字证书”（Digital Certificate）。上面提到“C 从证书中拿到 S 的非对称加密的公钥 Public-S”，具体呢，C 用CA的公钥 Public-CA ，解开数字证书，得到 S 的公钥 Public-S，只要 CA 的公钥是真实的，S 的公钥就一定是真实的。</li>
-<li>问题还在，作为客户端 C，你怎么确信 CA 的公钥 Public-CA 是真实的呢，上面引出CA的初衷是防止有些坏人伪造服务器 S 的公钥。但是如果有人伪造CA的公钥怎么办，似乎用非对称加密链来保证公钥的真实性是一个鸡生蛋，蛋生鸡，无穷无尽的问题。答案是，浏览器或操作系统，出厂自带最顶层的 CA 的公钥。  </li>
-<li>为什么就不能怀疑操作系统、浏览器？假设你的电脑是windows10操作系统，用的是chrome浏览器，要是微软，谷歌有心做恶，在证书上做手脚。那就没有办法了。所以，综上，SSL 协议采用的CA证书都只是相对安全的，没有绝对的安全。国家得要研制自己的操作系统，自己的浏览器，这样才能保证国家的网络安全。  </li>
-<li>下面考虑一个场景，张三给李四写信，上面讨论的 1 到 6 步，是考虑身份认证的问题，大致能使张三和李四彼此确认身份。还有个问题，李四收到张三的信后，如果保证信件内容没有修改呢，张三在信件末尾附上数字签名即可。</li>
-<li>这个数字签名怎么来的呢？张三写完信后，对信件内容用 hash函数，生成信件摘要，然后张三用自己的私钥对摘要加密，生成数字签名（signature）。张三在信件末尾附上数字签名。</li>
-<li>李四收到信后，取下数字签名，用张三的公钥解密，得到信件的摘要1。然后对信件内容用 hash函数，也得到一个摘要2，如果摘要1和摘要2是一样的，就说明这封信未被修改过。</li>
-</ol>
-<p>下面来用Charles看看，用https来传数据是不是真的安全，先安利一个提供API服务的公司 <a href="https://www.showapi.com/" target="_blank" rel="noopener">易源数据</a> ，先说句题外化，有了这些专门提供数据接口的公司，我认为很多app应用的后端开发可以不用请专门的后台的开发工程师了，突然又多了一丝危机感。易源数据的数据接口支持http和https两种形式，下面是分为用 http 和 https 两种方式请求QQ音乐接口，搜索关键词“我”的歌曲列表，然后用Charles截包，试试能不能看到传输的数据，首先，两种方式在浏览器端返回的数据都是一样的：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"showapi_res_code"</span>: <span class="number">0</span>,</div><div class="line">    <span class="attr">"showapi_res_error"</span>: <span class="string">""</span>,</div><div class="line">    <span class="attr">"showapi_res_body"</span>: &#123;</div><div class="line">        <span class="attr">"ret_code"</span>: <span class="number">0</span>,</div><div class="line">        <span class="attr">"pagebean"</span>: &#123;</div><div class="line">            <span class="attr">"w"</span>: <span class="string">"我"</span>,</div><div class="line">            <span class="attr">"allPages"</span>: <span class="number">14</span>,</div><div class="line">            <span class="attr">"ret_code"</span>: <span class="number">0</span>,</div><div class="line">            <span class="attr">"contentlist"</span>: [</div><div class="line">                &#123;</div><div class="line">                    <span class="attr">"m4a"</span>: <span class="string">"http://ws.stream.qqmusic.qq.com/5516807.m4a?fromtag=46"</span>,</div><div class="line">                    <span class="attr">"media_mid"</span>: <span class="string">"0004caJA35Oeuo"</span>,</div><div class="line">                    <span class="attr">"songid"</span>: <span class="number">5516807</span>,</div><div class="line">                    <span class="attr">"singerid"</span>: <span class="number">65319</span>,</div><div class="line">                    <span class="attr">"albumname"</span>: <span class="string">"我"</span>,</div><div class="line">                    <span class="attr">"downUrl"</span>: <span class="string">"http://dl.stream.qqmusic.qq.com/5516807.m4a?vkey=34B7AD5C9175C712C73FB6C75DD32B073D2B6F5B63BB7B9C99DDE4AA4597CA0143578A988DB6DF5333FF5BFA6B84E6B765B56E4E2DFAF140&amp;guid=2718671044"</span>,</div><div class="line">                    <span class="attr">"singername"</span>: <span class="string">"魏语诺"</span>,</div><div class="line">                    <span class="attr">"songname"</span>: <span class="string">"我"</span>,</div><div class="line">                    <span class="attr">"strMediaMid"</span>: <span class="string">"0004caJA35Oeuo"</span>,</div><div class="line">                    <span class="attr">"albummid"</span>: <span class="string">"004d8lSi2SADaf"</span>,</div><div class="line">                    <span class="attr">"songmid"</span>: <span class="string">"0004caJA35Oeuo"</span>,</div><div class="line">                    <span class="attr">"albumpic_big"</span>: <span class="string">"http://i.gtimg.cn/music/photo/mid_album_300/a/f/004d8lSi2SADaf.jpg"</span>,</div><div class="line">                    <span class="attr">"albumpic_small"</span>: <span class="string">"http://i.gtimg.cn/music/photo/mid_album_90/a/f/004d8lSi2SADaf.jpg"</span>,</div><div class="line">                    <span class="attr">"albumid"</span>: <span class="number">491426</span></div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    <span class="attr">"m4a"</span>: <span class="string">"http://ws.stream.qqmusic.qq.com/203108192.m4a?fromtag=46"</span>,</div><div class="line">                    <span class="attr">"media_mid"</span>: <span class="string">"002wFoJ62fqw0u"</span>,</div><div class="line">                    <span class="attr">"songid"</span>: <span class="number">203108192</span>,</div><div class="line">                    <span class="attr">"singerid"</span>: <span class="number">22820</span>,</div><div class="line">                    <span class="attr">"albumname"</span>: <span class="string">"我"</span>,</div><div class="line">                    <span class="attr">"downUrl"</span>: <span class="string">"http://dl.stream.qqmusic.qq.com/203108192.m4a?vkey=34B7AD5C9175C712C73FB6C75DD32B073D2B6F5B63BB7B9C99DDE4AA4597CA0143578A988DB6DF5333FF5BFA6B84E6B765B56E4E2DFAF140&amp;guid=2718671044"</span>,</div><div class="line">                    <span class="attr">"singername"</span>: <span class="string">"海龟先生"</span>,</div><div class="line">                    <span class="attr">"songname"</span>: <span class="string">"我"</span>,</div><div class="line">                    <span class="attr">"strMediaMid"</span>: <span class="string">"002wFoJ62fqw0u"</span>,</div><div class="line">                    <span class="attr">"albummid"</span>: <span class="string">"000V1wYm2jw606"</span>,</div><div class="line">                    <span class="attr">"songmid"</span>: <span class="string">"002wFoJ62fqw0u"</span>,</div><div class="line">                    <span class="attr">"albumpic_big"</span>: <span class="string">"http://i.gtimg.cn/music/photo/mid_album_300/0/6/000V1wYm2jw606.jpg"</span>,</div><div class="line">                    <span class="attr">"albumpic_small"</span>: <span class="string">"http://i.gtimg.cn/music/photo/mid_album_90/0/6/000V1wYm2jw606.jpg"</span>,</div><div class="line">                    <span class="attr">"albumid"</span>: <span class="number">2149730</span></div><div class="line">                &#125;</div><div class="line">            ],</div><div class="line">            <span class="attr">"currentPage"</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">"notice"</span>: <span class="string">""</span>,</div><div class="line">            <span class="attr">"allNum"</span>: <span class="number">400</span>,</div><div class="line">            <span class="attr">"maxResult"</span>: <span class="number">30</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="http请求"><a href="#http请求" class="headerlink" title="http请求"></a>http请求</h3><pre><code>http://route.showapi.com/213-1?showapi_appid={appid}&amp;showapi_sign={sign}&amp;keyword=我
-</code></pre><p><img src="http://media.qgchou.top/18-2-6/72683355.jpg"><br>这里我们看到，不管是请求的参数，还是返回的结果，都是明文可见的。</p>
-<h3 id="https请求"><a href="#https请求" class="headerlink" title="https请求"></a>https请求</h3><pre><code>http://route.showapi.com/213-1?showapi_appid={appid}&amp;showapi_sign={sign}&amp;keyword=我
-</code></pre><p><img src="http://media.qgchou.top/18-2-6/61821127.jpg"><br>这里我们看到，不管是请求的参数，还是返回的结果，都有一堆乱码。</p>
-<h3 id="chrome-与-https"><a href="#chrome-与-https" class="headerlink" title="chrome 与 https"></a>chrome 与 https</h3><p>前些天（2018-2-9），看到一则新闻，新Chrome将标记非HTTPS网站为不安全，天呐，”这是谷歌为推动更多网络管理员采用HTTPS加密而采取的最新升级措施，这种加密协议意味着任何从用户电脑或设备发送到网站的数据都可安全传输，而不会被黑客截获。另外，HTTPS加密还可确保黑客无法对内容进行修改。”我相信，google的此举会大力推动https的流行。<br>然后我在chrome中看了看新华网：<br><img src="http://media.qgchou.top/18-2-25/15886312.jpg"><br>当前我的chrome版本是64，据悉今年7月份发布chrome68，到时候，这个新华网估计会标示为“不安全”，到时候，估计一大堆网站蒙圈。<br>我赶紧看了下360的极速浏览器：<br><img src="http://media.qgchou.top/18-2-26/89658369.jpg"><br>这个认证是啥，莫不是新华网给360交钱了？360的认证有公信力吗？<br><img src="http://media.qgchou.top/18-2-26/56680983.jpg"><br>印象中，好像上图这个“官网”字眼，也得网站所有方的人向百度交一笔钱的，真是，国人想赚钱，五花八门的方法多的是。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="http://blog.51cto.com/libincla/1534200" target="_blank" rel="noopener">网络传输的加密与解密</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2006/12/notes_on_cryptography.html" target="_blank" rel="noopener">密码学笔记</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html" target="_blank" rel="noopener">数字签名是什么？</a></li>
-<li><a href="https://www.zhihu.com/question/47232448?from=profile_question_card" target="_blank" rel="noopener">怎么保证「CA 的公钥」是真实的？</a></li>
-<li><a href="http://www.admin5.com/article/20150523/600105.shtml" target="_blank" rel="noopener">图解HTTPS</a></li>
-<li><a href="http://tech.caijing.com.cn/20180209/4406198.shtml" target="_blank" rel="noopener">新Chrome将标记非HTTPS网站为不安全</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/29/we-app_study/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qgchou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/default_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qgchou">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/29/we-app_study/" itemprop="url">微信小程序学习</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-29T10:55:23+08:00">
-                2018-01-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/29/we-app_study/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/29/we-app_study/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/01/29/we-app_study/" class="leancloud_visitors" data-flag-title="微信小程序学习">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一个小程序项目的目录结构：<br><img src="http://media.qgchou.top/18-1-29/37114164.jpg" alt="" title="见参考2"></p>
-<h1 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h1><p>一个小程序项目中的文件类型有以下几种：</p>
-<h2 id="json-后缀的-JSON-配置文件："><a href="#json-后缀的-JSON-配置文件：" class="headerlink" title=".json 后缀的 JSON 配置文件："></a>.json 后缀的 JSON 配置文件：</h2><h3 id="小程序配置-app-json"><a href="#小程序配置-app-json" class="headerlink" title="小程序配置 app.json"></a>小程序配置 app.json</h3><p>app.json 是对当前小程序的全局配置，包括了小程序的所有页面路径、界面表现、网络超时时间、底部 tab 等。</p>
-<h3 id="工具配置-project-config-json"><a href="#工具配置-project-config-json" class="headerlink" title="工具配置 project.config.json"></a>工具配置 project.config.json</h3><p>包括appid，调试基础库版本libVersion，项目设置里的设置项“ES6 转 ES5”、“上传代码时样式自动补全”等。</p>
-<h3 id="页面配置-page-json"><a href="#页面配置-page-json" class="headerlink" title="页面配置 page.json"></a>页面配置 page.json</h3><p>这里的 page.json 其实用来表示 pages/logs 目录下的 logs.json 这类和小程序页面相关的配置。</p>
-<h2 id="wxml-后缀的-WXML-模板文件"><a href="#wxml-后缀的-WXML-模板文件" class="headerlink" title=".wxml 后缀的 WXML 模板文件"></a>.wxml 后缀的 WXML 模板文件</h2><p>WXML 充当的就是类似 HTML 的角色，用来描述当前这个页面的结构。</p>
-<h2 id="wxss-后缀的-WXSS-样式文件"><a href="#wxss-后缀的-WXSS-样式文件" class="headerlink" title=".wxss 后缀的 WXSS 样式文件"></a>.wxss 后缀的 WXSS 样式文件</h2><p>WXSS 具有 CSS 大部分的特性，小程序在 WXSS 也做了一些扩充和修改。</p>
-<h2 id="js-后缀的-JS-脚本逻辑文件"><a href="#js-后缀的-JS-脚本逻辑文件" class="headerlink" title=".js 后缀的 JS 脚本逻辑文件"></a>.js 后缀的 JS 脚本逻辑文件</h2><p>JS 脚本文件用来处理用户的操作。</p>
-<h1 id="体验小程序"><a href="#体验小程序" class="headerlink" title="体验小程序"></a>体验小程序</h1><p>参考4，微信官方给了一个绝好的demo，根据这个demo可以学学小程序的常用组件和接口怎么用的，以及最终的效果展示。<br><img src="http://media.qgchou.top/18-1-29/14435659.jpg" alt=""></p>
-<h1 id="基础库版本"><a href="#基础库版本" class="headerlink" title="基础库版本"></a>基础库版本</h1><p>小程序的能力需要微信客户端来支撑，每一个基础库都只能在对应的客户端版本上运行，高版本的基础库无法兼容低版本的微信客户端。微信web开发者工具的“项目设置”可以设置“调试基础库”版本。</p>
-<h1 id="腾讯云支持"><a href="#腾讯云支持" class="headerlink" title="腾讯云支持"></a>腾讯云支持</h1><p>按照参考5进行操作，腾讯云为开发者提供免费的开发环境和生产环境，按流程操作下来，跑通了。如果纯粹是跑跑样例程序来学小程序，这样做就行了唉，干啥还去买小程序解决方案呢！</p>
-<h1 id="关于小程序的几个基础问题"><a href="#关于小程序的几个基础问题" class="headerlink" title="关于小程序的几个基础问题"></a>关于小程序的几个基础问题</h1><h2 id="为什么小程序解决方案有会话管理服务器"><a href="#为什么小程序解决方案有会话管理服务器" class="headerlink" title="为什么小程序解决方案有会话管理服务器"></a>为什么小程序解决方案有会话管理服务器</h2><p>见参考9，因为小程序是CS模式的，和服务器的通讯是通过发送HTTP请求的方法来实现，没有session、cookie的概念，可以理解为传统C/S中客户端和服务器通讯。小程序和传统的WEB开发完全不同，没有会话也就是没有session功能，因此要用会话管理服务器专门处理。<br>会话管理服务器，也叫鉴权服务器，专门用来处理微信登录鉴权信息。</p>
-<h2 id="2018-1-29-23-04-23"><a href="#2018-1-29-23-04-23" class="headerlink" title="2018-1-29 23:04:23"></a>2018-1-29 23:04:23</h2><p>新注册了一个微信小程序，对应了一个新的appId，在买腾讯云解决方案时，要填appId，因此新注册的小程序不能共用之前买的解决方案。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
-<li><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/quickstart/basic/getting-started.html" target="_blank" rel="noopener">微信小程序官方简易教程</a></li>
-<li><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/structure.html" target="_blank" rel="noopener">微信小程序文件结构</a></li>
-<li><a href="https://mp.weixin.qq.com/debug/wxadoc/design/" title="一些样式的规范及建议" target="_blank" rel="noopener">微信小程序设计指南</a></li>
-<li><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/demo.html" target="_blank" rel="noopener">体验小程序</a></li>
-<li><a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/qcloud.html" target="_blank" rel="noopener">微信小程序——腾讯云支持</a></li>
-<li><a href="https://cloud.tencent.com/document/product/619/11689" target="_blank" rel="noopener">生产环境部署</a></li>
-<li><a href="https://console.cloud.tencent.com/lav2/production" target="_blank" rel="noopener">腾讯云-微信小程序-开发者工具方案-生产环境</a></li>
-<li><a href="https://github.com/tencentyun/wafer2-quickstart-nodejs" target="_blank" rel="noopener">wafer2-quickstart-nodejs</a></li>
-<li><a href="https://github.com/tsr106/TencentYunDemo" target="_blank" rel="noopener">10分钟搭建微信小程序服务器</a></li>
-<li><a href="https://www.jianshu.com/p/0ecf5aba79e1" target="_blank" rel="noopener">微信小程序精选Demo合集</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qgchou.com/2018/01/28/we-app_wafer-client-demo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qgchou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/default_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qgchou">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/28/we-app_wafer-client-demo/" itemprop="url">微信小程序demo学习_wafer-client-demo</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T11:00:01+08:00">
-                2018-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/28/we-app_wafer-client-demo/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/28/we-app_wafer-client-demo/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/01/28/we-app_wafer-client-demo/" class="leancloud_visitors" data-flag-title="微信小程序demo学习_wafer-client-demo">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>买了腾讯云的微信小程序解决方案，按照参考1进行配置后，就把官方demo跑起来了，后台是wafer-cliet-demo，买来解决方案后，服务器里就带有这个demo的后台程序了，具体配置经过可以看我的另一篇文章《搭建微信小程序》。这个demo的github地址见参考2，今天来学学这个demo。  </p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="https://console.cloud.tencent.com/la/guide" target="_blank" rel="noopener">资源初始化指引——微信小程序</a></li>
-<li><a href="https://github.com/tencentyun/wafer-client-demo" target="_blank" rel="noopener">wafer-client-demo_github</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1864,7 +1904,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">106</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1886,7 +1926,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
