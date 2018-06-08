@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://media.qgchou.top/18-3-14/72751281.jpg">
 <meta property="og:image" content="http://media.qgchou.top/18-3-14/11616668.jpg">
 <meta property="og:image" content="http://media.qgchou.top/18-3-14/60772984.jpg">
-<meta property="og:updated_time" content="2018-04-15T09:50:19.812Z">
+<meta property="og:updated_time" content="2018-05-08T07:13:26.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Java秒杀系统方案优化 高性能高并发实战》学习笔记">
 <meta name="twitter:description" content="spring-boot这个项目是基于spring-boot来做的，教了如何打包成jar包和war包，spring-boot内置了tomcat，一个spring-boot项目运行起来非常方便。 数据校验JSR-303是一个数据验证的规范，引入依赖spring-boot-starter-validation，就可以在后台做各种数据校验，还可以自定义验证器。项目中定义了一个验证器IsMobile，验证是">
@@ -408,7 +408,7 @@
 <h2 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h2><p>拦截器 com.imooc.miaosha.access.AccessInterceptor，接口方法真正的业务逻辑之前常有些共同的逻辑，比如判断用户是否登录，以及对接口的限流防刷控制，可以一并放在拦截器中。<br>项目用的是spring-boot，不用写各种xml配置文件了，拦截器在类com.imooc.miaosha.config.WebConfig中进行注册。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebConfig</span>  <span class="keyword">extends</span> <span class="title">WebMvcConfigurerAdapter</span></span>&#123;&#125;</div></pre></td></tr></table></figure>
 <p>如果在处理接口跨域问题，也是在这个类中进行配置，类WebMvcConfigurerAdapter中有抽象方法public void addCorsMappings(CorsRegistry registry) {}，实现一下就可以了。</p>
-<h2 id="静态分离"><a href="#静态分离" class="headerlink" title="静态分离"></a>静态分离</h2><p>java web项目中前端页面的展示，以及用得比较多的是返回一个jsp，后台控制器方法绑定参数，把jsp渲染好后返回给前台。现在主流的做法是，前端用纯html编写，后台返回json串，前台用异步请求到json格式的接口数据，然后填充到html中。这就是静态分离。</p>
+<h2 id="静态分离"><a href="#静态分离" class="headerlink" title="静态分离"></a>静态分离</h2><p>java web项目中前端页面的展示，以及用得比较多的是返回一个jsp，后台控制器方法绑定参数，把jsp渲染好后返回给前台。现在主流的做法是，前端用纯html编写，后台返回json串，前台用异步请求到json格式的接口数据，然后填充到html中。这就是静态分离。<br>两种前后端搭配方式：<br>前后端分离，后端提供json接口就行了，这是现在的主流做法<br>前端使用jsp等模板技术，后端返回填充数据。使用模板会带来性能损耗，现在不推荐这种做法了。</p>
 <p>此外还有关于加盐加密、图形验证码等知识。</p>
 <h2 id="秒杀流程"><a href="#秒杀流程" class="headerlink" title="秒杀流程"></a>秒杀流程</h2><ol>
 <li>秒杀活动开始之前有个活动倒计时，时间到了则会放开秒杀的权限，并生成一个验证码展示在前面页面，并把验证结果存在redis中，这里利用redis有过期时间的特性，也给验证码的缓存加了个过期时间。这里的redis缓存用的是redis的string类型。</li>
@@ -573,7 +573,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">106</span>
+                  <span class="site-state-item-count">117</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -595,7 +595,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

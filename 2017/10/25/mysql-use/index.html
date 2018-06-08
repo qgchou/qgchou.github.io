@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="qgchou">
 <meta property="og:description" content="授权公司有一小需求，我开发好后，部署在自己的阿里云上，数据库授权，赶紧学了一波。   grant all privileges on hello_db to hello_username@localhost identified by &amp;quot;hello_password&amp;quot;; flush privileges; 上面命令就可以新建一用户，并授予数据库hello_db的所有权限，注意授">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-13T06:34:35.819Z">
+<meta property="og:updated_time" content="2018-05-08T07:16:49.407Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习mysql">
 <meta name="twitter:description" content="授权公司有一小需求，我开发好后，部署在自己的阿里云上，数据库授权，赶紧学了一波。   grant all privileges on hello_db to hello_username@localhost identified by &amp;quot;hello_password&amp;quot;; flush privileges; 上面命令就可以新建一用户，并授予数据库hello_db的所有权限，注意授">
@@ -391,9 +391,11 @@
 flush privileges;
 </code></pre><p>上面命令就可以新建一用户，并授予数据库hello_db的所有权限，注意授权后必须FLUSH PRIVILEGES;否则无法立即生效。<br>之前我没有自己的服务器，别人访问我主机数据库时，我就老实把root账号给对方了，一点安全保护意识都没有，不过学生时数据库本来用得也不多，里面自然不会有私人数据。<br>看到一文，<a href="http://blog.csdn.net/qq_32486599/article/details/73603243" target="_blank" rel="noopener">navicat创建用户以及设置权限</a>，方便高效，最后我是在图形化界面下设置完成的。之前的命令行操作应该也是有效的，但是命令行下操作权限后，在navicat图形界面下我没看到效果，后来才知道，应该退出navicat再重新打开才生效。</p>
 <h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p>数据库索引的两大作用，一是建立索引后可以提高检索速度；二是在高并发的场景下，通过建立唯一索引，可以保证一些业务场景的实现。比如秒杀商品，把用户id和商品id联合建一个唯一索引，这样就从数据库保证了一个用户只能秒杀一件同款商品。</p>
+<h2 id="select-for-update"><a href="#select-for-update" class="headerlink" title="select for update"></a>select for update</h2><p>Select…For Update语句的语法与select语句相同，只是在select语句的后面加FOR UPDATE 子句。<br>该语句用来锁定特定的行（如果有where子句，就是满足where条件的那些行）。当这些行被锁定后，其他会话可以选择这些行，但不能更改或删除这些行，直到该语句的事务被commit语句或rollback语句结束为止。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="http://www.cnblogs.com/fslnet/p/3143344.html" target="_blank" rel="noopener">mysql 用户管理和权限设置</a></li>
 <li><a href="https://coding.imooc.com/class/168.html" target="_blank" rel="noopener">Java秒杀系统方案优化 高性能高并发实战</a></li>
+<li><a href="https://blog.csdn.net/wo198711203217/article/details/28870779" target="_blank" rel="noopener">select 语句for update作用</a></li>
 </ol>
 
       
@@ -528,7 +530,7 @@ flush privileges;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">106</span>
+                  <span class="site-state-item-count">117</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -550,7 +552,7 @@ flush privileges;
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -599,7 +601,7 @@ flush privileges;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#授权"><span class="nav-number">1.</span> <span class="nav-text">授权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引"><span class="nav-number">2.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#授权"><span class="nav-number">1.</span> <span class="nav-text">授权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引"><span class="nav-number">2.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#select-for-update"><span class="nav-number">3.</span> <span class="nav-text">select for update</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
