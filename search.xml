@@ -1,3 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
+  <entry>
+    <title><![CDATA[html学习]]></title>
+    <url>%2F2018%2F01%2F23%2Fhtml-study%2F</url>
+    <content type="text"><![CDATA[form标签的 enctype 属性1234&lt;form name="form1" action="/manage/product/upload.do" method="post" enctype="multipart/form-data"&gt; &lt;input type="file" name="upload_file" /&gt; &lt;input type="submit" value="springmvc上传文件" /&gt;&lt;/form&gt; enctype 属性规定在发送到服务器之前应该如何对表单数据进行编码。默认地，表单数据会编码为 “application/x-www-form-urlencoded”。就是说，在发送到服务器之前，所有字符都会进行编码。enctype的值为“multipart/form-data”，在使用包含文件上传控件的表单时，必须使用该值。 提交一个form表单，除了上文用的： 1&lt;input type="submit" value="springmvc上传文件" /&gt; 另一种方法是： 1&lt;div onclick="document.getElementById('Form_Name').submit();" /&gt; form元素写法是： 123&lt;form id="Form_Name" onSubmit="return check(this);" &gt; &lt;!-- test --&gt;&lt;/form&gt; 表单的onSubmit事件用于对表单内容进行验证，onSubmit函数的返回值为false时，表单不会提交。 html中的元素html中的元素，大致可以分为两类，行级元素和块级元素。行级元素又称内联元素，在一行中水平排列，行内元素的高度由其内容撑开，不可显式地设置其高度，块级元素可通过 css 的 display:inline 变成行级元素。块级元素一般是其他元素的容器，其宽度、高度都是可设置的，默认每次占用一整个行，非块级元素可通过 css 的 display:block 将其改成块级元素，任何一个块级元素，均可以用Box model解释说明。行级元素：span input a li img块级元素：p ul form div h1~h6ul（unordered list 无序列表） div的居中问题div中的文字需要垂直居中的话，设置div的 line-height 属性，设成与div的 height 属性一样就行了。如果要把该div设成在外面的div或form中水平居中，则设置该div的属性 margin:0 auto 绝对定位绝对定位使元素的位置与文档流无关，也不占据文档流空间，普通流中的元素布局就像绝对定位元素不存在一样。 html5的新标签标签是html5的新标签，目前所有浏览器都不支持标签。 前端的难点浏览器的兼容性，PC端与移动端的兼容性。 CSS 伪元素CSS 伪元素用于向某些选择器设置特殊效果。例如，content属性与:before及:after伪元素配合使用，来插入生成内容。 123a:after &#123; content:attr(href)&#125; 作用于正面的html 123&lt;p&gt; &lt;a href="www.baidu.com"&gt;百度&lt;/a&gt;&lt;/p&gt; 显示效果是：百度www.baidu.com html转义符号见参考1和参考2。 参考 HTML 字符实体 HTML转义字符大全]]></content>
+      <tags>
+        <tag>web</tag>
+      </tags>
+  </entry>
 </search>
